@@ -1,0 +1,115 @@
+.landing { 
+    height: 100vh;
+    background-color: var(--neutral-1);
+}
+.landing > img { 
+    position: absolute;
+    top: 25px;
+    left: 24px;
+    max-width: 171px;
+    max-height: 29px;
+}
+.landing-left {
+    padding: 24px;
+    width: 100%;
+    max-width: 900px;
+}
+.landing-left-child {
+    margin: auto;
+    gap: 32px;
+    max-width: 500px;
+}
+.landing-left-child > button {
+    margin-top: 18px;
+}
+.inputCont {
+    width: 100%;
+    gap: 8px;
+}
+.inputCont > h6 {
+    color: var(--neutral-4);
+    font-weight: 500;
+    font-size: var(--font-l);
+}
+.landing input {
+    padding: 10px 14px;
+}
+.landing button {
+    width: 100%;
+}
+@keyframes loadingIcon {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.signUp-cont {
+    gap: 8px;
+    justify-content: center;
+}
+.signUp-cont p {
+    font-size: var(--font-m);
+}
+.signUp-cont a > p:hover {
+    text-decoration: underline;
+}
+/* landing-right */
+.landing-right {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--neutral-6);
+}
+.loadingBar {
+    width: 100%;
+    height: 10px;
+    z-index: 1;
+    margin-top: auto;
+    background-color: rgba(255, 255, 255, 0.404);
+    position: relative;
+}
+.loadingBar::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #000000b7;
+    animation: loadingBar 11s infinite linear forwards;
+}
+.landing-right-imgCont > img {
+    position: absolute;
+    inset: -9999px;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+    transition: opacity 1s;
+}
+.landing-right-imgCont > p {
+    position: absolute;
+    inset: 20px;
+    top: auto;
+    bottom: 24px;
+    color: var(--neutral-1);
+    z-index: 1;
+    transition: opacity 1s;
+}
+
+@keyframes loadingBar {
+    2.5% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+.emailWarning, .passwordWarning {
+    display: none;
+    font-size: var(--font-s);
+    color:var(--danger-1);
+}
+.emailWarning.invalid, .passwordWarning.invalid {
+    display: unset;
+}

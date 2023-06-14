@@ -1,0 +1,41 @@
+th {
+    transition: background-color 0.15s;
+    padding: 8px;
+}
+
+th>p {
+    cursor: pointer;
+    width: fit-content;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-s);
+    transition: background-color 0.15s;
+}
+
+th>p:hover {
+    background-color: var(--neutral-2);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr {
+    border: 1px solid var(--neutral-3);
+    transition: background-color 0.15s;
+}
+
+tbody>tr:hover {
+    background-color: var(--neutral-2);
+}
+
+td {
+    padding: 16px;
+    transition: background-color 0.15s;
+    text-align: left;
+}
+
+td>input,
+th>input {
+    padding: 8px;
+    cursor: pointer;
+}

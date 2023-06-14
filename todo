@@ -1,0 +1,5 @@
+todo:
+- build the admin dashboard ui (take heavy inspiration)
+- build the backend routes and controller logic for admin features
+- create jobs, delete jobs, edit jobs
+- add job question functionality to jobs (figure out how to render the questions)gff

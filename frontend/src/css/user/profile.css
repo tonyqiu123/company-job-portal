@@ -1,0 +1,108 @@
+.profile {
+    max-width: 1200px;
+}
+
+.profileCard {
+    padding: 24px 32px;
+    background-color: var(--neutral-1);
+    border-radius: var(--border-radius-m);
+    border: 1px solid var(--neutral-3);
+    gap: 20px;
+}
+
+.contacts>.row {
+    gap: 16px;
+    width: fit-content;
+}
+
+.contacts>.row>img {
+    width: 24px;
+}
+
+.edit {
+    cursor: pointer;
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    transition: opacity .15s;
+}
+
+.edit:hover {
+    opacity: .4;
+}
+
+/* MODALS */
+.profileModalContainer {
+    gap: 32px;
+    height: fit-content !important;
+}
+
+.profileModalContainer .column {
+    gap: 8px;
+}
+
+.profileModalContainer .column>p {
+    font-size: var(--font-m);
+}
+
+.profileModalContainer-title>img {
+    width: 24px;
+}
+
+.profileModalInformationGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 28px;
+}
+
+.profileModalInformationGridTime {
+    grid-template-columns: 1fr 1fr;
+}
+
+.profileModalBtnContainer {
+    gap: 24px;
+    justify-content: center;
+}
+
+.profileModalBtnContainer>button {
+    width: 100%;
+}
+
+.userModal-url>.row {
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.userModal-url>.row>a {
+    transition: opacity .15s;
+}
+
+.userModal-url>.row>a:hover {
+    opacity: .5;
+}
+
+.userModal-url-row {
+    gap: 12px !important;
+    margin-top: 12px;
+}
+
+.dragAndDrop {
+    border: 2px dashed #aaa;
+    background-color: var(--neutral-1);
+    align-items: center;
+    justify-content: center !important;
+    height: 200px;
+    transition: border-color 0.3s, background-color 0.3s;
+    cursor: pointer;
+}
+
+.draggingStyle {
+    background-color: var(--neutral-3);
+    border-style: solid;
+    border-color: var(--neutral-3);
+}
+
+.dragAndDrop>* {
+    pointer-events: none;
+}

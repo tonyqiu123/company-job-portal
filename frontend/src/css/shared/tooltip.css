@@ -1,0 +1,35 @@
+/* Tooltip.css */
+
+.tooltip {
+  width: fit-content;
+  gap: 6px;
+}
+
+.tooltip>img {
+  transform: translateY(-35%);
+}
+
+.tooltip-hoverBox {
+  position: absolute;
+  max-width: 400px;
+  word-wrap: break-word;
+  box-shadow: var(--shadow-s);
+  background-color: var(--neutral-1);
+  padding: 8px 12px;
+  border: 1px solid var(--neutral-3);
+  border-radius: var(--border-radius-s);
+  right: -4px;
+  top: 0;
+  transform: translate(100%, 0%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .15s;
+}
+
+.active.tooltip-hoverBox {
+  z-index: 89;
+  opacity: .9;
+}
+.tooltip > * {
+  white-space: nowrap;
+}

@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('src/assets/fonts/Satoshi-Medium.otf') format('opentype');
+}
+
+body::-webkit-scrollbar {
+    width: 0em;
+}
+
+html,
+body {
+    background-color: var(--neutral-1);
+}
+
+.body {
+    padding-left: 220px;
+    padding-bottom: 60px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: var(--neutral-5);
+    font-family: "Satoshi", sans-serif;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+/* ROOT */
+:root {
+    --primary-1: #000000;
+    --primary-2: #343534;
+    --primary-3: #5f5f5f;
+    --neutral-1: #fdfdfd;
+    --neutral-2: #e9e9e9;
+    --neutral-3: #e0e0e0;
+    --neutral-4: #8e8e8e;
+    --neutral-5: #4a4a4a;
+    --neutral-6: #171717;
+    --modal-bg: rgba(0, 0, 0, 0.774);
+    --danger-1: #e64545;
+    --danger-2: rgb(233, 50, 50);
+    --danger-3: rgb(233, 50, 50);
+    --shadow-s: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-m: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-l: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --font-s: 12px;
+    --font-m: 14px;
+    --font-l: 16px;
+    --border-radius-s: 4px;
+    --border-radius-m: 8px;
+    --border-radius-l: 12px;
+}
+
+/* TYPOGRAPHY */
+span {
+    color: var(--primary-1);
+}
+
+a {
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    width: fit-content;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    color: var(--neutral-6);
+    font-weight: 500;
+    font-size: var(--font-m);
+    line-height: 165%;
+}
+
+.largeText {
+    font-size: var(--font-l);
+}
+
+.smallText {
+    color: var(--neutral-5);
+    font-size: var(--font-s);
+}
+
+h1 {
+    font-size: 48px;
+    color: var(--primary-2);
+}
+
+h2 {
+    font-size: 28px;
+    color: var(--primary-2);
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 18px;
+}
+
+input,
+textarea {
+    width: 100%;
+    border-radius: var(--border-radius-m);
+    padding: 10px;
+    border: 1px solid var(--neutral-3);
+    font-weight: 500;
+    font-size: var(--font-m);
+    resize: vertical;
+    position: relative;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--neutral-4);
+}
+
+input>img {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 20px;
+    opacity: .3;
+}
+
+textarea {
+    min-height: 80px;
+    max-height: 400px;
+    padding-left: 14px;
+}
+
+select {
+    padding: 10px;
+    padding-right: 49px;
+    width: 100%;
+    font-weight: 500;
+    border: 1px solid var(--neutral-3);
+    font-size: var(--font-m);
+    border-radius: var(--border-radius-m);
+    appearance: none;
+    background-image: url('src/assets/images/dropDownIcon.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size: 12px;
+}
+
+option {
+    font-weight: 500;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+/* MY VER OF BOOTSTRAP */
+
+button {
+    justify-content: center !important;
+    text-align: center;
+    min-width: 75px;
+    width: fit-content;
+    padding: 10px 24px;
+    border: none;
+    background: var(--neutral-2);
+    border-radius: var(--border-radius-m);
+    cursor: pointer;
+    transition: opacity .15s, box-shadow .15s;
+    gap: 8px;
+}
+
+button:hover {
+    opacity: .7 !important;
+}
+
+button>p {
+    font-size: var(--font-m);
+    color: var(--neutral-4);
+}
+
+.primaryButton {
+    background: var(--primary-1);
+}
+
+.primaryButton>p,
+.destructiveButton>p {
+    color: var(--neutral-1);
+}
+
+.destructiveButton {
+    background: var(--danger-1);
+}
+
+.loadingIcon {
+    animation: loadingIcon 1s infinite forwards;
+}
+
+section {
+    margin: auto;
+    padding: 0 32px;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.row {
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.errorMsg {
+    font-size: var(--font-m);
+    color: var(--danger-1);
+}
+
+.hr {
+    width: 100%;
+    background-color: var(--neutral-3);
+    min-height: 1px;
+}
+
+.dashboardTitle {
+    height: 80px;
+}
+
+.dashboardTitle>h2 {
+    margin: auto auto auto 32px;
+}
+
+.body>.hr {
+    margin-bottom: 32px;
+}
+
+.deleteIcon {
+    cursor: pointer;
+    transition: opacity .15s;
+}
+
+.deleteIcon:hover {
+    opacity: .4;
+}
+
+label {
+    white-space: nowrap;
+}
+
+.checkboxContainer {
+    gap: 8px;
+}
+
+.modalContainer {
+    z-index: 19;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 101%;
+    height: 101vh;
+    display: flex;
+}
+
+.modalDarkBackground {
+    background-color: var(--modal-bg);
+    width: 100%;
+    height: 101vh;
+    position: absolute;
+}
+
+.modalCard {
+    width: calc(100vw - 100px);
+    max-width: 1000px;
+    margin: auto;
+    background-color: var(--neutral-1);
+    padding: 40px;
+    overflow-y: scroll;
+    border-radius: var(--border-radius-l);
+    height: calc(100vh - 100px);
+    justify-content: flex-start;
+}
+
+.modalCard::-webkit-scrollbar {
+    width: 0;
+}
+
+.noScroll {
+    overflow-y: hidden;
+}
+
+/* NAVBAR */
+#mobileLogo {
+    display: none;
+}
+
+.sideNav-logo {
+    height: 80px;
+    position: relative;
+    width: 100%;
+    padding: 24px;
+}
+
+.sideNav-logo img {
+    margin: auto auto auto 0;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.sideNav-top-link>p {
+    font-size: var(--font-m);
+}
+
+.sideNav {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    z-index: 2;
+    background-color: var(--neutral-1);
+    border-right: 1px solid var(--neutral-2);
+}
+
+.sideNav-top-link {
+    border-left: 4px solid transparent;
+    width: 100%;
+    gap: 12px;
+    justify-content: unset;
+    padding: 24px;
+}
+
+.sideNav-top-link:hover {
+    background-color: var(--neutral-2);
+}
+
+.sideNav-top-link>img {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+
+.sideNav-top-link {
+    opacity: .4;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+
+.sideNav-top-link:hover {
+    opacity: 1;
+}
+
+#activeNavLink {
+    border-left: 4px solid var(--primary-3);
+    opacity: 1;
+    background-color: var(--primary-1);
+}
+
+#activeNavLink p {
+    color: var(--neutral-1);
+}
+
+#activeNavLink>img {
+    filter: brightness(0) invert(1);
+}
+
+@media screen and (max-width: 650px) {
+    section {
+        padding: 0 16px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .body {
+        padding-left: 0;
+    }
+
+}

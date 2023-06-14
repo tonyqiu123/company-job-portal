@@ -1,0 +1,226 @@
+/* job search inputs */
+.searchJobs {
+    max-width: 1200px;
+}
+
+.searchJobs-inputContainer {
+    gap: 20px;
+}
+
+.searchJobs-inputContainer> :nth-child(2) {
+    grid-template-columns: 1fr 1fr;
+}
+
+.searchJobsBtn {
+    margin: 16px 2px 0 2px;
+    width: 100%;
+    padding: 12px 0;
+}
+
+.searchJobs-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.searchJobs-relative {
+    position: relative;
+    width: 100%;
+}
+
+.searchJobs-relative>input {
+    padding-left: 40px;
+}
+
+.searchJobs-relative>img {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 20px;
+    opacity: .3;
+}
+
+/* job query results */
+.jobsBody {
+    max-width: 1200px;
+    position: unset;
+}
+
+.jobsBody>h6 {
+    margin-bottom: 24px;
+}
+
+.jobsBody>h6>span {
+    font-size: var(--font-m);
+    color: var(--neutral-4);
+    margin-left: 4px;
+}
+
+.jobsBody-jobs {
+    border: 1px solid var(--neutral-3);
+    border-radius: var(--border-radius-m);
+    overflow: hidden;
+}
+
+.job:nth-of-type(even) {
+    background-color: rgb(248, 248, 248);
+}
+
+.job {
+    cursor: pointer;
+    padding: 24px;
+    background-color: var(--neutral-1);
+    transition: background-color .15s;
+}
+
+.job:hover {
+    background-color: var(--neutral-2);
+}
+
+.job-left {
+    gap: 14px;
+}
+
+.job-left>.row:first-child {
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.job-left>.row:first-child>p {
+    font-size: var(--font-m);
+    border-left: 1px solid var(--neutral-3);
+    padding-left: 8px;
+}
+
+.tagsContainer {
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.tagsContainer>p {
+    white-space: nowrap;
+    font-size: var(--font-s);
+    color: var(--neutral-4);
+}
+
+.job-right {
+    gap: 12px;
+}
+
+/* PAGINATION */
+.pagination {
+    margin: 24px auto 0 auto;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.pagination>div {
+    width: 32px;
+    height: 32px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-s);
+    cursor: pointer;
+}
+
+.pageButton:hover {
+    background-color: var(--neutral-2);
+}
+
+.activePageButton {
+    transition: background-color .15s;
+    background-color: var(--primary-2);
+}
+
+.activePageButton>p {
+    color: var(--neutral-1);
+}
+
+/* JOBDETAILSCARD */
+.jobDetailsCard-loadedContainer {
+    justify-content: flex-start;
+    gap: 20px;
+    opacity: 0;
+    animation: jobDetailsCard-loadedContainer 0.5s .25s forwards;
+}
+
+@keyframes jobDetailsCard-loadedContainer {
+    to {
+        opacity: 1;
+    }
+}
+
+.jobDetailsCard::-webkit-scrollbar {
+    width: 0em;
+}
+
+.jobDetailsCard-loadedContainer>h6,
+.jobDetailsCard-loadedContainer>.hr {
+    margin-top: 16px;
+}
+
+.jobDetailsCard-btnCont {
+    width: 100%;
+    margin-top: 16px;
+    justify-content: flex-start;
+    gap: 24px;
+}
+
+.jobDetailsCard-btnCont>button {
+    width: 100%;
+}
+
+/* SKELELOAD */
+.skele {
+    padding: 40px;
+    position: absolute !important;
+    gap: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.skele>* {
+    border-radius: var(--border-radius-m);
+    background-color: var(--neutral-2);
+    height: 40px;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+.skele-longText {
+    margin-top: 40px;
+    max-width: 100%;
+    height: 80px;
+}
+
+.skele>*::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(to left, rgba(15, 15, 15, 0), rgba(255, 255, 255, 0.575), rgba(22, 21, 21, 0));
+    height: 100%;
+    width: 100%;
+    animation: loading 2s infinite forwards;
+}
+
+@keyframes loading {
+    100% {
+        transform: translateX(200%);
+    }
+}
+
+.skele-exit {
+    animation: skele-exit 0.5s forwards;
+}
+
+@keyframes skele-exit {
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}
