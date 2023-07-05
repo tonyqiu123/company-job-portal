@@ -1,4 +1,3 @@
 todo: 
-- update api controllers for multiuser data fetch (view jobs page)
-- figure out how to do backend for fetching recent job applications (dashboard page)
-- make all get request include the following: specify amount, omit properties, 
+- store monthly statistics in the database
+- view most recent job applications in the admin dashboard
