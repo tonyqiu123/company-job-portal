@@ -1,0 +1,69 @@
+.viewApplicant {
+    align-items: flex-start !important;
+    gap: 32px;
+    justify-content: flex-start !important;
+}
+
+.prevNext {
+    cursor: pointer;
+    transition: opacity .2s;
+    white-space: nowrap;
+}
+
+.prevNext:hover {
+    opacity: .5;
+}
+
+.prevNext> :nth-child(2) {
+    color: var(--neutral-4);
+}
+
+.applicantFiles-tabs {
+    border: 1px solid var(--neutral-4);
+    border-left: none;
+    width: fit-content;
+}
+
+.applicantFiles-tabs>p {
+    border-left: 1px solid var(--neutral-4);
+    padding: 8px 16px;
+    color: var(--neutral-4);
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+
+
+.activeTab {
+    background-color: var(--neutral-6);
+    color: var(--neutral-1) !important;
+}
+
+.applicantFiles {
+    width: 100%;
+    margin: 0 16px;
+}
+
+.applicantFiles-file {
+    max-width: 1500px;
+    height: calc(100svh - 215px);
+    background-color: var(--neutral-2);
+}
+
+.applicantFiles-file>iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.applicantInfo {
+    gap: 8px;
+}
+
+.applicantInfo>p {
+    color: var(--neutral-4);
+}
+
+.applicantInfo>.row {
+    margin-top: 16px;
+    gap: 16px;
+}

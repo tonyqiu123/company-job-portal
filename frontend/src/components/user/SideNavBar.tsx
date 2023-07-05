@@ -1,19 +1,18 @@
 import { Link, useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import desktopLogo from  'src/assets/images/desktopLogo.svg';
-import search from  'src/assets/images/search.svg';
-import applications from  'src/assets/images/applications.svg';
-import shortlist from  'src/assets/images/shortlist.svg';
-import profile from  'src/assets/images/profile.svg';
-import signOut from  'src/assets/images/sign-out.svg';
+import desktopLogo from 'src/assets/images/desktopLogo.svg';
+import search from 'src/assets/images/search.svg';
+import applications from 'src/assets/images/applications.svg';
+import shortlist from 'src/assets/images/shortlist.svg';
+import profile from 'src/assets/images/profile.svg';
+import signOut from 'src/assets/images/sign-out.svg';
 
 const SideNavBar: React.FC = () => {
 
 
   const handleSignOut = () => {
     localStorage.removeItem('modernJobPortal_jwt');
-    localStorage.removeItem('modernJobPortal_userID');
-    window.location.href = '/';
+    window.location.href = '/login';
   };
 
   const location = useLocation();

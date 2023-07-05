@@ -44,7 +44,7 @@
 }
 .signUp-cont {
     gap: 8px;
-    justify-content: center;
+    justify-content: center !important;
 }
 .signUp-cont p {
     font-size: var(--font-m);

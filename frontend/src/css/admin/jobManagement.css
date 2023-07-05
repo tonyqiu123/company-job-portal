@@ -6,18 +6,18 @@
 }
 
 .jobManagement-search {
-    gap: 32px;
+    gap: 24px;
     justify-content: flex-start !important;
-    align-items: flex-end !important;
-    z-index: 0;
-    margin-right: 187px;
+    align-items: flex-end !important; 
 }
 
 .jobManagement-search>.column {
     gap: 12px;
 }
 
-.jobManagement-deleteActivated {
-    gap: 24px;
-    justify-content: flex-start !important;
+.jobManagement-stats {
+    border: 1px solid var(--neutral-3);
+    border-radius: var(--border-radius-l);
+    padding: 32px;
+    gap: 16px;
 }

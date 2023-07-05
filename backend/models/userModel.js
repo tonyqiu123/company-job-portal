@@ -15,20 +15,25 @@ const jobQuestionResponseSchema = new Schema({
     response: String,
 })
 
-const userSchema = new Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    location: { type: String, default: "" },
-    phone: { type: String, default: "" },
-    urls: { type: [String], default: [] },
-    attachments: { type: [attachmentSchema], default: [] },
-    date: { type: Date, default: Date.now },
-    appliedJobs: { type: [String], default: [] },
-    shortlisted: { type: [String], default: [] },
-    jobQuestionResponse: { type: [jobQuestionResponseSchema], default: [] }
-});
+const userSchema = new Schema(
+    {
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
+        email: { type: String, required: true },
+        password: { type: String, required: true },
+        location: { type: String, default: "" },
+        phone: { type: String, default: "" },
+        urls: { type: [String], default: [] },
+        attachments: { type: [attachmentSchema], default: [] },
+        date: { type: Date, default: Date.now },
+        appliedJobs: { type: [String], default: [] },
+        shortlisted: { type: [String], default: [] }, 
+        jobQuestionResponse: { type: [jobQuestionResponseSchema], default: [] },
+    },
+    { timestamps: true }
+);
+
+userSchema.index({ firstName: 'text', lastName: 'text', email: 'text' }); // Indexing firstName and lastName fields
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

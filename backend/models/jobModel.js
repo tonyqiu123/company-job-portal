@@ -11,17 +11,22 @@ const jobSchema = new Schema({
   responsibilities: { type: [String], default: [] },
   skills: { type: [String], default: [] },
   whatWereLookingFor: { type: [String], default: [] },
-  date: { type: Date, default: Date.now },
+  created: { type: Date, default: Date.now },
   deadline: { type: Date, default: getDefaultDeadline },
   remote: { type: Boolean, default: false },
   benefits: { type: [String], default: [] },
   applicants: { type: [String], default: [] },
-  requiredDocuments: { type: [String], enum: ['resume', 'coverletter', 'references', 'portfolio', 'certificates'], default: ['Resume'] },
+  selected: { type: [String], default: [] },
+  selectedForInterview: { type: [String], default: [] },
+  shortlisted: { type: [String], default: [] }, 
+  rejected: { type: [String], default: [] },
+  requiredDocuments: { type: [String], enum: ['resume', 'coverletter', 'references', 'portfolio', 'certificates'] },
   jobQuestions: { type: [String], default: [] },
+  views: { type: Number, default: 0 },
   yoe: { type: Number, default: 3 }
 });
 
-jobSchema.index({ title: 'text' });
+jobSchema.index({ title: 'text', location: 'text' });
 
 function getDefaultDeadline() {
   const deadline = new Date();

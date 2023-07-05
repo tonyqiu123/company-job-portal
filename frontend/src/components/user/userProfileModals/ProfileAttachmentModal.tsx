@@ -4,7 +4,7 @@ import fileIcon from 'src/assets/images/fileIcon.svg'
 import { uploadFile, updateUser } from 'src/util/apiFunctions.js'
 import Button from 'src/components/shared/Button'
 
-export default function ProfileAttachmentModal({ storedJwt, userData, setShowAttachmentModal, setUserData }) {
+export default function ProfileAttachmentModal({ userJwt, userData, setShowAttachmentModal, setUserData }) {
 
     const [isDragging, setIsDragging] = useState(false)
     const [selectedFile, setSelectedFile] = useState(null)
@@ -38,27 +38,24 @@ export default function ProfileAttachmentModal({ storedJwt, userData, setShowAtt
         }
     }
 
-    const updateAttachment = () => {
-        return new Promise(async (resolve, reject) => {
+    const updateAttachment = async () => {
             try {
                 if (!selectedFile || !fileType) {
                     setError('Please select a file and file name')
                     throw new Error('');
                 }
-                const fileId = await uploadFile(storedJwt, selectedFile);
+                const fileId = await uploadFile(userJwt, selectedFile);
                 const updatedUserData = { ...userData };
                 updatedUserData.attachments.push({
-                    _id: fileId.fileType,
+                    _id: fileId.fileName,
                     fileType
                 });
-                await updateUser(storedJwt, updatedUserData);
+                await updateUser(userJwt, updatedUserData);
                 setUserData(updatedUserData);
                 setShowAttachmentModal(false);
-                resolve();
-            } catch (error) {
-                reject();
+            } catch (err) {
+                throw err
             }
-        });
     };
 
 

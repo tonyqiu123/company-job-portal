@@ -19,3 +19,4 @@ const adminLogin = asyncHandler(async (req, res) => {
 module.exports = {
     adminLogin
 }
+

@@ -8,6 +8,9 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const cors = require('cors');
+const cron = require('node-cron');
+const updateMonthlyTotals = require('./utils/scheduledTasks');
+
 
 connectDB();
 
@@ -42,7 +45,11 @@ app.use(
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/jobs', require('./routes/jobRoutes'))
 app.use('/api/admin', require('./routes/adminRoutes'))
+app.use('/files', express.static('files')); // Static file serving
+app.use('/api/users/files', require('./routes/fileRoutes'))
 
 app.use(errorHandler)
+
+cron.schedule('0 0 1 * *', updateMonthlyTotals);
 
 app.listen(port, () => console.log(`Server started on port ${port}`))

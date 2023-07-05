@@ -5,11 +5,11 @@ import { signup } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
 
 interface SignupProps {
-  setStoredJwt: (jwt: string) => void
+  setUserJwt: (jwt: string) => void
 }
 
 
-const Signup: React.FC<SignupProps> = ({ setStoredJwt }) => {
+const Signup: React.FC<SignupProps> = ({ setUserJwt }) => {
 
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -41,22 +41,19 @@ const Signup: React.FC<SignupProps> = ({ setStoredJwt }) => {
   }, [password])
 
 
-  const handleSignup = () => {
-    return new Promise<void>(async (resolve, reject) => {
-      try {
-        if (!firstName || !lastName || !email || !password) {
-          setError('Please fill in all inputs')
-          throw new Error('Please fill in all fields')
-        }
-        const data = await signup(firstName, lastName, email, password)
-        localStorage.setItem('modernJobPortal_jwt', data.token);
-        setStoredJwt(data.jwt);
-        window.location.href = '/search';
-        resolve()
-      } catch {
-        reject()
+  const handleSignup = async () => {
+    try {
+      if (!firstName || !lastName || !email || !password) {
+        setError('Please fill in all inputs')
+        throw new Error('Please fill in all fields')
       }
-    })
+      const data = await signup(firstName, lastName, email, password)
+      localStorage.setItem('modernJobPortal_jwt', data.token);
+      setUserJwt(data.jwt);
+      window.location.href = '/search';
+    } catch (err) {
+      throw err
+    }
   }
 
   return (

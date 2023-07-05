@@ -1,9 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
-import desktopLogo from  'src/assets/images/desktopLogo.svg';
-import profile from  'src/assets/images/profile.svg';
-import experienceIcon from  'src/assets/images/experienceIcon.svg';
-import analytics from  'src/assets/images/analytics.svg';
+import desktopLogo from 'src/assets/images/desktopLogo.svg';
+import profile from 'src/assets/images/profile.svg';
+import experienceIcon from 'src/assets/images/experienceIcon.svg';
+import dashboard from 'src/assets/images/dashboard.svg';
 
 const AdminSideNavBar: React.FC = () => {
 
@@ -13,33 +13,25 @@ const AdminSideNavBar: React.FC = () => {
   return (
     <div className="sideNav column">
       <div className="sideNav-top column">
-        <Link to="/admin/analytics" className="sideNav-logo column">
+        <Link to="/admin/dashboard" className="sideNav-logo column">
           <img id="desktopLogo" src={desktopLogo} />
         </Link>
         <div className="hr"></div>
         <Link
-          to="/admin/analytics"
+          to="/admin/dashboard"
           className="sideNav-top-link row"
-          id={location.pathname === '/admin/analytics' ? 'activeNavLink' : ''}
+          id={location.pathname === '/admin/dashboard' ? 'activeNavLink' : ''}
         >
-          <img src={analytics} />
-          <p>Analytics</p>
+          <img src={dashboard} />
+          <p>Dashboard</p>
         </Link>
         <Link
           to="/admin/job-management"
           className="sideNav-top-link row"
-          id={location.pathname === '/admin/job-management' ? 'activeNavLink' : ''}
+          id={location.pathname.startsWith('/admin/job-management') ? 'activeNavLink' : ''}
         >
           <img src={experienceIcon} />
           <p>Job Management</p>
-        </Link>
-        <Link
-          to="/admin/user-management"
-          className="sideNav-top-link row"
-          id={location.pathname === '/admin/user-management' ? 'activeNavLink' : ''}
-        >
-          <img src={profile} />
-          <p>User Management</p>
         </Link>
       </div>
     </div>

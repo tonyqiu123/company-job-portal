@@ -2,11 +2,7 @@
 
 .tooltip {
   width: fit-content;
-  gap: 6px;
-}
-
-.tooltip>img {
-  transform: translateY(-35%);
+  gap: 8px;
 }
 
 .tooltip-hoverBox {
@@ -14,22 +10,24 @@
   max-width: 400px;
   word-wrap: break-word;
   box-shadow: var(--shadow-s);
-  background-color: var(--neutral-1);
+  background-color: var(--neutral-6);
   padding: 8px 12px;
   border: 1px solid var(--neutral-3);
   border-radius: var(--border-radius-s);
-  right: -4px;
-  top: 0;
+  right: -2px;
+  top: 4px;
   transform: translate(100%, 0%);
-  z-index: -1;
   opacity: 0;
   transition: opacity .15s;
+  z-index: 89;
+  pointer-events: none;
+  color: var(--neutral-1);
 }
 
 .active.tooltip-hoverBox {
-  z-index: 89;
   opacity: .9;
 }
-.tooltip > * {
+
+.tooltip>* {
   white-space: nowrap;
 }

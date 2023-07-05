@@ -1,5 +1,4 @@
-todo:
-- build the admin dashboard ui (take heavy inspiration)
-- build the backend routes and controller logic for admin features
-- create jobs, delete jobs, edit jobs
-- add job question functionality to jobs (figure out how to render the questions)gff
+todo: 
+- update api controllers for multiuser data fetch (view jobs page)
+- figure out how to do backend for fetching recent job applications (dashboard page)
+- make all get request include the following: specify amount, omit properties, 

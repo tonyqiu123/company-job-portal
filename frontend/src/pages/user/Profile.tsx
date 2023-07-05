@@ -7,25 +7,26 @@ import editIcon from 'src/assets/images/editIcon.svg';
 import ProfileAttachmentModal from 'src/components/user/userProfileModals/ProfileAttachmentModal';
 import ProfileUserModal from 'src/components/user/userProfileModals/ProfileUserModal';
 import { UserInterface } from 'src/util/interfaces';
+import { Link } from 'react-router-dom';
 
 interface ProfileProps {
-    storedJwt: string | null
-    userData:  UserInterface
+    userJwt: string | null
+    userData: UserInterface
     setUserData: (userData: UserInterface) => void
 }
 
-const Profile: React.FC<ProfileProps> = ({ storedJwt, userData, setUserData }) => {
+const Profile: React.FC<ProfileProps> = ({ userJwt, userData, setUserData }) => {
 
     const [showAttachmentModal, setShowAttachmentModal] = useState(false);
     const [showUserModal, setShowUserModal] = useState(false);
 
     return (
         <>
-            {showAttachmentModal && <ProfileAttachmentModal storedJwt={storedJwt} userData={userData} setShowAttachmentModal={setShowAttachmentModal} setUserData={setUserData} />}
-            {showUserModal && <ProfileUserModal storedJwt={storedJwt} userData={userData} setShowUserModal={setShowUserModal} setUserData={setUserData} />}
+            {showAttachmentModal && <ProfileAttachmentModal userJwt={userJwt} userData={userData} setShowAttachmentModal={setShowAttachmentModal} setUserData={setUserData} />}
+            {showUserModal && <ProfileUserModal userJwt={userJwt} userData={userData} setShowUserModal={setShowUserModal} setUserData={setUserData} />}
             <div className='body'>
-                <div className='dashboardTitle column'>
-                    <h2>Profile</h2>
+                <div className='dashboardTitle row'>
+                    <Link to="/profile"><h2>Profile</h2></Link>
                 </div>
                 <div className='hr'></div>
                 {userData && (

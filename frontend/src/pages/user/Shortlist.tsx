@@ -4,15 +4,16 @@ import searchIcon from 'src/assets/images/search.svg'
 import locationIcon from 'src/assets/images/locationIcon.svg'
 import JobResults from 'src/components/user/JobResults'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
+import { Link } from 'react-router-dom'
 
 interface ShortlistProps {
-  storedJwt: string
+  userJwt: string
   jobData: JobInterface[]
   setUserData: (userData: UserInterface) => void
   userData: UserInterface
 }
 
-const Shortlist: React.FC<ShortlistProps> = ({ storedJwt, jobData, userData, setUserData }) => {
+const Shortlist: React.FC<ShortlistProps> = ({ userJwt, jobData, userData, setUserData }) => {
   const [filters, setFilters] = useState({ search: '', location: '', position: '' })
 
 
@@ -26,8 +27,8 @@ const Shortlist: React.FC<ShortlistProps> = ({ storedJwt, jobData, userData, set
   return (
     <>
       <div className='body'>
-        <div className='dashboardTitle column'>
-          <h2>Shortlist</h2>
+        <div className='dashboardTitle row'>
+          <Link to="/shortlist"><h2>Shortlist</h2></Link>
         </div>
         <div className='hr'></div>
         <section className='searchJobs column'>
@@ -62,7 +63,7 @@ const Shortlist: React.FC<ShortlistProps> = ({ storedJwt, jobData, userData, set
               </div>
             </div>
           </div>
-          <JobResults {...filters} shortlist={true} jobData={jobData} storedJwt={storedJwt} userData={userData} setUserData={setUserData} />
+          <JobResults {...filters} shortlist={true} jobData={jobData} userJwt={userJwt} userData={userData} setUserData={setUserData} />
         </section>
       </div>
     </>

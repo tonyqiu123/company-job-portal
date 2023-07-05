@@ -3,31 +3,28 @@ import { adminLogin } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
 
 interface LoginProps {
-    setStoredJwt: (jwt: string | null) => void;
+    setAdminJwt: (jwt: string | null) => void;
 }
 
-const AdminLogin: React.FC<LoginProps> = ({ setStoredJwt }) => {
+const AdminLogin: React.FC<LoginProps> = ({ setAdminJwt }) => {
 
     const [password, setPassword] = useState<string>("")
     const [error, setError] = useState<string>('')
 
-    const handleLogin = (): Promise<void> => {
-        return new Promise<void>(async (resolve, reject) => {
-            try {
-                if (!password) {
-                    setError('Please enter the password')
-                    throw new Error('Please enter the password');
-                }
-                const data = await adminLogin(password)
-                localStorage.setItem('modernJobPortal_admin_jwt', data.token);
-                setStoredJwt(data.token);
-                window.location.href = '/admin/analytics';
-                resolve()
-            } catch (err: any) {
-                setError(err.message)
-                reject()
+    const handleLogin = async (): Promise<void> => {
+        try {
+            if (!password) {
+                setError('Please enter the password')
+                throw new Error('Please enter the password');
             }
-        })
+            const data = await adminLogin(password)
+            localStorage.setItem('modernJobPortal_AdminJwt', data.token);
+            setAdminJwt(data.token);
+            window.location.href = '/admin/dashboard';
+        } catch (err: any) {
+            setError(err.message)
+            throw err
+        }
     }
 
     return (

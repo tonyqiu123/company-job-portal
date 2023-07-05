@@ -1,4 +1,4 @@
-import { getSingleJobData } from 'src/util/apiFunctions'
+import { getJobs } from 'src/util/apiFunctions'
 import { useEffect, useState } from 'react';
 import Button from '../shared/Button';
 import { formatDate } from 'src/util/util'
@@ -23,12 +23,11 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
 
   const handleJobFetch = async () => {
     try {
-      const data = await getSingleJobData(jobId);
-      setJob(data);
+      const data = await getJobs({}, [jobId]);
+      setJob(data[0]);
       setLoading(false);
-    } catch (error) {
+    } catch (error: any) {
       setErrorState(error);
-      console.log(error);
     }
   };
   useEffect(() => {
@@ -79,7 +78,7 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
 
               {!shortlist && !application && <Button text='Shortlist' primary={true} handleClick={() => handleJobAction(job?._id, "shortlist")}></Button>}
               {shortlist && <Button text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist")}></Button>}
-              {application && <Button text='Unapply' handleClick={() => handleJobAction(job?._id, "Unapply")}></Button>}
+              {application && <Button text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply")}></Button>}
               {!application && <Button text='Apply' primary={true} handleClick={() => handleJobAction(job?._id, "apply")}></Button>}
             </div>
 

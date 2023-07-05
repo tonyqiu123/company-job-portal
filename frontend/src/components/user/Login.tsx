@@ -4,17 +4,16 @@ import { login } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
 
 interface LoginProps {
-    setStoredJwt: (jwt: string | null) => void;
+    setUserJwt: (jwt: string | null) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ setStoredJwt }) => {
+const Login: React.FC<LoginProps> = ({ setUserJwt }) => {
 
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [error, setError] = useState<string>('')
 
-    const handleLogin = (): Promise<void> => {
-        return new Promise<void>(async (resolve, reject) => {
+    const handleLogin = async (): Promise<void> => {
             try {
                 if (!email || !password) {
                     setError('Please enter an email and password')
@@ -22,14 +21,12 @@ const Login: React.FC<LoginProps> = ({ setStoredJwt }) => {
                 }
                 const data = await login(email, password)
                 localStorage.setItem('modernJobPortal_jwt', data.token);
-                setStoredJwt(data.token);
+                setUserJwt(data.token);
                 window.location.href = '/search';
-                resolve()
             } catch (err: any) {
                 setError(err.message)
-                reject()
+                throw err
             }
-        })
     }
 
     return (

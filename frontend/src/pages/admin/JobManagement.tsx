@@ -5,30 +5,82 @@ import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 import SelectDropdown from 'src/components/shared/SelectDropdown';
 import Input from 'src/components/shared/Input';
-import { getJobs } from 'src/util/apiFunctions';
+import { deleteJobs, getJobs } from 'src/util/apiFunctions';
 import { JobInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import SectionLoading from 'src/components/shared/SectionLoading';
 
-const JobManagement: React.FC = () => {
+interface JobManagementProps {
+    adminJwt: string
+}
+
+const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const [search, setSearch] = useState<string>('');
     const [status, setStatus] = useState<string>('');
-    const [jobAction, setJobAction] = useState<string>('View');
-    const [position, setPosition] = useState<string>('Full time');
+    const [position, setPosition] = useState<string>('');
     const [jobs, setJobs] = useState<JobInterface[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const jobStatus: string[] = ['All', 'Pre-deadline', 'Post-deadline', 'Interviewing', 'Filled', 'Trashed'];
-    const jobActions: string[] = ['View', 'Edit', 'Delete'];
-    const positions: string[] = ['Full time', 'Part time', 'Contract', 'Internship'];
-
+    const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Internship'];
 
     const fetchJobs = async (): Promise<void> => {
         try {
-            const jobs = await getJobs({ search, status });
+            let jobs = await getJobs({ location: true, views: true, salary: true, date: true, deadline: true, remote: true, applicants: true, yoe: true, title: true, position: true }, [], search, position);
+    
+            // Map over jobs and add 'applications' property
+            jobs = jobs.map(job => {
+                return {
+                    ...job,
+                    applications: job.applicants.length,
+                };
+            });
+    
             setJobs(jobs);
         } catch (err) {
             console.error(err);
+        } finally {
+            setIsLoading(false); // Set isLoading to false after the data fetching is complete
         }
     };
+    
+
+    const handleDelete = async (selectedRows: Set<string>) => {
+        try {
+            const jobIdsToDelete = jobs
+                .filter((job) => selectedRows.has(job._id))
+                .map(job => job._id);
+
+            await deleteJobs(jobIdsToDelete, adminJwt);
+            const updatedData = jobs.filter((job) => !selectedRows.has(job._id));
+            setJobs(updatedData);
+        } catch (err: any) {
+            console.error(err);
+        }
+    };
+
+    const navigate = useNavigate();
+
+    const actions = {
+        // view job
+        View_Applicants: async (selectedJob: number) => {
+            try {
+                const jobId = jobs[selectedJob]._id;
+                navigate(`/admin/job-management/job?jobId=${jobId}`);
+            } catch (err) {
+                console.error(err);
+            }
+        },
+        // edit job
+        Edit: async (selectedJob: number) => {
+            try {
+                console.log('success')
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }
 
     useEffect(() => {
         fetchJobs();
@@ -37,37 +89,60 @@ const JobManagement: React.FC = () => {
 
     return (
         <>
-            <div className='body'>
-                <div className='dashboardTitle column'>
-                    <h2>Job Management</h2>
-                </div>
-                <div className='hr'></div>
-                <section className='jobManagement column'>
-                    <Button primary={true} text="Create New Job" handleClick={() => new Promise((resolve, reject) => resolve())} />
-                    <div className='jobManagement-search row'>
-                        <div className='column'>
-                            <Tooltip toolTipText='Select Action'><h6>Select Action</h6></Tooltip>
-                            <SelectDropdown values={jobActions} handleSetState={setJobAction} />
-                        </div>
-                        <div className='column'>
-                            <Tooltip toolTipText='Status'><h6>Status</h6></Tooltip>
-                            <SelectDropdown values={jobStatus} handleSetState={setStatus} />
-                        </div>
-                        <div className='column'>
-                            <Tooltip toolTipText='Position'><h6>Position</h6></Tooltip>
-                            <SelectDropdown values={positions} handleSetState={setPosition} />
-                        </div>
-                        <div className='column'>
-                            <Tooltip toolTipText='Search'><h6>Search</h6></Tooltip>
-                            <Input handleState={setSearch} placeholder="Frontend Developer" />
-                        </div>
-                        <Button primary={true} text="Search" handleClick={fetchJobs} />
-                    </div>
-
-                    {jobs.length > 0 && <Table data={jobs} showDelete={jobAction === 'Delete'} />}
-
-                </section>
+            <div className={`sectionLoading column ${!isLoading && 'skele-exit'}`}>
+                <SectionLoading />
             </div>
+            {!isLoading && (
+                <div className='body contentLoaded'>
+                    <div className='dashboardTitle row'>
+                        <Link to="/admin/job-management"><h2>Job Management</h2></Link>
+                    </div>
+                    <div className='hr'></div>
+                    <section className='jobManagement column'>
+                        <div className='dashboard-overviewStats row'>
+                            <div className='dashboard-overviewStat column'>
+                                <Tooltip toolTipText='Total views: 2000'><h6>Total Views</h6></Tooltip>
+                                <h2>+22057</h2>
+                                <p>+29.3% from last month</p>
+                            </div>
+                            <div className='dashboard-overviewStat column'>
+                                <Tooltip toolTipText='Total Users'><h6>Total Applications</h6></Tooltip>
+                                <h2>+231</h2>
+                                <p>+16.1% from last month</p>
+                            </div>
+                            <div className='dashboard-overviewStat column'>
+                                <Tooltip toolTipText='Total applications: 2000'><h6>Active Jobs</h6></Tooltip>
+                                <h2>+162</h2>
+                                <p>+2.1% from last month</p>
+                            </div>
+                            <div className='dashboard-overviewStat column'>
+                                <Tooltip toolTipText='Total applications / total views'><h6>Average Application Rate</h6></Tooltip>
+                                <h2>26%</h2>
+                                <p>+53.2% from last month</p>
+                            </div>
+                        </div>
+                        <div className='row'>
+                            <div className='jobManagement-search row'>
+                                <div className='column'>
+                                    <Tooltip toolTipText='Status'><h6>Status</h6></Tooltip>
+                                    <SelectDropdown values={jobStatus} handleSetState={setStatus} />
+                                </div>
+                                <div className='column'>
+                                    <Tooltip toolTipText='Position'><h6>Position</h6></Tooltip>
+                                    <SelectDropdown values={positions} handleSetState={(value) => setPosition(value === 'All' ? '' : value)} />
+                                </div>
+                                <div className='column'>
+                                    <Tooltip toolTipText='Search'><h6>Search</h6></Tooltip>
+                                    <Input handleState={setSearch} placeholder="Frontend Developer" />
+                                </div>
+                                <Button primary={true} text="Search" handleClick={fetchJobs} />
+                            </div>
+                            <Button primary={true} text="Create New Job" handleClick={() => new Promise<void>((resolve, reject) => resolve())} />
+                        </div>
+                        {jobs.length > 0 && <Table data={jobs} handleDelete={handleDelete} actions={actions} />}
+                    </section>
+                </div>
+            )}
         </>
     );
 };

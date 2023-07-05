@@ -4,7 +4,7 @@ import profile from 'src/assets/images/profile.svg';
 import deleteIcon from 'src/assets/images/deleteIcon.svg';
 import Button from 'src/components/shared/Button'
 
-export default function ProfileUserModal({ storedJwt, userData, setShowUserModal, setUserData }) {
+export default function ProfileUserModal({ userJwt, userData, setShowUserModal, setUserData }) {
     const [firstName, setFirstName] = useState(userData.firstName);
     const [lastName, setLastName] = useState(userData.lastName);
     const [location, setLocation] = useState(userData.location);
@@ -31,31 +31,28 @@ export default function ProfileUserModal({ storedJwt, userData, setShowUserModal
         setUrl('')
     };
 
-    const updateExperience = () => {
-        return new Promise(async (resolve, reject) => {
+    const updateExperience = async () => {
 
-            try {
-                if (!firstName || !lastName || !location || !phoneNumber) {
-                    setError('Please fill in all required fields.');
-                    throw new Error('')
-                }
-                const updatedUserData = {
-                    ...userData,
-                    firstName,
-                    lastName,
-                    location,
-                    urls: listOfUrls,
-                    phone: phoneNumber,
-                };
-                await updateUser(storedJwt, updatedUserData);
-                setUserData(updatedUserData);
-                setShowUserModal(false);
-                resolve()
-            } catch (error) {
-                setError('Failed to update user');
-                reject()
+        try {
+            if (!firstName || !lastName || !location || !phoneNumber) {
+                setError('Please fill in all required fields.');
+                throw new Error('')
             }
-        })
+            const updatedUserData = {
+                ...userData,
+                firstName,
+                lastName,
+                location,
+                urls: listOfUrls,
+                phone: phoneNumber,
+            };
+            await updateUser(userJwt, updatedUserData);
+            setUserData(updatedUserData);
+            setShowUserModal(false);
+        } catch (err) {
+            setError('Failed to update user');
+            throw err
+        }
     };
 
     return (

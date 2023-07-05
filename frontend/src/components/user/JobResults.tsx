@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import JobDetailsCard from "src/components/user/JobDetailsCard"
-import { updateUser } from 'src/util/apiFunctions'
+import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/util'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
 
 interface JobResultsProps {
-  storedJwt: string
+  userJwt: string
   jobData: JobInterface[]
   userData: UserInterface
   setUserData: (userData: UserInterface) => void
@@ -17,7 +17,7 @@ interface JobResultsProps {
 }
 
 
-const JobResults: React.FC<JobResultsProps> = ({ storedJwt, jobData, userData, setUserData, search, location, position, application = false, shortlist = false }) => {
+const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, setUserData, search, location, position, application = false, shortlist = false }) => {
   const [filteredJobs, setFilteredJobs] = useState<JobInterface[]>([])
   const [appliedJobs, setAppliedJobs] = useState<string[]>([])
   const [shortlistedJobs, setShortlistedJobs] = useState<string[]>([])
@@ -66,10 +66,11 @@ const JobResults: React.FC<JobResultsProps> = ({ storedJwt, jobData, userData, s
       try {
         const newAppliedJobs = action === 'apply' ? [...appliedJobs, jobID] : appliedJobs.filter(id => id !== jobID)
         const newShortlistedJobs = action === 'shortlist' ? [...shortlistedJobs, jobID] : shortlistedJobs.filter(id => id !== jobID)
-        await updateUser(storedJwt, {
+        await Promise.all([updateUser(userJwt, {
           appliedJobs: newAppliedJobs,
           shortlisted: newShortlistedJobs
-        })
+        }), applyJob(userJwt, userData._id, jobID, action)])
+
         setAppliedJobs(newAppliedJobs)
         setShortlistedJobs(newShortlistedJobs)
 

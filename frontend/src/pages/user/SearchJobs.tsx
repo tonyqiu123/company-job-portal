@@ -4,16 +4,17 @@ import searchIcon from 'src/assets/images/search.svg';
 import locationIcon from 'src/assets/images/locationIcon.svg';
 import JobResults from 'src/components/user/JobResults';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
+import { Link } from 'react-router-dom';
 
 
 interface SearchJobsProps {
-  storedJwt: string
+  userJwt: string
   jobData: JobInterface[]
   setUserData: (userData: UserInterface) => void
   userData: UserInterface
 }
 
-const SearchJobs: React.FC<SearchJobsProps> = ({ jobData, storedJwt, userData, setUserData }) => {
+const SearchJobs: React.FC<SearchJobsProps> = ({ jobData, userJwt, userData, setUserData }) => {
   const [filters, setFilters] = useState({ search: '', location: '', position: '' });
 
 
@@ -27,8 +28,8 @@ const SearchJobs: React.FC<SearchJobsProps> = ({ jobData, storedJwt, userData, s
   return (
     <>
       <div className='body'>
-        <div className='dashboardTitle column'>
-          <h2>Search Jobs</h2>
+        <div className='dashboardTitle row'>
+          <Link to="/search"><h2>Search</h2></Link>
         </div>
         <div className='hr'></div>
         <section className='searchJobs column'>
@@ -63,7 +64,7 @@ const SearchJobs: React.FC<SearchJobsProps> = ({ jobData, storedJwt, userData, s
               </div>
             </div>
           </div>
-          <JobResults {...filters} jobData={jobData} storedJwt={storedJwt} userData={userData} setUserData={setUserData} />
+          <JobResults {...filters} jobData={jobData} userJwt={userJwt} userData={userData} setUserData={setUserData} />
         </section>
       </div>
     </>

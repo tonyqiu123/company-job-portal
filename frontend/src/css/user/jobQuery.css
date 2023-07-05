@@ -118,7 +118,7 @@
 
 .pagination>div {
     width: 32px;
-    height: 32px; 
+    height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,7 +144,12 @@
     justify-content: flex-start;
     gap: 20px;
     opacity: 0;
-    animation: jobDetailsCard-loadedContainer 0.5s .25s forwards;
+    animation: jobDetailsCard-loadedContainer 0.5s .15s forwards;
+}
+
+.contentLoaded {
+    opacity: 0;
+    animation: jobDetailsCard-loadedContainer 0.5s .15s forwards;
 }
 
 @keyframes jobDetailsCard-loadedContainer {
@@ -183,21 +188,34 @@
     right: 0;
 }
 
-.skele>* {
+.sectionLoading {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.skele-title,
+.skele-shortText,
+.skele-longText {
     border-radius: var(--border-radius-m);
     background-color: var(--neutral-2);
-    height: 40px;
+    height: 42px;
+    width: 100%;
     max-width: 400px;
     position: relative;
     overflow: hidden;
 }
+
 .skele-longText {
     margin-top: 40px;
     max-width: 100%;
     height: 80px;
 }
 
-.skele>*::after {
+.skele-title::after,
+.skele-shortText::after,
+.skele-longText::after {
     content: "";
     position: absolute;
     top: 0;
@@ -215,7 +233,7 @@
 }
 
 .skele-exit {
-    animation: skele-exit 0.5s forwards;
+    animation: skele-exit 0.4s forwards;
 }
 
 @keyframes skele-exit {

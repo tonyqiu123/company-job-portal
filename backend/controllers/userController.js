@@ -2,14 +2,113 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const mongoose = require('mongoose')
-const multer = require('multer')
+const mongoose = require('mongoose');
+
+const getUsers = asyncHandler(async (req, res) => {
+    const { userIds, search } = req.body;
+
+    let query = {};
+
+    if (search) {
+        query.$text = { $search: search };
+    }
+
+    if (status) {
+        query.status = status
+    }
+
+    const selectFields = [];
+
+    const properties = [
+        'firstName',
+        'lastName',
+        'email',
+        'location',
+        'phone',
+        'urls',
+        'attachments',
+        'date',
+        'appliedJobs',
+        'shortlisted',
+        'jobQuestionResponse',
+        'description',
+        'responsibilities',
+        'whatWereLookingFor',
+        'benefits',
+        'requirements',
+    ];
+
+    properties.forEach((field) => {
+        if (req.query[field]) {
+            selectFields.push(field);
+        }
+    });
+
+    const users = await User.find(query).select(selectFields.join(' ')).select('-password');
+
+    res.status(200).json(users);
+});
 
 
-const getUser = asyncHandler(async (req, res) => {
+const getUsersById = asyncHandler(async (req, res) => {
+    const { userIds, search } = req.body;
+
+    let query = {};
+
+    if (userIds.length > 0) {
+        if (!Array.isArray(userIds) || userIds.some(id => !mongoose.Types.ObjectId.isValid(id))) {
+            res.status(400);
+            throw new Error('Invalid Job IDs');
+        }
+
+        query = { _id: { $in: userIds } };
+    } else {
+        res.status(200).json([]);
+        return;
+    }
+
+    if (search) {
+        query.$text = { $search: search };
+    }
+
+    const selectFields = [];
+
+    const properties = [
+        'firstName',
+        'lastName',
+        'email',
+        'location',
+        'phone',
+        'urls',
+        'attachments',
+        'date',
+        'appliedJobs',
+        'shortlisted',
+        'jobQuestionResponse',
+        'description',
+        'responsibilities',
+        'whatWereLookingFor',
+        'benefits',
+        'requirements',
+    ];
+
+    properties.forEach((field) => {
+        if (req.query[field]) {
+            selectFields.push(field);
+        }
+    });
+
+    const users = await User.find(query).select(selectFields.join(' ')).select('-password');
+
+    res.status(200).json(users);
+});
+
+
+const getSingleUser = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id).select('-password');
     res.status(200).json(user);
 });
+
 
 const createUser = asyncHandler(async (req, res) => {
     const { firstName, lastName, email, password } = req.body
@@ -84,6 +183,7 @@ const updateUser = asyncHandler(async (req, res) => {
 });
 
 
+
 const deleteUser = asyncHandler(async (req, res) => {
 
     const userId = req.user._id
@@ -112,5 +212,5 @@ const generateToken = (id) => {
 }
 
 module.exports = {
-    getUser, createUser, updateUser, deleteUser, loginUser, uploadFile
+    getSingleUser, getUsers, getUsersById, createUser, updateUser, deleteUser, loginUser, uploadFile
 }

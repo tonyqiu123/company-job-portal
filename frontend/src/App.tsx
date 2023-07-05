@@ -3,25 +3,30 @@ import Applications from "src/pages/user/Applications";
 import Shortlist from "src/pages/user/Shortlist";
 import Profile from "src/pages/user/Profile";
 import Landing from "src/pages/user/Landing";
-import BadLogin from "src/components/user/BadLogin";
+import BadLogin from "src/components/shared/BadLogin";
 import Loading from "src/components/user/Loading";
 import { Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { getUserData, getJobs } from "src/util/apiFunctions";
+import { getUserData, getJobs, validateAdminJwt } from "src/util/apiFunctions";
 import SideNavBar from "src/components/user/SideNavBar";
 import AdminSideNavBar from "src/components/admin/AdminSideNavBar";
 import { JobInterface, UserInterface } from "./util/interfaces";
 import AdminLanding from "src/pages/admin/AdminLanding";
-import AdminAnalytics from "src/pages/admin/Analytics";
+import AdminDashboard from "src/pages/admin/Dashboard";
 import JobManagement from "src/pages/admin/JobManagement";
-
+import ViewJob from "src/pages/admin/ViewJob";
+import NotFound from "src/pages/shared/NotFound";
+import ViewApplicant from "src/pages/admin/ViewApplicant";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [jobData, setJobData] = useState<JobInterface[]>([]);
-  const [storedJwt, setStoredJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_jwt'));
+  const [userJwt, setUserJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_jwt'));
+  const [adminJwt, setAdminJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_AdminJwt'));
   const [userData, setUserData] = useState<UserInterface>({
+    _id: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -35,81 +40,123 @@ const App: React.FC = () => {
     jobQuestionResponse: [],
   });
 
+  useEffect(() => {
+    getJobs().then(data => setJobData(data));
+  }, []);
 
   useEffect(() => {
-    getJobs().then(data => {
-      setJobData(data);
-    });
-    if (storedJwt) {
-      getUserData(storedJwt)
+    if (!isUserUrl) {
+      return
+    }
+    if (userJwt && isUserUrl) {
+      getUserData(userJwt)
         .then(data => {
           setUserData(data);
-          setIsAuthenticated(true);
-          setLoading(false);
+          setIsUserAuthenticated(true);
         })
-        .catch(() => {
-          setLoading(false);
-        });
+        .catch(() => setLoading(false))
     } else {
       setLoading(false);
     }
-  }, [storedJwt]);
+  }, [userJwt]);
 
-  const loadingComponent = loading ? <Loading /> : <BadLogin />;
-  const shouldRenderNavBar = isAuthenticated && !loading;
+  useEffect(() => {
+    if (!isAdminUrl) {
+      return
+    }
+    if (adminJwt && isAdminUrl) {
+      validateAdminJwt(adminJwt)
+        .then(() => setIsAdminAuthenticated(true))
+        .catch(() => setLoading(false))
+    } else {
+      setLoading(false);
+    }
+  }, [adminJwt]);
 
-  const urlsThatShowUserNavBar = ['/search', '/applications', '/shortlist', '/profile']
-  const urlsThatShowAdminNavBar = ['/admin/analytics', '/admin/job-management', '/admin/user-management']
+
+  const isUserUrl = ['/search', '/applications', '/shortlist', '/profile'].includes(window.location.pathname)
+  const isAdminUrl = [
+    '/admin/dashboard',
+    '/admin/job-management',
+    '/admin/user-management',
+    '/admin/user-management/view'
+  ].some(url => window.location.pathname.startsWith(url));
+
+  const loadingComponent = loading ? <Loading /> : <BadLogin isAdminUrl={isAdminUrl} />;
 
   return (
     <>
-      {urlsThatShowUserNavBar.includes(window.location.pathname) && shouldRenderNavBar && <SideNavBar></SideNavBar>}
-      {urlsThatShowAdminNavBar.includes(window.location.pathname) && shouldRenderNavBar && <AdminSideNavBar></AdminSideNavBar>}
+      {isUserAuthenticated && <SideNavBar />}
+      {isAdminAuthenticated && <AdminSideNavBar />}
+
       <Routes>
-        {/* USERS */}
         <Route
           path="/search"
-          element={isAuthenticated ? (
-            <SearchJobs storedJwt={storedJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
-          ) : (
-            loadingComponent
-          )}
+          element={isUserAuthenticated
+            ? <SearchJobs userJwt={userJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
+            : loadingComponent
+          }
         />
         <Route
           path="/shortlist"
-          element={isAuthenticated ? (
-            <Shortlist storedJwt={storedJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
-          ) : (
-            loadingComponent
-          )}
+          element={isUserAuthenticated
+            ? <Shortlist userJwt={userJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
+            : loadingComponent
+          }
         />
         <Route
           path="/applications"
-          element={isAuthenticated ? (
-            <Applications storedJwt={storedJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
-          ) : (
-            loadingComponent
-          )}
+          element={isUserAuthenticated
+            ? <Applications userJwt={userJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
+            : loadingComponent
+          }
         />
         <Route
           path="/profile"
-          element={isAuthenticated ? (
-            <Profile setUserData={setUserData} storedJwt={storedJwt} userData={userData} />
-          ) : (
-            loadingComponent
-          )}
+          element={isUserAuthenticated
+            ? <Profile setUserData={setUserData} userJwt={userJwt} userData={userData} />
+            : loadingComponent
+          }
         />
-        <Route path="/login" element={<Landing setStoredJwt={setStoredJwt} />} />
-        <Route path="/sign-up" element={<Landing setStoredJwt={setStoredJwt} />} />
+        <Route path="/login" element={<Landing setUserJwt={setUserJwt} />} />
+        <Route path="/sign-up" element={<Landing setUserJwt={setUserJwt} />} />
 
         {/* ADMIN */}
-        <Route path="/admin/login" element={<AdminLanding setStoredJwt={setStoredJwt} />} />
-        <Route path="/admin/analytics" element={<AdminAnalytics />} />
-        <Route path="/admin/job-management" element={<JobManagement />} />
+        <Route path="/admin/login" element={<AdminLanding setAdminJwt={setAdminJwt} />} />
+        <Route
+          path="/admin/dashboard"
+          element={isAdminAuthenticated
+            ? <AdminDashboard adminJwt={adminJwt} />
+            : loadingComponent
+          }
+        />
+        <Route
+          path="/admin/job-management"
+          element={isAdminAuthenticated
+            ? <JobManagement adminJwt={adminJwt} />
+            : loadingComponent
+          }
+        />
+        <Route
+          path="/admin/job-management/job"
+          element={isAdminAuthenticated
+            ? <ViewJob adminJwt={adminJwt} />
+            : loadingComponent
+          }
+        />
+        <Route
+          path="/admin/job-management/job/applicant"
+          element={isAdminAuthenticated
+            ? <ViewApplicant adminJwt={adminJwt} />
+            : loadingComponent
+          }
+        />
 
+        <Route path='*' element={<NotFound />} /> {/* Catch-all route */}
       </Routes>
+
     </>
   );
-}
+};
 
 export default App;

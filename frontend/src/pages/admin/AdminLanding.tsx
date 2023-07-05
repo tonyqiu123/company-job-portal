@@ -4,10 +4,10 @@ import AdminLogin from 'src/components/admin/AdminLogin';
 import desktopLogo from 'src/assets/images/desktopLogo.svg'
 
 interface LandingProps {
-  setStoredJwt: (jwt: string | null) => void;
+  setAdminJwt: (jwt: string | null) => void;
 }
 
-const AdminLanding: React.FC<LandingProps> = ({ setStoredJwt }) => {
+const AdminLanding: React.FC<LandingProps> = ({ setAdminJwt }) => {
 
   const [currentImg, setCurrentImg] = useState(0);
 
@@ -29,7 +29,7 @@ const AdminLanding: React.FC<LandingProps> = ({ setStoredJwt }) => {
       <img src={desktopLogo} />
       <div className='landing-left'>
         <div className='landing-left-child column'>
-          <AdminLogin setStoredJwt={setStoredJwt} />
+          <AdminLogin setAdminJwt={setAdminJwt} />
         </div>
       </div>
       <div className='landing-right column'>

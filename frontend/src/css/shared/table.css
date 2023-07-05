@@ -6,7 +6,7 @@ th {
 th>p {
     cursor: pointer;
     width: fit-content;
-    padding: 8px 16px;
+    padding: 6px 10px;
     border-radius: var(--border-radius-s);
     transition: background-color 0.15s;
 }
@@ -16,7 +16,12 @@ th>p:hover {
 }
 
 table {
+    width: 100%;
     border-collapse: collapse;
+}
+
+table p {
+    white-space: nowrap;
 }
 
 tr {
@@ -29,13 +34,55 @@ tbody>tr:hover {
 }
 
 td {
-    padding: 16px;
+    padding: 12px;
     transition: background-color 0.15s;
     text-align: left;
 }
 
-td>input,
-th>input {
+
+.table-deleteActivated {
+    gap: 16px;
+    justify-content: flex-start !important;
+}
+
+.table-actionsComponent {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+.table-actionsComponent>img {
+    border-radius: var(--border-radius-s);
     padding: 8px;
     cursor: pointer;
+    transition: background-color .15s;
+}
+
+.table-actionsComponent>img:hover {
+    background-color: var(--neutral-3);
+}
+
+.table-actionsComponent-dropdown {
+    position: absolute !important;
+    z-index: 20;
+    top: 0;
+    right: 110%;
+    border: 1px solid var(--neutral-3);
+    border-radius: var(--border-radius-m);
+    width: fit-content;
+    padding: 4px;
+    background-color: var(--neutral-1);
+    box-shadow: var(--shadow-s);
+    opacity: .95;
+}
+
+.table-actionsComponent-dropdown>p {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: var(--border-radius-m);
+    transition: background-color .15s;
+}
+
+.table-actionsComponent-dropdown>p:hover {
+    background-color: var(--neutral-2);
 }

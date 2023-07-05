@@ -6,10 +6,10 @@ import Login from 'src/components/user/Login';
 import desktopLogo from 'src/assets/images/desktopLogo.svg'
 
 interface LandingProps {
-  setStoredJwt: (jwt: string | null) => void;
+  setUserJwt: (jwt: string | null) => void;
 }
 
-const Landing: React.FC<LandingProps> = ({ setStoredJwt }) => {
+const Landing: React.FC<LandingProps> = ({ setUserJwt }) => {
 
   const [currentImg, setCurrentImg] = useState(0);
   const location = useLocation();
@@ -32,7 +32,7 @@ const Landing: React.FC<LandingProps> = ({ setStoredJwt }) => {
       <img src={desktopLogo} />
       <div className='landing-left'>
         <div className='landing-left-child column'>
-          {location.pathname === '/login' ? <Login setStoredJwt={setStoredJwt} /> : <Signup setStoredJwt={setStoredJwt} />}
+          {location.pathname === '/login' ? <Login setUserJwt={setUserJwt} /> : <Signup setUserJwt={setUserJwt} />}
         </div>
       </div>
       <div className='landing-right column'>

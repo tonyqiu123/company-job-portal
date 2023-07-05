@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getUser, createUser, loginUser, updateUser, deleteUser, uploadFile } = require('../controllers/userController');
+const { getSingleUser, getUsers, getUsersById, createUser, loginUser, updateUser, deleteUser, uploadFile } = require('../controllers/userController');
 const { protect } = require('../middleware/authMiddleware');
+const { adminAuth } = require('../middleware/adminAuthMiddleware');
 const multer = require('multer');
 const path = require('path');
 
@@ -23,7 +24,11 @@ router.post('/login', loginUser);
 
 router.post('/', createUser);
 
-router.get('/', protect, getUser);
+router.get('/', protect, getSingleUser);
+
+router.put('/multipleUsers', adminAuth, getUsers);
+
+router.put('/multipleUsersById', adminAuth, getUsersById);
 
 router.put('/', protect, updateUser);
 
