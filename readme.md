@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Portal Web App</title>
-  <style>
-    /* Add your CSS styling here */
-  </style>
 </head>
 <body>
   <header>
