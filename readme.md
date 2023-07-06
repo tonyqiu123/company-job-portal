@@ -51,7 +51,7 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
     <h2>Employer/Admin Usage</h2>
      <img src="readmeImages/adminViewApplicant.jpg">
     <ol>
-      <li>Open your web browser and navigate to <code>&lt;app_url&gt;/admin/login</code></li>
+      <li>Open your web browser and navigate to <code>&lt;https://company-job-portal.netlify.app&gt;/admin/login</code></li>
       <li>Enter the value you set for <code>ADMIN_PASSWORD</code> in the <code>.env</code> file.</li>
     </ol>
   </section>
@@ -60,7 +60,7 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
     <h2>Job Seeker Usage</h2>
     <img src="readmeImages/userViewJob.jpg">
     <ol>
-      <li>Open your web browser and go to <code>&lt;app_url&gt;/sign-up</code></li>
+      <li>Open your web browser and go to <code>&lt;https://company-job-portal.netlify.app&gt;/sign-up</code></li>
       <li>Enter your first name, last name, email, and password.</li>
     </ol>
   </section>
