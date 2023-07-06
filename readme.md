@@ -7,12 +7,12 @@
 <body>
   <header>
     <h1>Job Portal Web App</h1>
-    <img src="images/userSearchJobs.jpg">
+    <img src="readmeImages/userSearchJobs.jpg">
   </header>
 
   <section>
     <h2>Overview</h2>
-     <img src="images/adminJobManagement.jpg">
+     <img src="readmeImages/adminJobManagement.jpg">
     <p>
       The Job Portal Web App is a platform designed to allow a single company with a team of administrators to efficiently post and manage job listings on their own website. This web app also syncs job postings with their accounts on popular job platforms such as LinkedIn, Glassdoor, ZipRecruiter, and SimplyHired, saving valuable time and effort. Additionally, the job portal enables users to apply to jobs efficiently by utilizing their applicant profiles, which include their resume and basic background information like name, email, and URLs.
     </p>
@@ -49,7 +49,7 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
 
   <section>
     <h2>Employer/Admin Usage</h2>
-     <img src="images/adminViewApplicant.jpg">
+     <img src="readmeImages/adminViewApplicant.jpg">
     <ol>
       <li>Open your web browser and navigate to <code>&lt;app_url&gt;/admin/login</code></li>
       <li>Enter the value you set for <code>ADMIN_PASSWORD</code> in the <code>.env</code> file.</li>
@@ -58,7 +58,7 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
 
   <section>
     <h2>Job Seeker Usage</h2>
-    <img src="images/userViewJob.jpg">
+    <img src="readmeImages/userViewJob.jpg">
     <ol>
       <li>Open your web browser and go to <code>&lt;app_url&gt;/sign-up</code></li>
       <li>Enter your first name, last name, email, and password.</li>
@@ -84,7 +84,7 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
 <footer>
   <p>Contact Information:</p>
   <p>
-    For any inquiries or support regarding the Job Portal Web App, please reach out to us at <a href="mailto:info@jobportalwebapp.com">info@jobportalwebapp.com</a>.
+    For any inquiries or support regarding the Job Portal Web App, please reach out to me at <a href="tonyqiu12345@gmail.com">tonyqiu12345@gmail.com</a>.
   </p>
 </footer>
 
