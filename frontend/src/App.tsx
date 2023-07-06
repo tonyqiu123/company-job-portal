@@ -25,20 +25,7 @@ const App: React.FC = () => {
   const [jobData, setJobData] = useState<JobInterface[]>([]);
   const [userJwt, setUserJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_jwt'));
   const [adminJwt, setAdminJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_AdminJwt'));
-  const [userData, setUserData] = useState<UserInterface>({
-    _id: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    location: '',
-    phone: '',
-    urls: [],
-    attachments: [],
-    date: new Date(),
-    appliedJobs: [],
-    shortlisted: [],
-    jobQuestionResponse: [],
-  });
+  const [userData, setUserData] = useState<UserInterface>({});
 
   useEffect(() => {
     getJobs().then(data => setJobData(data));
@@ -93,28 +80,28 @@ const App: React.FC = () => {
         <Route
           path="/search"
           element={isUserAuthenticated
-            ? <SearchJobs userJwt={userJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
+            ? <SearchJobs userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
             : loadingComponent
           }
         />
         <Route
           path="/shortlist"
           element={isUserAuthenticated
-            ? <Shortlist userJwt={userJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
+            ? <Shortlist userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
             : loadingComponent
           }
         />
         <Route
           path="/applications"
           element={isUserAuthenticated
-            ? <Applications userJwt={userJwt} jobData={jobData} userData={userData} setUserData={setUserData} />
+            ? <Applications userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
             : loadingComponent
           }
         />
         <Route
           path="/profile"
           element={isUserAuthenticated
-            ? <Profile setUserData={setUserData} userJwt={userJwt} userData={userData} />
+            ? <Profile setUserData={setUserData} userJwt={userJwt || ''} userData={userData} />
             : loadingComponent
           }
         />
@@ -126,28 +113,28 @@ const App: React.FC = () => {
         <Route
           path="/admin/dashboard"
           element={isAdminAuthenticated
-            ? <AdminDashboard adminJwt={adminJwt} />
+            ? <AdminDashboard adminJwt={adminJwt || ''} />
             : loadingComponent
           }
         />
         <Route
           path="/admin/job-management"
           element={isAdminAuthenticated
-            ? <JobManagement adminJwt={adminJwt} />
+            ? <JobManagement adminJwt={adminJwt || ''} />
             : loadingComponent
           }
         />
         <Route
           path="/admin/job-management/job"
           element={isAdminAuthenticated
-            ? <ViewJob adminJwt={adminJwt} />
+            ? <ViewJob adminJwt={adminJwt || ''} />
             : loadingComponent
           }
         />
         <Route
           path="/admin/job-management/job/applicant"
           element={isAdminAuthenticated
-            ? <ViewApplicant adminJwt={adminJwt} />
+            ? <ViewApplicant adminJwt={adminJwt || ''} />
             : loadingComponent
           }
         />

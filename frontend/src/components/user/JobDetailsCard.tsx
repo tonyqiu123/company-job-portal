@@ -46,7 +46,7 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
 
           <div className='jobDetailsCard-loadedContainer column'>
             <h3>{job?.title}</h3>
-            <p>Posted {job && formatDate(job.date)}</p>
+            <p>Posted {job && job.date && formatDate(job.date)}</p>
             <p>{job?.remote ? `Remote - ${job?.location}` : job?.location}</p>
             <p>{job?.position}</p>
             {job?.requiredEducation && <p>{job?.requiredEducation}</p>}
@@ -57,19 +57,19 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
             <p>{job?.description}</p>
             <h6>What you will be doing:</h6>
             <ul>
-              {job?.responsibilities.map((responsibility, index) => (
+              {job?.responsibilities?.map((responsibility, index) => (
                 <li key={index}><p>{responsibility}</p></li>
               ))}
             </ul>
             <h6>What we are looking for:</h6>
             <ul>
-              {job?.whatWereLookingFor.map((whatWereLookingFor, index) => (
+              {job?.whatWereLookingFor?.map((whatWereLookingFor, index) => (
                 <li key={index}><p>{whatWereLookingFor}</p></li>
               ))}
             </ul>
             <h6>Benefits:</h6>
             <ul>
-              {job?.benefits.map((benefit, index) => (
+              {job?.benefits?.map((benefit, index) => (
                 <li key={index}><p>{benefit}</p></li>
               ))}
             </ul>

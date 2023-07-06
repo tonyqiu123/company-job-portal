@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 interface InputProps {
   handleState: (value: any) => void;

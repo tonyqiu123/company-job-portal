@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'src/css/user/jobQuery.css';
 import searchIcon from 'src/assets/images/search.svg';
 import locationIcon from 'src/assets/images/locationIcon.svg';

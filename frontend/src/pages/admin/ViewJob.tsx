@@ -3,9 +3,9 @@ import Tooltip from 'src/components/shared/Tooltip';
 import Button from 'src/components/shared/Button';
 import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
-import SelectDropdown from 'src/components/shared/SelectDropdown';
+// import SelectDropdown from 'src/components/shared/SelectDropdown';
 import Input from 'src/components/shared/Input';
-import { deleteJobs, getJobs, getUsersById } from 'src/util/apiFunctions';
+import { getJobs, getUsersById } from 'src/util/apiFunctions';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -17,12 +17,12 @@ interface ViewJobProps {
 
 const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
     const [search, setSearch] = useState<string>('');
-    const [status, setStatus] = useState<string>('Unseen');
+    // const [status, setStatus] = useState<string>('Unseen');
     const [job, setJob] = useState<JobInterface>();
     const [applicantData, setApplicantData] = useState<UserInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const userStatus: string[] = ['Unseen', 'Selected', 'Rejected', 'Shortlisted'];
+    // const userStatus: string[] = ['Unseen', 'Selected', 'Rejected', 'Shortlisted'];
 
     const location = useLocation();
 
@@ -43,22 +43,24 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
                 const rejected = new Set<string>(jobData[0].rejected);
 
                 // Add the status property to each applicant object
-                applicantData = applicantData.map((applicant) => {
-                    if (selected.has(applicant._id)) {
-                        return { ...applicant, status: 'Offered Position' };
-                    }
-                    if (selectedForInterview.has(applicant._id)) {
-                        return { ...applicant, status: 'Selected For Interview' };
-                    }
-                    if (shortlisted.has(applicant._id)) {
-                        return { ...applicant, status: 'Shortlisted' };
-                    }
-                    if (rejected.has(applicant._id)) {
-                        return { ...applicant, status: 'Rejected' };
+                applicantData = applicantData.map((applicant: UserInterface) => {
+                    if (applicant._id) {
+
+                        if (selected.has(applicant._id)) {
+                            return { ...applicant, status: 'Offered Position' };
+                        }
+                        if (selectedForInterview.has(applicant._id)) {
+                            return { ...applicant, status: 'Selected For Interview' };
+                        }
+                        if (shortlisted.has(applicant._id)) {
+                            return { ...applicant, status: 'Shortlisted' };
+                        }
+                        if (rejected.has(applicant._id)) {
+                            return { ...applicant, status: 'Rejected' };
+                        }
                     }
                     return { ...applicant, status: 'Pending' }; // assuming default status is 'pending'
                 });
-
                 setApplicantData(applicantData);
             } else {
                 throw new Error('Job doesn\'t exist');
@@ -129,10 +131,10 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
                                 <Tooltip toolTipText='Search'><h6>Search</h6></Tooltip>
                                 <Input handleState={setSearch} placeholder="Tony Qiu" />
                             </div>
-                            <div className='column'>
+                            {/* <div className='column'>
                                 <Tooltip toolTipText='Status'><h6>Status</h6></Tooltip>
                                 <SelectDropdown values={userStatus} handleSetState={setStatus} />
-                            </div>
+                            </div> */}
                             <Button primary={true} text="Search" handleClick={fetchJobData} />
                         </div>
                         {applicantData.length > 0 && <Table data={applicantData} actions={actions} />}

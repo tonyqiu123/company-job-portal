@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import desktopLogo from 'src/assets/images/desktopLogo.svg';
 import search from 'src/assets/images/search.svg';
 import applications from 'src/assets/images/applications.svg';

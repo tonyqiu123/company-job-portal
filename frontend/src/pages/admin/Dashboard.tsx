@@ -4,7 +4,11 @@ import Tooltip from 'src/components/shared/Tooltip';
 import { Link } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 
-const Dashboard: React.FC = () => {
+interface DashboardProps {
+    adminJwt: string
+}
+
+const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -17,7 +21,7 @@ const Dashboard: React.FC = () => {
             <div className={`sectionLoading column ${!isLoading && 'skele-exit'}`}>
                 <SectionLoading />
             </div>
-            {!isLoading && (
+            {!isLoading && adminJwt && (
                 <div className='body contentLoaded'>
                     <div className='dashboardTitle row'>
                         <Link to="/admin/dashboard"><h2>Dashboard</h2></Link>

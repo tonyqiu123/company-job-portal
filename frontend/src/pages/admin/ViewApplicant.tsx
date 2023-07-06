@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import 'src/css/admin/dashboard.css'
-import Tooltip from 'src/components/shared/Tooltip';
 import { Link, useLocation } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
@@ -57,46 +56,48 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
 
 
     function updateUserStatus() {
-        if (jobData && applicantData) {
-            if (jobData.selectedForInterview.includes(applicantData._id)) {
+        if (jobData && applicantData?._id) {
+            if (jobData.selectedForInterview?.includes(applicantData._id)) {
                 setApplicantStatus('Selected For Interview');
-            } else if (jobData.rejected.includes(applicantData._id)) {
+            } else if (jobData.rejected?.includes(applicantData._id)) {
                 setApplicantStatus('Rejected');
-            } else if (jobData.shortlisted.includes(applicantData._id)) {
+            } else if (jobData.shortlisted?.includes(applicantData._id)) {
                 setApplicantStatus('Shortlisted');
-            } else if (jobData.selected.includes(applicantData._id)) {
+            } else if (jobData.selected?.includes(applicantData._id)) {
                 setApplicantStatus('Offered Position');
             } else {
                 setApplicantStatus('');
             }
         } else {
-            console.log("jobData or applicantData is not yet defined");
+            console.log('jobData or applicantData is not yet defined');
         }
     }
 
 
 
-    const applicantAction = async (jobId: string, action: string) => {
+    const applicantAction = async (action: string) => {
         try {
-            if (applicantData && jobData) {
+            if (applicantData && applicantData._id && jobData) {
+                const updatedJobData: JobInterface = { ...jobData };
 
-                jobData.rejected = jobData.rejected.filter(id => id !== applicantData._id);
-                jobData.selectedForInterview = jobData.selectedForInterview.filter(id => id !== applicantData._id);
-                jobData.shortlisted = jobData.shortlisted.filter(id => id !== applicantData._id);
-                jobData.selected = jobData.selected.filter(id => id !== applicantData._id);
+                updatedJobData.rejected = updatedJobData.rejected ? updatedJobData.rejected.filter(id => id !== applicantData._id) : [];
+                updatedJobData.selectedForInterview = updatedJobData.selectedForInterview ? updatedJobData.selectedForInterview.filter(id => id !== applicantData._id) : [];
+                updatedJobData.shortlisted = updatedJobData.shortlisted ? updatedJobData.shortlisted.filter(id => id !== applicantData._id) : [];
+                updatedJobData.selected = updatedJobData.selected ? updatedJobData.selected.filter(id => id !== applicantData._id) : [];
 
                 if (action === 'reject') {
-                    jobData.rejected.push(applicantData._id);
+                    updatedJobData.rejected.push(applicantData._id);
                 } else if (action === 'selectForInterview') {
-                    jobData.selectedForInterview.push(applicantData._id);
+                    updatedJobData.selectedForInterview.push(applicantData._id);
                 } else if (action === 'shortlist') {
-                    jobData.shortlisted.push(applicantData._id);
+                    updatedJobData.shortlisted.push(applicantData._id);
                 } else if (action === 'select') {
-                    jobData.selected.push(applicantData._id);
+                    updatedJobData.selected.push(applicantData._id);
                 }
 
-                await updateJob(adminJwt, jobData);
-                updateUserStatus()
+                await updateJob(adminJwt, updatedJobData);
+                setJobData(updatedJobData);
+                updateUserStatus();
             }
         } catch (err) {
             console.error(err);
@@ -141,7 +142,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
 
                         <div className='applicantFiles column'>
                             <div className='applicantFiles-tabs row'>
-                                {applicantData?.attachments.map((file, index) => {
+                                {applicantData?.attachments?.map((file, index) => {
                                     return (<p key={index} onClick={() => setSelectedFileType(index)} className={index === selectedFileType ? 'activeTab' : ''}>{file.fileType}</p>)
                                 })}
                             </div>
@@ -162,31 +163,31 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                             <div className='row'>
                                 {applicantStatus === '' &&
                                     <>
-                                        <Button text="Select for interview" handleClick={() => applicantAction(adminJwt, 'selectForInterview')} successButton={true} />
-                                        <Button text="Shortlist" handleClick={() => applicantAction(adminJwt, 'shortlist')} successButton={true} />
-                                        <Button text="Reject" handleClick={() => applicantAction(adminJwt, 'reject')} destructive={true} />
+                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} successButton={true} />
+                                        <Button text="Shortlist" handleClick={() => applicantAction('shortlist')} successButton={true} />
+                                        <Button text="Reject" handleClick={() => applicantAction('reject')} destructive={true} />
                                     </>
 
                                 }
                                 {applicantStatus === 'Shortlisted' &&
                                     <>
-                                        <Button text="Select for interview" handleClick={() => applicantAction(adminJwt, 'selectForInterview')} successButton={true} />
-                                        <Button text="Unshortlist" handleClick={() => applicantAction(adminJwt, 'unshortlist')} destructive={true} />
+                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} successButton={true} />
+                                        <Button text="Unshortlist" handleClick={() => applicantAction('unshortlist')} destructive={true} />
                                     </>
                                 }
                                 {applicantStatus === 'Offered Position' &&
-                                    <Button text="Rescind Offer" handleClick={() => applicantAction(adminJwt, 'unselect')} destructive={true} />
+                                    <Button text="Rescind Offer" handleClick={() => applicantAction('unselect')} destructive={true} />
 
                                 }
                                 {applicantStatus === 'Selected For Interview' &&
                                     <>
-                                        <Button text="Unselect for interview" handleClick={() => applicantAction(adminJwt, 'unselectForInterview')} destructive={true} />
-                                        <Button text="Offer Position" handleClick={() => applicantAction(adminJwt, 'select')} successButton={true} />
+                                        <Button text="Unselect for interview" handleClick={() => applicantAction('unselectForInterview')} destructive={true} />
+                                        <Button text="Offer Position" handleClick={() => applicantAction('select')} successButton={true} />
                                     </>
                                 }
                                 {applicantStatus === 'Rejected' &&
                                     <>
-                                        <Button text="Unreject" handleClick={() => applicantAction(adminJwt, 'unreject')} destructive={true} />
+                                        <Button text="Unreject" handleClick={() => applicantAction('unreject')} destructive={true} />
                                     </>
 
                                 }

@@ -2,23 +2,39 @@ import { useState } from 'react';
 import { updateUser } from 'src/util/apiFunctions';
 import profile from 'src/assets/images/profile.svg';
 import deleteIcon from 'src/assets/images/deleteIcon.svg';
-import Button from 'src/components/shared/Button'
+import Button from 'src/components/shared/Button';
+import { UserInterface } from 'src/util/interfaces';
 
-export default function ProfileUserModal({ userJwt, userData, setShowUserModal, setUserData }) {
+interface ProfileUserModalProps {
+    userJwt: string;
+    userData: UserInterface;
+    setShowUserModal: (show: boolean) => void;
+    setUserData: (data: UserInterface) => void;
+}
+
+interface UserData {
+    firstName: string;
+    lastName: string;
+    location: string;
+    phone: string;
+    urls: string[];
+}
+
+export default function ProfileUserModal({ userJwt, userData, setShowUserModal, setUserData }: ProfileUserModalProps) {
     const [firstName, setFirstName] = useState(userData.firstName);
     const [lastName, setLastName] = useState(userData.lastName);
     const [location, setLocation] = useState(userData.location);
     const [phoneNumber, setPhoneNumber] = useState(userData.phone);
     const [url, setUrl] = useState('');
-    const [listOfUrls, setListOfUrls] = useState(userData.urls)
+    const [listOfUrls, setListOfUrls] = useState(userData.urls);
     const [error, setError] = useState('');
 
     const addUrl = () => {
-        if (listOfUrls.length === 5) {
-            setError("Reached maximum of 5 URLs");
+        if (listOfUrls?.length === 5) {
+            setError("Reached the maximum of 5 URLs");
             return;
         }
-        if (listOfUrls.includes(url)) {
+        if (listOfUrls?.includes(url)) {
             setError("Duplicate URL");
             return;
         }
@@ -26,24 +42,30 @@ export default function ProfileUserModal({ userJwt, userData, setShowUserModal, 
             setError("Not a valid URL");
             return;
         }
-        setListOfUrls([...listOfUrls, url]);
+        setListOfUrls(prevList => {
+            if (prevList) {
+                return [...prevList, url];
+            } else {
+                return [url];
+            }
+        });
         setError('');
-        setUrl('')
+        setUrl('');
     };
 
-    const updateExperience = async () => {
 
+    const updateExperience = async () => {
         try {
             if (!firstName || !lastName || !location || !phoneNumber) {
                 setError('Please fill in all required fields.');
-                throw new Error('')
+                throw new Error('');
             }
-            const updatedUserData = {
+            const updatedUserData: UserData = {
                 ...userData,
                 firstName,
                 lastName,
                 location,
-                urls: listOfUrls,
+                urls: listOfUrls || [],
                 phone: phoneNumber,
             };
             await updateUser(userJwt, updatedUserData);
@@ -51,9 +73,10 @@ export default function ProfileUserModal({ userJwt, userData, setShowUserModal, 
             setShowUserModal(false);
         } catch (err) {
             setError('Failed to update user');
-            throw err
+            throw err;
         }
     };
+
 
     return (
         <div className="modalContainer">

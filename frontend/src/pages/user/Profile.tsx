@@ -10,10 +10,11 @@ import { UserInterface } from 'src/util/interfaces';
 import { Link } from 'react-router-dom';
 
 interface ProfileProps {
-    userJwt: string | null
-    userData: UserInterface
-    setUserData: (userData: UserInterface) => void
+    userJwt: string;
+    userData: UserInterface;
+    setUserData: (userData: UserInterface) => void;
 }
+
 
 const Profile: React.FC<ProfileProps> = ({ userJwt, userData, setUserData }) => {
 
@@ -48,8 +49,8 @@ const Profile: React.FC<ProfileProps> = ({ userJwt, userData, setUserData }) => 
                                 <p>{userData.location === '' ? 'None' : userData.location}</p>
                             </div>
                             <div className='hr'></div>
-                            {userData.urls.length === 0 && <p>No URLs added</p>}
-                            {userData.urls.map((url, index) => (
+                            {userData.urls?.length === 0 && <p>No URLs added</p>}
+                            {userData.urls?.map((url, index) => (
                                 <a key={index} href={url} target="_blank"><p>{url}</p></a>
                             ))}
                         </div>
@@ -60,8 +61,8 @@ const Profile: React.FC<ProfileProps> = ({ userJwt, userData, setUserData }) => 
                             }} />
                             <h3>Attachments</h3>
                             <div className='hr'></div>
-                            {userData.attachments.length === 0 && <p>No attachments added</p>}
-                            {userData.attachments.map((attachment, index) => (
+                            {userData.attachments?.length === 0 && <p>No attachments added</p>}
+                            {userData.attachments?.map((attachment, index) => (
                                 <a key={index}><p>{attachment.fileType}</p></a>
                             ))}
                         </div>

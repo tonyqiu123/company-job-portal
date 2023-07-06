@@ -28,8 +28,8 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   const jobsPerPage: number = 10
 
   useEffect(() => {
-    setAppliedJobs(userData.appliedJobs)
-    setShortlistedJobs(userData.shortlisted)
+    setAppliedJobs(userData.appliedJobs || [])
+    setShortlistedJobs(userData.shortlisted || [])
   }, [])
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
         await Promise.all([updateUser(userJwt, {
           appliedJobs: newAppliedJobs,
           shortlisted: newShortlistedJobs
-        }), applyJob(userJwt, userData._id, jobID, action)])
+        }), applyJob(userJwt, userData._id || '', jobID, action)])
 
         setAppliedJobs(newAppliedJobs)
         setShortlistedJobs(newShortlistedJobs)
@@ -120,7 +120,7 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
                         <h6>{job.title}</h6>
                         <p>{job.remote ? `Remote - ${job.location}` : job.location}</p>
                         <p>{job.position}</p>
-                        <p>{formatDate(job.date)}</p>
+                        <p>{formatDate(job.date || '')}</p>
                       </div>
                       <div className='tagsContainer row'>
                         {job.skills && job.skills.slice(0, 5).map((skill, index) => (

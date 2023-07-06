@@ -8,7 +8,7 @@ import Input from 'src/components/shared/Input';
 import { deleteJobs, getJobs } from 'src/util/apiFunctions';
 import { JobInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
 
 interface JobManagementProps {
@@ -17,34 +17,33 @@ interface JobManagementProps {
 
 const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const [search, setSearch] = useState<string>('');
-    const [status, setStatus] = useState<string>('');
+    // const [status, setStatus] = useState<string>('');
     const [position, setPosition] = useState<string>('');
     const [jobs, setJobs] = useState<JobInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const jobStatus: string[] = ['All', 'Pre-deadline', 'Post-deadline', 'Interviewing', 'Filled', 'Trashed'];
+    // const jobStatus: string[] = ['All', 'Pre-deadline', 'Post-deadline', 'Interviewing', 'Filled', 'Trashed'];
     const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Internship'];
 
     const fetchJobs = async (): Promise<void> => {
         try {
             let jobs = await getJobs({ location: true, views: true, salary: true, date: true, deadline: true, remote: true, applicants: true, yoe: true, title: true, position: true }, [], search, position);
-    
-            // Map over jobs and add 'applications' property
-            jobs = jobs.map(job => {
+
+            jobs = jobs.map((job: JobInterface) => {
                 return {
                     ...job,
-                    applications: job.applicants.length,
+                    applications: job.applicants?.length,
                 };
             });
-    
+
             setJobs(jobs);
         } catch (err) {
             console.error(err);
         } finally {
-            setIsLoading(false); // Set isLoading to false after the data fetching is complete
+            setIsLoading(false);
         }
     };
-    
+
 
     const handleDelete = async (selectedRows: Set<string>) => {
         try {
@@ -73,13 +72,6 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
             }
         },
         // edit job
-        Edit: async (selectedJob: number) => {
-            try {
-                console.log('success')
-            } catch (err) {
-                console.error(err);
-            }
-        }
     }
 
     useEffect(() => {
@@ -123,10 +115,10 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
                         </div>
                         <div className='row'>
                             <div className='jobManagement-search row'>
-                                <div className='column'>
+                                {/* <div className='column'>
                                     <Tooltip toolTipText='Status'><h6>Status</h6></Tooltip>
                                     <SelectDropdown values={jobStatus} handleSetState={setStatus} />
-                                </div>
+                                </div> */}
                                 <div className='column'>
                                     <Tooltip toolTipText='Position'><h6>Position</h6></Tooltip>
                                     <SelectDropdown values={positions} handleSetState={(value) => setPosition(value === 'All' ? '' : value)} />
@@ -137,7 +129,19 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
                                 </div>
                                 <Button primary={true} text="Search" handleClick={fetchJobs} />
                             </div>
-                            <Button primary={true} text="Create New Job" handleClick={() => new Promise<void>((resolve, reject) => resolve())} />
+                            <Button
+                                primary={true}
+                                text="Create New Job"
+                                handleClick={() =>
+                                    new Promise<void>((resolve, reject) => {
+                                        if (search==='idk') {
+                                            resolve();
+                                        } else {
+                                            reject();
+                                        }
+                                    })
+                                }
+                            />
                         </div>
                         {jobs.length > 0 && <Table data={jobs} handleDelete={handleDelete} actions={actions} />}
                     </section>

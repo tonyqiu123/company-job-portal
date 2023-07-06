@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
 import desktopLogo from 'src/assets/images/desktopLogo.svg';
-import profile from 'src/assets/images/profile.svg';
 import experienceIcon from 'src/assets/images/experienceIcon.svg';
 import dashboard from 'src/assets/images/dashboard.svg';
 
