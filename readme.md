@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Portal Web App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
 <body>
   <header>
     <h1>Job Portal Web App</h1>
+    <img src="images/userSearchJobs.jpg">
   </header>
 
   <section>
     <h2>Overview</h2>
+     <img src="images/adminJobManagement.jpg">
     <p>
       The Job Portal Web App is a platform designed to allow a single company with a team of administrators to efficiently post and manage job listings on their own website. This web app also syncs job postings with their accounts on popular job platforms such as LinkedIn, Glassdoor, ZipRecruiter, and SimplyHired, saving valuable time and effort. Additionally, the job portal enables users to apply to jobs efficiently by utilizing their applicant profiles, which include their resume and basic background information like name, email, and URLs.
     </p>
@@ -48,6 +49,7 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
 
   <section>
     <h2>Employer/Admin Usage</h2>
+     <img src="images/adminViewApplicant.jpg">
     <ol>
       <li>Open your web browser and navigate to <code>&lt;app_url&gt;/admin/login</code></li>
       <li>Enter the value you set for <code>ADMIN_PASSWORD</code> in the <code>.env</code> file.</li>
@@ -56,6 +58,7 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
 
   <section>
     <h2>Job Seeker Usage</h2>
+    <img src="images/userViewJob.jpg">
     <ol>
       <li>Open your web browser and go to <code>&lt;app_url&gt;/sign-up</code></li>
       <li>Enter your first name, last name, email, and password.</li>
@@ -63,19 +66,20 @@ MONGO_URI=&lt;mongodb_cluster_key&gt;
   </section>
 
   <section>
-    <h2>Future Updates</h2>
-    <ul>
-        <li>
-      <strong>Advanced Search Functionality:</strong> Implement advanced search filters to help job seekers find relevant job listings more effectively.
+  <h2>Future Updates</h2>
+  <ul>  
+    <li>
+      <strong>Monthly Statistics Storage:</strong> Implement functionality to store monthly statistics in the database for better data analysis and insights.
     </li>
     <li>
-      <strong>User Authentication:</strong> Introduce user authentication and role-based access control for enhanced security and access management.
+      <strong>Recent Job Applications View:</strong> Enhance the admin dashboard with the ability to view the most recent job applications, allowing for quicker and more efficient response times.
     </li>
     <li>
       <strong>Integration with Additional Job Platforms:</strong> Expand the list of integrated job platforms to provide a wider range of options for managing job listings.
     </li>
   </ul>
 </section>
+
 
 <footer>
   <p>Contact Information:</p>
