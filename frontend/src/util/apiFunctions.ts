@@ -1,6 +1,6 @@
 // api.ts
-const API_BASE_URL = 'http://localhost:5000/api';
-// const API_BASE_URL = 'https://company-job-portal-production.up.railway.app/api';
+// const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://company-job-portal-production.up.railway.app/api';
 
 async function handleErrorResponse(response: Response) {
   try {
