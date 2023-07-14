@@ -137,7 +137,9 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
                             </div> */}
                             <Button primary={true} text="Search" handleClick={fetchJobData} />
                         </div>
-                        {applicantData.length > 0 && <Table data={applicantData} actions={actions} />}
+                        {applicantData.length > 0 ? <Table data={applicantData} actions={actions} /> :
+                            <h4>No applicants</h4>
+                        }
                     </section>
                 </div>
             )}

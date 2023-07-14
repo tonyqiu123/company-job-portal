@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const cors = require('cors');
 const cron = require('node-cron');
-const updateMonthlyTotals = require('./utils/scheduledTasks');
+const aggregateMonthlyData = require('./controllers/dataAggregator');
 
 
 connectDB();
@@ -50,6 +50,17 @@ app.use('/api/users/files', require('./routes/fileRoutes'))
 
 app.use(errorHandler)
 
-cron.schedule('0 0 1 * *', updateMonthlyTotals);
 
-app.listen(port, () => console.log(`Server started on port ${port}`))
+// Schedule a job to run at 00:00 on the first day of every month
+cron.schedule('0 0 1 * *', async () => {
+  try {
+    await aggregateMonthlyData();
+    console.log('Data aggregation complete.');
+  } catch (error) {
+    console.log('Failed to aggregate data:', error);
+  }
+});
+
+
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
