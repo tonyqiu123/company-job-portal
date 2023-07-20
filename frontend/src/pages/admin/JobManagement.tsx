@@ -5,11 +5,12 @@ import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 import SelectDropdown from 'src/components/shared/SelectDropdown';
 import Input from 'src/components/shared/Input';
-import { deleteJobs, getJobs } from 'src/util/apiFunctions';
+import { deleteJobs, getJobs, getMonthlyData } from 'src/util/apiFunctions';
 import { JobInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
 import { useNavigate, Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
+import MonthlyStat from 'src/components/admin/MonthlyStat';
 
 interface JobManagementProps {
     adminJwt: string
@@ -21,6 +22,7 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const [position, setPosition] = useState<string>('');
     const [jobs, setJobs] = useState<JobInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [monthlyData, setMonthlyData] = useState<any>([{}])
 
     // const jobStatus: string[] = ['All', 'Pre-deadline', 'Post-deadline', 'Interviewing', 'Filled', 'Trashed'];
     const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Internship'];
@@ -43,6 +45,15 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
             setIsLoading(false);
         }
     };
+
+    const fetchMonthlyData = async (): Promise<void> => {
+        try {
+            const data = await getMonthlyData()
+            setMonthlyData(data)
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
 
     const handleDelete = async (selectedRows: Set<string>) => {
@@ -76,7 +87,10 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
 
     useEffect(() => {
         fetchJobs();
+        fetchMonthlyData();
     }, []);
+
+
 
 
     return (
@@ -92,26 +106,11 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
                     <div className='hr'></div>
                     <section className='jobManagement column'>
                         <div className='dashboard-overviewStats row'>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Total views: 2000'><h6>Total Views</h6></Tooltip>
-                                <h2>+22057</h2>
-                                <p>+29.3% from last month</p>
-                            </div>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Total Users'><h6>Total Applications</h6></Tooltip>
-                                <h2>+231</h2>
-                                <p>+16.1% from last month</p>
-                            </div>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Total applications: 2000'><h6>Active Jobs</h6></Tooltip>
-                                <h2>+162</h2>
-                                <p>+2.1% from last month</p>
-                            </div>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Total applications / total views'><h6>Average Application Rate</h6></Tooltip>
-                                <h2>26%</h2>
-                                <p>+53.2% from last month</p>
-                            </div>
+                            <MonthlyStat header='Views this month' toolTipText='The total number of views received in this month.' stat={monthlyData[monthlyData.length - 1].views} prevStat={monthlyData.length > 1 ? monthlyData[monthlyData.length - 2].views : 0} />
+                            <MonthlyStat header='Applications this month' toolTipText='The total number of applications received in this month.' stat={monthlyData[monthlyData.length - 1].applications} prevStat={monthlyData.length > 1 ? monthlyData[monthlyData.length - 2].applications : 0} />
+                            <MonthlyStat header='Active Jobs' toolTipText='The number of currently active job listings.' stat={monthlyData[monthlyData.length - 1].activeJobs} prevStat={monthlyData.length > 1 ? monthlyData[monthlyData.length - 2].activeJobs : 0} />
+                            <MonthlyStat header='Application Rate' toolTipText='The percentage of views that resulted in job applications.' stat={parseFloat((monthlyData[monthlyData.length - 1].applicationRate * 100).toFixed(2))} prevStat={monthlyData.length > 1 ? parseFloat((monthlyData[monthlyData.length - 2].applicationRate * 100).toFixed(2)) : 0} />
+
                         </div>
                         <div className='row'>
                             <div className='jobManagement-search row'>
@@ -132,18 +131,12 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
                             <Button
                                 primary={true}
                                 text="Create New Job"
-                                handleClick={() =>
-                                    new Promise<void>((resolve, reject) => {
-                                        if (search==='idk') {
-                                            resolve();
-                                        } else {
-                                            reject();
-                                        }
-                                    })
-                                }
+                                handleClick={async () => navigate('/admin/job-management/create-job')}
                             />
                         </div>
-                        {jobs.length > 0 && <Table data={jobs} handleDelete={handleDelete} actions={actions} />}
+                        {jobs.length > 0 ? <Table data={jobs} handleDelete={handleDelete} actions={actions} /> :
+                            <h4>No jobs</h4>
+                        }
                     </section>
                 </div>
             )}

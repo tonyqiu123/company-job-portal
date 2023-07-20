@@ -17,6 +17,7 @@ import JobManagement from "src/pages/admin/JobManagement";
 import ViewJob from "src/pages/admin/ViewJob";
 import NotFound from "src/pages/shared/NotFound";
 import ViewApplicant from "src/pages/admin/ViewApplicant";
+import CreateJob from "./pages/admin/CreateJob";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -135,6 +136,14 @@ const App: React.FC = () => {
           path="/admin/job-management/job/applicant"
           element={isAdminAuthenticated
             ? <ViewApplicant adminJwt={adminJwt || ''} />
+            : loadingComponent
+          }
+        />
+
+        <Route
+          path="/admin/job-management/create-job"
+          element={isAdminAuthenticated
+            ? <CreateJob adminJwt={adminJwt || ''} />
             : loadingComponent
           }
         />

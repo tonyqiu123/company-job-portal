@@ -5,7 +5,7 @@ const Job = require('../models/jobModel'); // Assume this is your Job model
 const User = require('../models/userModel'); // Assuming this is your User model
 const MonthlyData = require('../models/monthlyDataModel');
 
-const aggregateMonthlyData = async () => {
+const aggregateMonthlyData = async (update = false) => {
   const currentDate = new Date();
   const month = currentDate.toLocaleString('default', { month: 'long' }); // get the full name of the month
   const year = currentDate.getFullYear();
@@ -28,18 +28,28 @@ const aggregateMonthlyData = async () => {
   // Check for edge case where views are zero
   const applicationRate = views !== 0 ? (applications / views) * 100 : 0;
 
-  const newMonthlyData = new MonthlyData({
-    month,
-    year,
-    applications,
-    signups,
-    jobsPosted,
-    activeJobs,
-    views,
-    applicationRate
-  });
+  if (update) {
+    // If update flag is true, find the most recent record and update it
+    await MonthlyData.findOneAndUpdate(
+      { month, year },
+      { applications, signups, jobsPosted, activeJobs, views, applicationRate },
+      { new: true, upsert: true }
+    );
+  } else {
+    // If update flag is false or not provided, create a new record
+    const newMonthlyData = new MonthlyData({
+      month,
+      year,
+      applications,
+      signups,
+      jobsPosted,
+      activeJobs,
+      views,
+      applicationRate
+    });
 
-  await newMonthlyData.save();
+    await newMonthlyData.save();
+  }
 };
 
 module.exports = aggregateMonthlyData;

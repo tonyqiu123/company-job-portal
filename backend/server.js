@@ -45,6 +45,7 @@ app.use(
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/jobs', require('./routes/jobRoutes'))
 app.use('/api/admin', require('./routes/adminRoutes'))
+app.use('/api/monthlyData', require('./routes/monthlyDataRoutes'))
 app.use('/files', express.static('files')); // Static file serving
 app.use('/api/users/files', require('./routes/fileRoutes'))
 
@@ -58,6 +59,16 @@ cron.schedule('0 0 1 * *', async () => {
     console.log('Data aggregation complete.');
   } catch (error) {
     console.log('Failed to aggregate data:', error);
+  }
+});
+
+// Schedule a job to run every 10 minutes
+cron.schedule('*/10 * * * *', async () => {
+  try {
+    await aggregateMonthlyData(true); // Update the most recent document
+    console.log('Data update complete.');
+  } catch (error) {
+    console.log('Failed to update data:', error);
   }
 });
 

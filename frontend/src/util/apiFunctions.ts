@@ -115,6 +115,14 @@ export async function applyJob(jwt: string, userId: string, jobId: string, actio
     });
 }
 
+export async function getMonthlyData() {
+  return fetch(`${API_BASE_URL}/monthlyData`)
+    .then(handleErrorResponse)
+    .catch(error => {
+      throw error
+    })
+}
+
 // ADMIN API
 export async function validateAdminJwt(jwt: string) {
   return fetch(`${API_BASE_URL}/admin/protected`, {

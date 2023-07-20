@@ -69,16 +69,20 @@ const Table: React.FC<TableProps> = ({ data, handleDelete, actions }) => {
         }
     };
 
+
     const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.checked) {
-            const ids: string[] = data.map((item) => item.id);
+        const isChecked = e.target.checked;
+        const ids: string[] = data.map((item) => item._id);
+
+        if (isChecked) {
             setSelectedRows(new Set(ids));
-            setIsAllSelected(true);
         } else {
             setSelectedRows(new Set());
-            setIsAllSelected(false);
         }
+
+        setIsAllSelected(isChecked);
     };
+
 
     const handleSort = (criteria: string): void => {
         if (sortCriteria === criteria) {
@@ -122,17 +126,28 @@ const Table: React.FC<TableProps> = ({ data, handleDelete, actions }) => {
 
     if (data) {
         data.sort((a, b) => {
-            const valueA = (a[sortCriteria] || '').toString().toLowerCase();
-            const valueB = (b[sortCriteria] || '').toString().toLowerCase();
-            if (valueA < valueB) {
+            const valueA = a[sortCriteria];
+            const valueB = b[sortCriteria];
+
+            // Check if values are numeric and sort numerically if they are
+            if (!isNaN(valueA) && !isNaN(valueB)) {
+                return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
+            }
+
+            // If values are not numeric, convert them to strings and sort
+            const strA = valueA !== undefined ? valueA.toString().toLowerCase() : '';
+            const strB = valueB !== undefined ? valueB.toString().toLowerCase() : '';
+
+            if (strA < strB) {
                 return sortOrder === 'asc' ? -1 : 1;
             }
-            if (valueA > valueB) {
+            if (strA > strB) {
                 return sortOrder === 'asc' ? 1 : -1;
             }
             return 0;
         });
     }
+
 
     return (
         <>

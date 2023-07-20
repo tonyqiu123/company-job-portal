@@ -8,7 +8,7 @@
 .jobManagement-search {
     gap: 24px;
     justify-content: flex-start !important;
-    align-items: flex-end !important; 
+    align-items: flex-end !important;
 }
 
 .jobManagement-search>.column {
@@ -20,4 +20,17 @@
     border-radius: var(--border-radius-l);
     padding: 32px;
     gap: 16px;
+}
+
+
+.dashboard-overviewStat>.green {
+    color: #168535;
+}
+
+.dashboard-overviewStat>.red {
+    color: #b92b1e;
+}
+
+.dashboard-overviewStat>.grey {
+    color: grey;
 }

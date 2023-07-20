@@ -31,3 +31,8 @@
 .tooltip>* {
   white-space: nowrap;
 }
+
+.out-of-view-horizontal {
+  transform: translate(0%, 0%);
+  right: 18px;
+}
