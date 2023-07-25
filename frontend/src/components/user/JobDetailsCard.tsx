@@ -1,7 +1,7 @@
 import { getJobs } from 'src/util/apiFunctions'
 import { useEffect, useState } from 'react';
 import Button from '../shared/Button';
-import { formatDate } from 'src/util/util'
+import { formatDate } from 'src/util/dateUtils'
 import { JobInterface } from 'src/util/interfaces';
 
 interface JobDetailsCardProps {

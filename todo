@@ -1,3 +1,12 @@
 todo: 
-- make monthly stats work for the current month
+- fix multiple select job propreties
+- fix deadline date select, probably import shadcn
+- add success and failure messages after async buttons eveyrwhere
+- add preview feature to create job
+- add required functionalty to create job
 - view most recent job applications in the admin dashboard
+- add data visualization for hte monthly stats
+- change 'this month' data into daily avergae this month and compare the average!!!
+- be able to view all month's data
+- the very last one then were done: data analysis on the top performing jobs
+- implement ai for the job creation

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
-import { formatDate } from 'src/util/util'
+import { formatDate } from 'src/util/dateUtils'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
 
 interface JobResultsProps {

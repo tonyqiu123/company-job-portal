@@ -10,7 +10,7 @@ import { JobInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
 import { useNavigate, Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
-import MonthlyStat from 'src/components/admin/MonthlyStat';
+import MonthlyStat from 'src/components/admin/DataCard';
 
 interface JobManagementProps {
     adminJwt: string

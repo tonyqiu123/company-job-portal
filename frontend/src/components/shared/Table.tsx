@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Button from 'src/components/shared/Button';
-import { formatDate, isValidISODateTime } from 'src/util/util';
+import { formatDate, isValidISODateTime } from 'src/util/dateUtils';
 import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 import dotdotdot from "src/assets/images/dotdotdot.svg";

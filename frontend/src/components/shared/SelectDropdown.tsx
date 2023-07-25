@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 
 interface SelectDropdownProps {
-  handleSetState: (value: string) => void;
+  handleSetState: (value: any) => void;
   values: string[]
 }
 

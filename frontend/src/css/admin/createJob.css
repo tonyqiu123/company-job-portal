@@ -1,0 +1,15 @@
+.createJob {
+    max-width: 800px;
+}
+
+.createJob>button {
+    margin: auto;
+}
+
+.fillFieldsContainer {
+    gap: 16px;
+}
+
+.fillFieldsContainer-input {
+    gap: 8px;
+}

@@ -1,3 +1,5 @@
+import { JobInterface } from "./interfaces";
+
 // api.ts
 const API_BASE_URL = 'http://localhost:5000/api';
 // const API_BASE_URL = 'https://company-job-portal-production.up.railway.app/api';
@@ -214,4 +216,19 @@ export async function getFileContent(fileName: string): Promise<string> {
   const blobURL = URL.createObjectURL(blob);
 
   return blobURL;
+}
+
+export async function createJob(jwt: string, jobDetails: JobInterface) {
+  return fetch(`${API_BASE_URL}/jobs/`, {
+    method: 'POST',
+    body: JSON.stringify(jobDetails),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${jwt}`
+    }
+  })
+    .then(handleErrorResponse)
+    .catch(error => {
+      throw error;
+    });
 }

@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "64b81bf6cdf09a3ce1ab99b4"
+  },
+  "month": "June",
+  "year": 2023,
+  "applications": 5234,
+  "signups": 2934,
+  "jobsPosted": 105,
+  "activeJobs": 1,
+  "views": 13892,
+  "applicationRate": 0.376763604952,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64b17f10528074f23df8c6eb"
+  },
+  "month": "July",
+  "year": 2023,
+  "applications": 0,
+  "signups": 1,
+  "jobsPosted": 7,
+  "activeJobs": 7,
+  "views": 559,
+  "applicationRate": 0,
+  "__v": 0
+}]

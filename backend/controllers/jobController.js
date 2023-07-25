@@ -111,11 +111,37 @@ const createJob = asyncHandler(async (req, res) => {
     location: req.body.location,
     description: req.body.description,
     salary: req.body.salary,
-    requirements: req.body.requirements,
+    position: req.body.position || 'Full Time',
+    requirements: req.body.requirements || [],
+    responsibilities: req.body.responsibilities || [],
+    skills: req.body.skills || [],
+    whatWereLookingFor: req.body.whatWereLookingFor || [],
+    created: req.body.created || Date.now(),
+    deadline: req.body.deadline || getDefaultDeadline(),
+    remote: req.body.remote || false,
+    benefits: req.body.benefits || [],
+    applicants: req.body.applicants || [],
+    selected: req.body.selected || [],
+    selectedForInterview: req.body.selectedForInterview || [],
+    shortlisted: req.body.shortlisted || [],
+    rejected: req.body.rejected || [],
+    requiredDocuments: req.body.requiredDocuments || [],
+    jobQuestions: req.body.jobQuestions || [],
+    views: req.body.views || 0,
+    yoe: req.body.yoe || 3,
   });
 
-  res.status(200).json(job);
+  res.status(201).json(job);
 });
+
+function getDefaultDeadline() {
+  const deadline = new Date();
+  deadline.setDate(deadline.getDate() + 90);
+  return deadline;
+}
+
+module.exports = createJob;
+
 
 
 const updateJob = asyncHandler(async (req, res) => {
