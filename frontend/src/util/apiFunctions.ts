@@ -2,7 +2,7 @@ import { JobInterface } from "./interfaces";
 
 // api.ts
 // const API_BASE_URL = 'http://localhost:5000/api';
-const API_BASE_URL = 'https://rich-kit-fawn.cyclic.app/';
+const API_BASE_URL = 'https://rich-kit-fawn.cyclic.app/api';
 
 async function handleErrorResponse(response: Response) {
   try {
