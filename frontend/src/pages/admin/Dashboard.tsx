@@ -4,7 +4,7 @@ import Tooltip from 'src/components/shared/Tooltip';
 import { getMonthlyData } from 'src/util/apiFunctions'
 import { Link } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
-import MonthlyStat from 'src/components/admin/DataCard'; 
+// import MonthlyStat from 'src/components/admin/DataCard'; 
 import DataCard from 'src/components/admin/DataCard';
 
 interface DashboardProps {

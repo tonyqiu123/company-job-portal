@@ -5,12 +5,12 @@ import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 import SelectDropdown from 'src/components/shared/SelectDropdown';
 import Input from 'src/components/shared/Input';
-import { deleteJobs, getJobs, getMonthlyData } from 'src/util/apiFunctions';
+import { deleteJobs, getJobs } from 'src/util/apiFunctions';
 import { JobInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
 import { useNavigate, Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
-import MonthlyStat from 'src/components/admin/DataCard';
+// import MonthlyStat from 'src/components/admin/DataCard';
 
 interface JobManagementProps {
     adminJwt: string
@@ -22,7 +22,7 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const [position, setPosition] = useState<string>('');
     const [jobs, setJobs] = useState<JobInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [monthlyData, setMonthlyData] = useState<any>([{}])
+    // const [monthlyData, setMonthlyData] = useState<any>([{}])
 
     // const jobStatus: string[] = ['All', 'Pre-deadline', 'Post-deadline', 'Interviewing', 'Filled', 'Trashed'];
     const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Internship'];
@@ -48,8 +48,8 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
 
     const fetchMonthlyData = async (): Promise<void> => {
         try {
-            const data = await getMonthlyData()
-            setMonthlyData(data)
+            // const data = await getMonthlyData()
+            // setMonthlyData(data)
         } catch (err) {
             console.error(err);
         }
@@ -106,10 +106,10 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
                     <div className='hr'></div>
                     <section className='jobManagement column'>
                         <div className='dashboard-overviewStats row'>
-                            <MonthlyStat header='Views this month' toolTipText='The total number of views received in this month.' stat={monthlyData[monthlyData.length - 1].views} prevStat={monthlyData.length > 1 ? monthlyData[monthlyData.length - 2].views : 0} />
+                            {/* <MonthlyStat header='Views this month' toolTipText='The total number of views received in this month.' stat={monthlyData[monthlyData.length - 1].views} prevStat={monthlyData.length > 1 ? monthlyData[monthlyData.length - 2].views : 0} />
                             <MonthlyStat header='Applications this month' toolTipText='The total number of applications received in this month.' stat={monthlyData[monthlyData.length - 1].applications} prevStat={monthlyData.length > 1 ? monthlyData[monthlyData.length - 2].applications : 0} />
                             <MonthlyStat header='Active Jobs' toolTipText='The number of currently active job listings.' stat={monthlyData[monthlyData.length - 1].activeJobs} prevStat={monthlyData.length > 1 ? monthlyData[monthlyData.length - 2].activeJobs : 0} />
-                            <MonthlyStat header='Application Rate' toolTipText='The percentage of views that resulted in job applications.' stat={parseFloat((monthlyData[monthlyData.length - 1].applicationRate * 100).toFixed(2))} prevStat={monthlyData.length > 1 ? parseFloat((monthlyData[monthlyData.length - 2].applicationRate * 100).toFixed(2)) : 0} />
+                            <MonthlyStat header='Application Rate' toolTipText='The percentage of views that resulted in job applications.' stat={parseFloat((monthlyData[monthlyData.length - 1].applicationRate * 100).toFixed(2))} prevStat={monthlyData.length > 1 ? parseFloat((monthlyData[monthlyData.length - 2].applicationRate * 100).toFixed(2)) : 0} /> */}
 
                         </div>
                         <div className='row'>

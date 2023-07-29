@@ -7,11 +7,11 @@ import "src/css/admin/createJob.css";
 import SelectDropdown from 'src/components/shared/SelectDropdown';
 import Input from 'src/components/shared/Input';
 import { createJob } from 'src/util/apiFunctions';
-import { JobInterface } from 'src/util/interfaces';
-import Table from 'src/components/shared/Table';
-import { useNavigate, Link } from "react-router-dom";
+// import { JobInterface } from 'src/util/interfaces';
+// import Table from 'src/components/shared/Table';
+import { Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
-import MonthlyStat from 'src/components/admin/DataCard';
+// import MonthlyStat from 'src/components/admin/DataCard';
 
 interface CreateJobProps {
     adminJwt: string
@@ -23,7 +23,7 @@ const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Inter
 
 const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
     const [position, setPosition] = useState<'Full Time' | 'Part Time' | 'Contract' | 'Internship'>('Full Time');
-    const [jobs, setJobs] = useState<JobInterface[]>([]);
+    // const [jobs, setJobs] = useState<JobInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');

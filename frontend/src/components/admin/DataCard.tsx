@@ -24,11 +24,11 @@ function colorCode(current: number, previous: number): string {
   return 'grey';
 }
 
-function getDaysInMonth(month: string, year: number): number {
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const monthNumber = monthNames.indexOf(month);
-  return new Date(year, monthNumber + 1, 0).getDate();
-}
+// function getDaysInMonth(month: string, year: number): number {
+//   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+//   const monthNumber = monthNames.indexOf(month);
+//   return new Date(year, monthNumber + 1, 0).getDate();
+// }
 
 
 function DataCard({ data }: DataCardProps): JSX.Element {
