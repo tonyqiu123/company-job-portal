@@ -37,7 +37,7 @@
     <pre><code>
 ADMIN_PASSWORD=&lt;admin_password_value&gt;
 JWT_SECRET=&lt;jwt_secret_value&gt;
-MONGO_URI=&lt;mongodb_cluster_key&gt;
+DB_URL=&lt;mongodb_cluster_key&gt;
     </code></pre>
     <p>Note: Set the <code>ADMIN_PASSWORD</code> to the desired value for the admin password. Choose a strong <code>JWT_SECRET</code> for securely signing JSON Web Tokens. Set the <code>MONGO_URI</code> to the connection string of your MongoDB cluster.</p>
     <ol start="4">
