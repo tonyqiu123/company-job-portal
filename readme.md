@@ -42,7 +42,7 @@ Frontend: `http://localhost:3000`
 
 MongoDB: `mongodb://localhost:27017/test`
 
-Ensure these ports are free. If they are not, you'll need to free up these ports or modify the port mapping in your docker-compose.yml.
+Ensure these ports are free.
 
 ## Future Updates
 - **Monthly Statistics Storage:** Implement functionality to store monthly statistics in the database for better data analysis and insights.
