@@ -7,14 +7,14 @@ The Job Portal Web App is a platform designed to allow a single company with a t
 ## Overview
 ![User Search Jobs](readmeImages/userSearchJobs.jpg)
 ![Admin Job Management](readmeImages/adminJobManagement.jpg)
+![User View Job](readmeImages/userViewJob.jpg)
+![Admin View Applicant](readmeImages/adminViewApplicant.jpg)
 
 ## Employer/Admin Usage
-![Admin View Applicant](readmeImages/adminViewApplicant.jpg)
 1. Open your web browser and navigate to `https://company-job-portal.netlify.app/admin/login`
 2. Enter the value you set for `ADMIN_PASSWORD` in the `.env` file.
 
 ## Job Seeker Usage
-![User View Job](readmeImages/userViewJob.jpg)
 1. Open your web browser and go to `https://company-job-portal.netlify.app/sign-up`
 2. Enter your first name, last name, email, and password.
 
