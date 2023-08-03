@@ -20,7 +20,7 @@ The Job Portal Web App is a platform designed to allow a single company with a t
 
 ## Installation
 
-PREREQUISITES: Ensure Docker and Docker Compose are installed on your machine. Docker Compose is included in Docker Desktop installation for Windows and Mac. For Linux, you may need to install it separately. Docker Desktop can be downloaded from the official Docker website. 
+Ensure Docker and Docker Compose are installed on your machine. Docker Compose is included in Docker Desktop installation for Windows and Mac. For Linux, you may need to install it separately. Docker Desktop can be downloaded from the official Docker website. 
 
 ### 1. Clone the repository
 
@@ -30,19 +30,19 @@ If your application is stored in a Git repository, clone it to your local machin
 git clone https://github.com/tonyqiu123/company-job-portal
 ``` 
 
-### 2. Navigate to the project directory
-After cloning the repository, navigate to the project's root directory.
-
-### 3. Build and run the application
+### 2. Build and run the application
 To build your Docker images and start your application, execute this command:
 ```bash
 docker-compose up --build
 ```
 
 Backend: `http://localhost:5000`
+
 Frontend: `http://localhost:3000`
+
 MongoDB: `mongodb://localhost:27017/test`
-Please ensure these ports are free. If they are not, you'll need to free up these ports or modify the port mapping in your docker-compose.yml.
+
+Ensure these ports are free. If they are not, you'll need to free up these ports or modify the port mapping in your docker-compose.yml.
 
 ## Future Updates
 - **Monthly Statistics Storage:** Implement functionality to store monthly statistics in the database for better data analysis and insights.
