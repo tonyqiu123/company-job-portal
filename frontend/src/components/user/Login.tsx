@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { login } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
+import Input from '../shared/Input';
 
 interface LoginProps {
     setUserJwt: (jwt: string | null) => void;
@@ -34,7 +35,7 @@ const Login: React.FC<LoginProps> = ({ setUserJwt }) => {
             <h3>Login to your account</h3>
             <div className='inputCont column'>
                 <h6>Email</h6>
-                <input placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Input placeHolder='Enter your email' search={email} setSearch={setEmail} />
             </div>
             <div className='inputCont column'>
                 <h6>Password</h6>
@@ -43,7 +44,7 @@ const Login: React.FC<LoginProps> = ({ setUserJwt }) => {
             {error && <div>
                 <p className='errorMsg'>{error}</p>
             </div>}
-            <Button text='Login' handleClick={handleLogin} primary={true}></Button>
+            <Button text='Login' handleClick={handleLogin} variant='primary'></Button>
             <div className='signUp-cont row'>
                 <p style={{ color: 'var(--neutral-4)' }}>Don't have an account?</p>
                 <Link to="/sign-up" className='column'><p style={{ color: 'var(--primary-2)' }}>Sign up</p></Link>

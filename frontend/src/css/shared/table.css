@@ -7,7 +7,6 @@ th>p {
     cursor: pointer;
     width: fit-content;
     padding: 6px 10px;
-    border-radius: var(--border-radius-s);
     transition: background-color 0.15s;
 }
 
@@ -52,7 +51,6 @@ td {
 }
 
 .table-actionsComponent>img {
-    border-radius: var(--border-radius-s);
     padding: 8px;
     cursor: pointer;
     transition: background-color .15s;
@@ -68,7 +66,6 @@ td {
     top: 0;
     right: 110%;
     border: 1px solid var(--neutral-3);
-    border-radius: var(--border-radius-m);
     width: fit-content;
     padding: 4px;
     background-color: var(--neutral-1);
@@ -79,7 +76,6 @@ td {
 .table-actionsComponent-dropdown>p {
     cursor: pointer;
     padding: 8px 12px;
-    border-radius: var(--border-radius-m);
     transition: background-color .15s;
 }
 

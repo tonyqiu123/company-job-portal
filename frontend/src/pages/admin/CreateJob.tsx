@@ -4,37 +4,35 @@ import Button from 'src/components/shared/Button';
 import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 import "src/css/admin/createJob.css";
-import SelectDropdown from 'src/components/shared/SelectDropdown';
-import Input from 'src/components/shared/Input';
 import { createJob } from 'src/util/apiFunctions';
 // import { JobInterface } from 'src/util/interfaces';
 // import Table from 'src/components/shared/Table';
 import { Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
+import MultiSelect from 'src/components/shared/MultiSelect';
+import SearchBar from 'src/components/shared/SearchBar';
+import Input from 'src/components/shared/Input';
+import Select from 'src/components/shared/Select';
 // import MonthlyStat from 'src/components/admin/DataCard';
 
 interface CreateJobProps {
     adminJwt: string
 }
 
-const requiredFilesOptions: string[] = ['Resume', 'Cover Letter', 'References', 'Portfolio', 'Certificates'];
-const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Internship'];
-
 
 const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
-    const [position, setPosition] = useState<'Full Time' | 'Part Time' | 'Contract' | 'Internship'>('Full Time');
-    // const [jobs, setJobs] = useState<JobInterface[]>([]);
+    const [position, setPosition] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [location, setLocation] = useState<string>('');
-    const [salary, setSalary] = useState<number>(0);
-    const [requirements, setRequirements] = useState<string>('');
-    const [responsibilities, setResponsibilities] = useState<string>('');
-    const [skills, setSkills] = useState<string>('');
+    const [salary, setSalary] = useState<string>('');
+    const [requirements, setRequirements] = useState<string[]>([]);
+    const [responsibilities, setResponsibilities] = useState<string[]>([]);
+    const [skills, setSkills] = useState<string[]>([]);
     const [deadline, setDeadline] = useState<string>('');
-    const [requiredFiles, setRequiredFiles] = useState<('resume' | 'coverletter' | 'references' | 'portfolio' | 'certificates')[]>([]);
-
+    const [requiredFiles, setRequiredFiles] = useState<string[]>([]);
+    const [error, setError] = useState('')
 
 
     const handlePublish = async () => {
@@ -42,7 +40,7 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
             title,
             description,
             location,
-            salary,
+            salary: Number(salary),
             position,
             requirements: [requirements], // Assuming you're entering these as comma separated strings
             responsibilities: [responsibilities],
@@ -53,18 +51,17 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
 
         try {
             const response = await createJob(adminJwt, jobDetails);
-            console.log(response); // For now just log the result
         } catch (error) {
-            console.error(error); // Handle errors
+            setError(error.message)
         }
     };
 
-
+    const employmentTypes = ['Full Time', 'Part Time', 'Contract', 'Internship'];
+    const documentTypes = ['resume', 'coverletter', 'references', 'portfolio', 'certificates'];
 
     useEffect(() => {
         setIsLoading(false)
     }, [])
-
 
 
     return (
@@ -83,79 +80,70 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
                     <section className='createJob column'>
 
                         <div className='fillFieldsContainer column'>
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Job Title.' >
-                                    <h6>Title<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Title'>
+                                    <p>Title</p>
                                 </Tooltip>
-                                <Input handleState={setTitle} placeholder='City, Country' />
+                                <Input placeHolder='Title' search={title} setSearch={setTitle} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Job Description.' >
-                                    <h6>Description<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Description'>
+                                    <p>Description</p>
                                 </Tooltip>
-                                <Input handleState={setDescription} placeholder='City, Country' />
+                                <Input placeHolder='Description' search={description} setSearch={setDescription} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Job location.' >
-                                    <h6>Location<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Location'>
+                                    <p>Location</p>
                                 </Tooltip>
-                                <Input handleState={setLocation} placeholder='City, Country' />
+                                <Input placeHolder='Location' search={location} setSearch={setLocation} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Salary for the job.' >
-                                    <h6>Salary<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Salary'>
+                                    <p>Salary</p>
                                 </Tooltip>
-                                <Input type='number' handleState={setSalary} placeholder='e.g., $60,000 - $80,000' />
+                                <Input placeHolder='Salary' search={salary} setSearch={setSalary} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Job position type (e.g., full time, part time, contract, internship).' >
-                                    <h6>Position<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Position'>
+                                    <p>Position</p>
                                 </Tooltip>
-                                <SelectDropdown values={positions} handleSetState={setPosition} />
+                                <Select queries={employmentTypes} selected={position} setSelected={setPosition} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Job requirements.' >
-                                    <h6>Requirements<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Requirements'>
+                                    <p>Requirements</p>
                                 </Tooltip>
-                                <Input handleState={setRequirements} placeholder='Enter job requirements' />
+                                <MultiSelect placeholder='Requirements' selected={requirements} setSelected={setRequirements} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Job responsibilities.' >
-                                    <h6>Responsibilities<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Responsibilities'>
+                                    <p>Responsibilities</p>
                                 </Tooltip>
-                                <Input handleState={setResponsibilities} placeholder='Enter job responsibilities' />
+                                <MultiSelect placeholder='Responsibilities' selected={responsibilities} setSelected={setResponsibilities} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Required skills for the job.' >
-                                    <h6>Skills<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Skills'>
+                                    <p>Skills</p>
                                 </Tooltip>
-                                <Input handleState={setSkills} placeholder='Enter required skills' />
+                                <MultiSelect placeholder='Skills' selected={skills} setSelected={setSkills} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Application deadline for the job.' >
-                                    <h6>Deadline<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Salary'>
+                                    <p>Salary</p>
                                 </Tooltip>
-                                <Input handleState={setDeadline} placeholder='Enter application deadline' />
+                                <Input placeHolder='Salary' search={deadline} setSearch={setDeadline} />
                             </div>
-
-                            <div className='fillFieldsContainer-input column'>
-                                <Tooltip toolTipText='Required files for the job.' >
-                                    <h6>Required Files<span style={{ color: 'red' }}>*</span></h6>
+                            <div className='column'>
+                                <Tooltip toolTipText='Files'>
+                                    <p>Files</p>
                                 </Tooltip>
-                                <SelectDropdown values={requiredFilesOptions} handleSetState={setRequiredFiles} />
+                                <MultiSelect placeholder='Files' selected={requiredFiles} setSelected={setRequiredFiles} queries={documentTypes} />
                             </div>
                         </div>
 
-                        <Button text='Publish' primary={true} handleClick={handlePublish} />
-
+                        <Button text='Publish' variant='primary' handleClick={handlePublish} />
+                        <p style={{ color: 'red' }}>{error}</p>
 
                     </section>
                 </div>

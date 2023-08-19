@@ -59,7 +59,6 @@
 
 .jobsBody-jobs {
     border: 1px solid var(--neutral-3);
-    border-radius: var(--border-radius-m);
     overflow: hidden;
 }
 
@@ -122,7 +121,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: var(--border-radius-s);
     cursor: pointer;
 }
 
@@ -198,7 +196,6 @@
 .skele-title,
 .skele-shortText,
 .skele-longText {
-    border-radius: var(--border-radius-m);
     background-color: var(--neutral-2);
     height: 42px;
     width: 100%;

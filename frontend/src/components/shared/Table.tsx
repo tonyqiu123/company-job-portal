@@ -155,7 +155,7 @@ const Table: React.FC<TableProps> = ({ data, handleDelete, actions }) => {
 
                 <div className='table-deleteActivated row'>
                     <h4>{selectedRows.size} selected</h4>
-                    <Button destructive={true} text='Delete' handleClick={handleDeleteData} />
+                    <Button variant='destructive' text='Delete' handleClick={handleDeleteData} />
                 </div>
             }
             {data && <h4>{data.length} Results</h4>}
@@ -165,7 +165,7 @@ const Table: React.FC<TableProps> = ({ data, handleDelete, actions }) => {
                         <tr>
                             {handleDelete &&
                                 <th>
-                                    <input type='checkbox' onChange={handleSelectAll} checked={isAllSelected} />
+                                    <input style={{ cursor: 'pointer' }} type='checkbox' onChange={handleSelectAll} checked={isAllSelected} />
                                 </th>
                             }
                             {tableColumns &&
@@ -185,6 +185,7 @@ const Table: React.FC<TableProps> = ({ data, handleDelete, actions }) => {
                                 {handleDelete &&
                                     <td>
                                         <input
+                                            style={{ cursor: 'pointer' }}
                                             type='checkbox'
                                             checked={selectedRows.has(item._id)}
                                             onChange={() => handleRowClick(item._id)}

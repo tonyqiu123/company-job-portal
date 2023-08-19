@@ -135,10 +135,8 @@ export default function ProfileUserModal({ userJwt, userData, setShowUserModal, 
                 </div>
 
                 <div className="profileModalBtnContainer row">
-                    <button className="button" onClick={() => setShowUserModal(false)}>
-                        <p>Cancel</p>
-                    </button>
-                    <Button text='Save' primary={true} handleClick={updateExperience}></Button>
+                    <Button text='Cancel' variant='outline' handleClick={async () => setShowUserModal(false)}></Button>
+                    <Button text='Save' variant='primary' handleClick={updateExperience}></Button>
                 </div>
             </div>
         </div>

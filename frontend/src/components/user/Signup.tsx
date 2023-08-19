@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import 'src/css/shared/login.css'
 import { signup } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
+import Input from '../shared/Input';
 
 interface SignupProps {
   setUserJwt: (jwt: string) => void
@@ -62,27 +63,27 @@ const Signup: React.FC<SignupProps> = ({ setUserJwt }) => {
       <div className='row' style={{ gap: '16px' }}>
         <div className='inputCont column'>
           <h6>First Name</h6>
-          <input placeholder='Enter your name' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          <Input placeHolder='First name' search={firstName} setSearch={setFirstName} /> 
         </div>
         <div className='inputCont column'>
           <h6>Last Name</h6>
-          <input placeholder='Enter your name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+          <Input placeHolder='Last name' search={lastName} setSearch={setLastName} />
         </div>
       </div>
       <div className='inputCont column'>
         <h6>Email</h6>
-        <input placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} />
+        <Input placeHolder='Enter your email' search={email} setSearch={setEmail} />
         <p className='emailWarning'>Invalid email</p>
       </div>
       <div className='inputCont column'>
         <h6>Password</h6>
-        <input type="password" placeholder='Enter your password' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Input placeHolder='Password' search={password} setSearch={setPassword} />
         <p className='passwordWarning'>Password must be 8 characters, contain one uppercase letter, one lowercase letter, one digit, and one special character</p>
       </div>
       {error && <div>
         <p className='errorMsg'>{error}</p>
       </div>}
-      <Button text='Sign up' handleClick={() => handleSignup()} primary={true}></Button>
+      <Button text='Sign up' handleClick={() => handleSignup()} variant='primary' ></Button>
       <div className='signUp-cont row'>
         <p style={{ color: 'var(--neutral-4)' }}>Already have an account?</p>
         <Link to="/login" className='column'><p style={{ color: 'var(--primary-2)' }}>Login</p></Link>

@@ -1,5 +1,7 @@
+import Counter from "../shared/Counter";
+
 interface DataItem {
-  [key: string]: number | string; // Adjust this type definition based on the actual data structure
+  [key: string]: number | string;
 }
 
 interface DataCardProps {
@@ -13,27 +15,23 @@ function calculatePercentage(current: number, previous: number): string {
   return '';
 }
 
-function calculateDifference(current: number, previous: number): number {
-  return current - previous;
-}
+
 
 function colorCode(current: number, previous: number): string {
   if (current > previous) return 'green';
   if (current < previous) return 'red';
-  
+
   return 'grey';
 }
 
-// function getDaysInMonth(month: string, year: number): number {
-//   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-//   const monthNumber = monthNames.indexOf(month);
-//   return new Date(year, monthNumber + 1, 0).getDate();
-// }
+function roundToTwoDecimalPlaces(num: number): string | number {
+  return Math.round(num * 100) / 100;
+}
 
 
 function DataCard({ data }: DataCardProps): JSX.Element {
   const keys = Object.keys(data[0]).filter(
-    key => key !== "__v" && key !== "_id" && typeof data[0][key] === "number"
+    key => key !== "__v" && key !== "_id" && key !== "year" && typeof data[0][key] === "number"
   );
 
   return (
@@ -44,9 +42,9 @@ function DataCard({ data }: DataCardProps): JSX.Element {
         return (
           <div className="data-card" key={key}>
             <h2>{key}</h2>
-            <p>{lastData}</p>
-            <p style={{ color: colorCode(lastData, previousData) }}>
-              {calculatePercentage(lastData, previousData)} ({calculateDifference(lastData, previousData)})
+            <Counter style={{ fontSize: '40px' }} target={lastData} increment={1} duration={750} />
+            <p style={{ fontSize: '14px', color: colorCode(lastData, previousData) }}>
+              {calculatePercentage(lastData, previousData)} from last month ({(lastData - previousData) > 0 ? '+': ''}{roundToTwoDecimalPlaces(lastData - previousData)})
             </p>
           </div>
         );

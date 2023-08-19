@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 // import MonthlyStat from 'src/components/admin/DataCard'; 
 import DataCard from 'src/components/admin/DataCard';
+import LineGraph from 'src/components/admin/LineGraph';
+
 
 interface DashboardProps {
     adminJwt: string
@@ -21,7 +23,7 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
         try {
             const data = await getMonthlyData()
             setMonthlyData(data)
-            console.log(data)
+            setIsLoading(false)
         } catch (err) {
             console.error(err);
         }
@@ -29,9 +31,10 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
 
     useEffect(() => {
         fetchMonthlyData()
-        setIsLoading(false)
     }, [])
 
+
+    const data = [10, 20, 30, 40, 50, 30, 25, 15, 5, 40];
 
     return (
         <>
@@ -52,19 +55,19 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
                         <div className='dashboard-graphs column'>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <img src="https://cdn.discordapp.com/attachments/715319623637270638/1117560252573962351/Group_56.png" />
+                                <LineGraph data={data} />
                             </div>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <img src="https://cdn.discordapp.com/attachments/715319623637270638/1117560252573962351/Group_56.png" />
+                                <LineGraph data={data} />
                             </div>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <img src="https://cdn.discordapp.com/attachments/715319623637270638/1117560252573962351/Group_56.png" />
+                                <LineGraph data={data} />
                             </div>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <img src="https://cdn.discordapp.com/attachments/715319623637270638/1117560252573962351/Group_56.png" />
+                                <LineGraph data={data} />
                             </div>
 
                         </div>

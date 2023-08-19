@@ -5,11 +5,12 @@ import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 // import SelectDropdown from 'src/components/shared/SelectDropdown';
 import Input from 'src/components/shared/Input';
-import { getJobs, getUsersById } from 'src/util/apiFunctions';
+import { getJobs, getMonthlyData, getUsersById } from 'src/util/apiFunctions';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
+import DataCard from 'src/components/admin/DataCard';
 
 interface ViewJobProps {
     adminJwt: string;
@@ -21,7 +22,22 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
     const [job, setJob] = useState<JobInterface>();
     const [applicantData, setApplicantData] = useState<UserInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [monthlyData, setMonthlyData] = useState<any>([{}])
 
+
+    const fetchMonthlyData = async (): Promise<void> => {
+        try {
+            const data = await getMonthlyData()
+            setMonthlyData(data)
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchMonthlyData()
+    }, [])
     // const userStatus: string[] = ['Unseen', 'Selected', 'Rejected', 'Shortlisted'];
 
     const location = useLocation();
@@ -68,7 +84,7 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
         } catch (err) {
             console.error(err);
         } finally {
-            setIsLoading(false); // Set isLoading to false after the data fetching is complete
+            setIsLoading(false)
         }
     };
 
@@ -105,37 +121,19 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
                     <div className='hr'></div>
                     <section className='jobManagement column'>
                         <div className='dashboard-overviewStats row'>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Total views: 2000'><h6>Total Views</h6></Tooltip>
-                                <h2>+2000</h2>
-                                <p>+20.1% from last month</p>
-                            </div>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Total Users'><h6>Total Users</h6></Tooltip>
-                                <h2>+43,231</h2>
-                                <p>+20.1% from last month</p>
-                            </div>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Total applications: 2000'><h6>Total Applications</h6></Tooltip>
-                                <h2>+43,231</h2>
-                                <p>+20.1% from last month</p>
-                            </div>
-                            <div className='dashboard-overviewStat column'>
-                                <Tooltip toolTipText='Application rate: 50% (A+)'><h6>Application Rate</h6></Tooltip>
-                                <h2>50% (A+)</h2>
-                                <p>+20.1% from last month</p>
-                            </div>
+                            <DataCard data={monthlyData} />
+
                         </div>
                         <div className='jobManagement-search row'>
                             <div className='column'>
                                 <Tooltip toolTipText='Search'><h6>Search</h6></Tooltip>
-                                <Input handleState={setSearch} placeholder="Tony Qiu" />
+                                <Input search={search} setSearch={setSearch} placeholder="Tony Qiu" />
                             </div>
                             {/* <div className='column'>
                                 <Tooltip toolTipText='Status'><h6>Status</h6></Tooltip>
                                 <SelectDropdown values={userStatus} handleSetState={setStatus} />
                             </div> */}
-                            <Button primary={true} text="Search" handleClick={fetchJobData} />
+                            <Button variant='primary' text="Search" handleClick={fetchJobData} />
                         </div>
                         {applicantData.length > 0 ? <Table data={applicantData} actions={actions} /> :
                             <h4>No applicants</h4>

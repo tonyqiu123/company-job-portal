@@ -7,9 +7,9 @@
 }
 
 .fillFieldsContainer {
-    gap: 16px;
+    gap: 20px;
 }
 
-.fillFieldsContainer-input {
+.fillFieldsContainer > .column {
     gap: 8px;
 }

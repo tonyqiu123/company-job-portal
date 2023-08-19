@@ -3,7 +3,7 @@ import 'src/css/admin/dashboard.css'
 import { Link, useLocation } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
-import { getJobs, getUsersById, getFileContent, updateJob } from 'src/util/apiFunctions';
+import { getJobs, getUsersById, getFileContent, updateJob, getMonthlyData } from 'src/util/apiFunctions';
 import Button from 'src/components/shared/Button';
 import 'src/css/admin/viewApplicant.css'
 
@@ -23,6 +23,22 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     const [fileContent, setFileContent] = useState<string[]>([]);
     const [selectedFileType, setSelectedFileType] = useState<number>(0);
     const [applicantStatus, setApplicantStatus] = useState<string>('')
+    const [monthlyData, setMonthlyData] = useState<any>([{}])
+
+
+    const fetchMonthlyData = async (): Promise<void> => {
+        try {
+            const data = await getMonthlyData()
+            setMonthlyData(data)
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchMonthlyData()
+    }, [])
+
 
     const location = useLocation();
     const fetchApplicantData = async (): Promise<void> => {
@@ -50,7 +66,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
         } catch (err) {
             console.error(err);
         } finally {
-            setIsLoading(false);
+            setIsLoading(false)
         }
     };
 
@@ -163,31 +179,31 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                             <div className='row'>
                                 {applicantStatus === '' &&
                                     <>
-                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} successButton={true} />
-                                        <Button text="Shortlist" handleClick={() => applicantAction('shortlist')} successButton={true} />
-                                        <Button text="Reject" handleClick={() => applicantAction('reject')} destructive={true} />
+                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} variant='primary' />
+                                        <Button text="Shortlist" handleClick={() => applicantAction('shortlist')} variant='primary' />
+                                        <Button text="Reject" handleClick={() => applicantAction('reject')} variant='outline' />
                                     </>
 
                                 }
                                 {applicantStatus === 'Shortlisted' &&
                                     <>
-                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} successButton={true} />
-                                        <Button text="Unshortlist" handleClick={() => applicantAction('unshortlist')} destructive={true} />
+                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} variant='primary' />
+                                        <Button text="Unshortlist" handleClick={() => applicantAction('unshortlist')} variant='outline' />
                                     </>
                                 }
                                 {applicantStatus === 'Offered Position' &&
-                                    <Button text="Rescind Offer" handleClick={() => applicantAction('unselect')} destructive={true} />
+                                    <Button text="Rescind Offer" handleClick={() => applicantAction('unselect')} variant='outline' />
 
                                 }
                                 {applicantStatus === 'Selected For Interview' &&
                                     <>
-                                        <Button text="Unselect for interview" handleClick={() => applicantAction('unselectForInterview')} destructive={true} />
-                                        <Button text="Offer Position" handleClick={() => applicantAction('select')} successButton={true} />
+                                        <Button text="Unselect for interview" handleClick={() => applicantAction('unselectForInterview')} variant='outline' />
+                                        <Button text="Offer Position" handleClick={() => applicantAction('select')} variant='primary' />
                                     </>
                                 }
                                 {applicantStatus === 'Rejected' &&
                                     <>
-                                        <Button text="Unreject" handleClick={() => applicantAction('unreject')} destructive={true} />
+                                        <Button text="Unreject" handleClick={() => applicantAction('unreject')} variant='outline' />
                                     </>
 
                                 }

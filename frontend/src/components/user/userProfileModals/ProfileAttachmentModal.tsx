@@ -134,7 +134,7 @@ export default function ProfileAttachmentModal({
                     </button>
                     <Button
                         text="Update"
-                        primary={true}
+                       variant='primary'
                         handleClick={updateAttachment}
                     ></Button>
                 </div>

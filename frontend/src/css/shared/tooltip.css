@@ -2,7 +2,7 @@
 
 .tooltip {
   width: fit-content;
-  gap: 8px;
+  gap: 6px;
 }
 
 .tooltip-hoverBox {
@@ -13,7 +13,6 @@
   background-color: var(--neutral-6);
   padding: 8px 12px;
   border: 1px solid var(--neutral-3);
-  border-radius: var(--border-radius-s);
   right: -2px;
   top: 4px;
   transform: translate(100%, 0%);

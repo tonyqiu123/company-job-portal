@@ -76,10 +76,10 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
             <div className='hr'></div>
             <div className="jobDetailsCard-btnCont row">
 
-              {!shortlist && !application && <Button text='Shortlist' primary={true} handleClick={() => handleJobAction(job?._id, "shortlist")}></Button>}
-              {shortlist && <Button text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist")}></Button>}
-              {application && <Button text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply")}></Button>}
-              {!application && <Button text='Apply' primary={true} handleClick={() => handleJobAction(job?._id, "apply")}></Button>}
+              {!shortlist && !application && <Button text='Shortlist' variant='primary' handleClick={() => handleJobAction(job?._id, "shortlist")}></Button>}
+              {shortlist && <Button variant='outline' text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist")}></Button>}
+              {application && <Button variant='outline' text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply")}></Button>}
+              {!application && <Button text='Apply' variant='primary' handleClick={() => handleJobAction(job?._id, "apply")}></Button>}
             </div>
 
           </div>

@@ -17,7 +17,6 @@
 
 .jobManagement-stats {
     border: 1px solid var(--neutral-3);
-    border-radius: var(--border-radius-l);
     padding: 32px;
     gap: 16px;
 }
