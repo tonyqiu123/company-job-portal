@@ -10,7 +10,6 @@ import { createJob } from 'src/util/apiFunctions';
 import { Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
 import MultiSelect from 'src/components/shared/MultiSelect';
-import SearchBar from 'src/components/shared/SearchBar';
 import Input from 'src/components/shared/Input';
 import Select from 'src/components/shared/Select';
 // import MonthlyStat from 'src/components/admin/DataCard';
@@ -21,7 +20,7 @@ interface CreateJobProps {
 
 
 const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
-    const [position, setPosition] = useState<string>('');
+    const [position, setPosition] = useState<'Full Time' | 'Part Time' | 'Contract' | 'Internship'>('Full Time');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
@@ -42,16 +41,17 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
             location,
             salary: Number(salary),
             position,
-            requirements: [requirements], // Assuming you're entering these as comma separated strings
-            responsibilities: [responsibilities],
-            skills: [skills],
+            requirements: requirements, // Assuming you're entering these as comma separated strings
+            responsibilities: responsibilities,
+            skills: skills,
             deadline,
             requiredFiles
         };
 
         try {
             const response = await createJob(adminJwt, jobDetails);
-        } catch (error) {
+            console.log(response)
+        } catch (error: any) {
             setError(error.message)
         }
     };

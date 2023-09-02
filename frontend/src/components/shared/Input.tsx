@@ -1,4 +1,4 @@
-import React, { useState, InputHTMLAttributes, HTMLAttributes } from 'react';
+import React, {  HTMLAttributes } from 'react';
 import 'src/css/shared/input.css';
 
 type InputProps = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ReactElement, FC, HTMLAttributes } from 'react';
+import { useEffect, useRef, ReactElement, FC, HTMLAttributes } from 'react';
 
 type Props = {
     children: ReactElement;

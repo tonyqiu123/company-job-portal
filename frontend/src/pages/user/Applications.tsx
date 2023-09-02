@@ -5,7 +5,6 @@ import locationIcon from 'src/assets/images/locationIcon.svg';
 import JobResults from 'src/components/user/JobResults';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
 import { Link } from 'react-router-dom';
-import Input from 'src/components/shared/Input';
 
 interface ApplicationsProps {
   userJwt: string

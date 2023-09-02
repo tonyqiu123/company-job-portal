@@ -5,8 +5,8 @@ import Popover from 'src/components/shared/Popover';
 import dropdownIcon from 'src/assets/images/dropDownIcon.svg'
 
 type SelectProps = {
-    selected: string
-    setSelected: React.Dispatch<React.SetStateAction<string>>
+    selected: any
+    setSelected: React.Dispatch<React.SetStateAction<any>>
     darkMode?: boolean;
     queries: string[]
     placeholder?: string

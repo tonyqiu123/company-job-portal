@@ -36,6 +36,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     }
 
     useEffect(() => {
+        console.log(monthlyData)
         fetchMonthlyData()
     }, [])
 

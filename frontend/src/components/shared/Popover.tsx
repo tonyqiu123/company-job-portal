@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useEffect, useState } from 'react';
+import React, { HTMLAttributes } from 'react';
 import 'src/css/shared/popover.css'
 import OutsideClick from 'src/components/shared/OutsideClick';
 

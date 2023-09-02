@@ -33,8 +33,6 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
     }, [])
 
 
-    const data = [10, 20, 30, 40, 50, 30, 25, 15, 5, 40];
-
     return (
         <>
             <div className={`sectionLoading column ${!isLoading && 'skele-exit'}`}>
