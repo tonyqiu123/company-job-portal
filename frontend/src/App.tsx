@@ -18,6 +18,7 @@ import ViewJob from "src/pages/admin/ViewJob";
 import NotFound from "src/pages/shared/NotFound";
 import ViewApplicant from "src/pages/admin/ViewApplicant";
 import CreateJob from "./pages/admin/CreateJob";
+import Demo from "./pages/shared/demo";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -84,6 +85,10 @@ const App: React.FC = () => {
             ? <SearchJobs userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
             : loadingComponent
           }
+        />
+        <Route
+          path="/demo"
+          element={<Demo />}
         />
         <Route
           path="/shortlist"

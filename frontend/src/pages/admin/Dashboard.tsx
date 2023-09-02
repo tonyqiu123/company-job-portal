@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 // import MonthlyStat from 'src/components/admin/DataCard'; 
 import DataCard from 'src/components/admin/DataCard';
-import LineGraph from 'src/components/admin/LineGraph';
 
 
 interface DashboardProps {
@@ -55,19 +54,15 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
                         <div className='dashboard-graphs column'>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <LineGraph data={data} />
                             </div>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <LineGraph data={data} />
                             </div>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <LineGraph data={data} />
                             </div>
                             <div className='dashboard-graph column'>
                                 <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
-                                <LineGraph data={data} />
                             </div>
 
                         </div>
