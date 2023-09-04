@@ -29,7 +29,7 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
     const [requirements, setRequirements] = useState<string[]>([]);
     const [responsibilities, setResponsibilities] = useState<string[]>([]);
     const [skills, setSkills] = useState<string[]>([]);
-    const [deadline, setDeadline] = useState<string>('');
+    const [deadline] = useState<string>('');
     const [requiredFiles, setRequiredFiles] = useState<string[]>([]);
     const [error, setError] = useState('')
 
