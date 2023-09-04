@@ -24,7 +24,7 @@ function colorCode(current: number, previous: number): string {
   return 'grey';
 }
 
-function roundToTwoDecimalPlaces(num: number): string | number {
+function roundToTwoDecimalPlaces(num: number): number {
   return Math.round(num * 100) / 100;
 }
 
@@ -42,9 +42,9 @@ function DataCard({ data }: DataCardProps): JSX.Element {
         return (
           <div className="data-card" key={key}>
             <h2>{key}</h2>
-            <Counter style={{ fontSize: '40px' }} target={lastData} increment={1} duration={750} />
+            <Counter percent={key === 'applicationRate' ? true : false} style={{ fontSize: '40px' }} target={roundToTwoDecimalPlaces(lastData)} increment={1} duration={750} />
             <p style={{ fontSize: '14px', color: colorCode(lastData, previousData) }}>
-              {calculatePercentage(lastData, previousData)} from last month ({(lastData - previousData) > 0 ? '+': ''}{roundToTwoDecimalPlaces(lastData - previousData)})
+              {calculatePercentage(lastData, previousData)} from last month ({(lastData - previousData) > 0 ? '+' : ''}{roundToTwoDecimalPlaces(lastData - previousData)})
             </p>
           </div>
         );

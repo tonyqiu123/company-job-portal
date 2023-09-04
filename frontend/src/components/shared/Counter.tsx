@@ -3,10 +3,11 @@ import React, { useRef, useState, useEffect, HTMLAttributes } from "react";
 type CounterProps = {
     target: number;
     increment?: number;
+    percent?: boolean
     duration?: number;
 } & HTMLAttributes<HTMLElement>
 
-const Counter: React.FC<CounterProps> = ({ target = 100, increment = 1, duration = 1000, ...props }) => {
+const Counter: React.FC<CounterProps> = ({ percent = false, target = 100, increment = 1, duration = 1000, ...props }) => {
     const [currentValue, setCurrentValue] = useState(0);
     const numberRef = useRef<HTMLHeadingElement>(null);
 
@@ -30,7 +31,8 @@ const Counter: React.FC<CounterProps> = ({ target = 100, increment = 1, duration
     }, [target, increment, duration]);
 
     return (
-        <h1 {...props} className={`${props.className ? props.className : ''}`}  ref={numberRef}>{currentValue}</h1>
+
+        <h1 {...props} className={`${props.className ? props.className : ''}`} ref={numberRef}>{percent ? `${target}%` : currentValue}</h1>
     );
 };
 

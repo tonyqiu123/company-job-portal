@@ -9,7 +9,6 @@ input[type="text"] {
     font-size: 15px;
     border: 1px solid #E2E2E2;
     padding: 8px 12px;
-    min-width: 320px;
 }
 
 input[type="text"]:focus {

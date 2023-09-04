@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 // import MonthlyStat from 'src/components/admin/DataCard'; 
 import DataCard from 'src/components/admin/DataCard';
+import SimpleLineChart from 'src/components/admin/SimpleLineChart';
 
 
 interface DashboardProps {
@@ -15,7 +16,7 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [monthlyData, setMonthlyData] = useState<any>([{}])
+    const [monthlyData, setMonthlyData] = useState<any[]>([{}])
 
 
     const fetchMonthlyData = async (): Promise<void> => {
@@ -32,6 +33,9 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
         fetchMonthlyData()
     }, [])
 
+    useEffect(() => {
+        console.log(monthlyData)
+    }, [monthlyData])
 
     return (
         <>
@@ -48,23 +52,30 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
 
                         <DataCard data={monthlyData} />
 
-
                         <div className='dashboard-graphs column'>
                             <div className='dashboard-graph column'>
-                                <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
+                                <Tooltip toolTipText='Traffic Source'><h4>Applications</h4></Tooltip>
+                                <SimpleLineChart data={monthlyData} yAxis='applications' />
                             </div>
                             <div className='dashboard-graph column'>
-                                <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
+                                <Tooltip toolTipText='Traffic Source'><h4>Application Rate</h4></Tooltip>
+                                <SimpleLineChart data={monthlyData} yAxis='applicationRate' />
                             </div>
                             <div className='dashboard-graph column'>
-                                <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
+                                <Tooltip toolTipText='Traffic Source'><h4>Jobs Posted</h4></Tooltip>
+                                <SimpleLineChart data={monthlyData} yAxis='jobsPosted' />
                             </div>
                             <div className='dashboard-graph column'>
-                                <Tooltip toolTipText='Traffic Source'><h4>Traffic Source</h4></Tooltip>
+                                <Tooltip toolTipText='Traffic Source'><h4>Signups</h4></Tooltip>
+                                <SimpleLineChart data={monthlyData} yAxis='signups' />
                             </div>
+                            <div className='dashboard-graph column'>
+                                <Tooltip toolTipText='Traffic Source'><h4>Views</h4></Tooltip>
+                                <SimpleLineChart data={monthlyData} yAxis='views' />
+                            </div>
+
 
                         </div>
-
 
                     </section>
 
