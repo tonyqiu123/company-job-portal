@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     getJobs().then(data => setJobData(data));
-  }, []);
+  }, [userJwt]);
 
   useEffect(() => {
     if (!isUserUrl) {

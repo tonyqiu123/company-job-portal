@@ -130,7 +130,7 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
                             </div> 
                             <div className='column'>
                                 <Tooltip toolTipText='Files'>
-                                    <p>Files <span style={{ color:"red" }}>*</span></p>
+                                    <p>Required Files <span style={{ color:"red" }}>*</span></p>
                                 </Tooltip>
                                 <MultiSelect placeholder='Files' selected={requiredFiles} setSelected={setRequiredFiles} queries={documentTypes} />
                             </div>

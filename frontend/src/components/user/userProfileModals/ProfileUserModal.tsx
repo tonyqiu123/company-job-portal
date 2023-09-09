@@ -4,6 +4,7 @@ import profile from 'src/assets/images/profile.svg';
 import deleteIcon from 'src/assets/images/deleteIcon.svg';
 import Button from 'src/components/shared/Button';
 import { UserInterface } from 'src/util/interfaces';
+import Input from 'src/components/shared/Input';
 
 interface ProfileUserModalProps {
     userJwt: string;
@@ -105,7 +106,7 @@ export default function ProfileUserModal({ userJwt, userData, setShowUserModal, 
                     </div>
                     <div className='column'>
                         <p>Phone Number</p>
-                        <input type="phoneNumber" placeholder='Phone Number' value={phoneNumber ? phoneNumber : userData.phone}
+                        <input type="text" placeholder='Phone Number' value={phoneNumber ? phoneNumber : userData.phone}
                             onChange={event => setPhoneNumber(event.target.value)} />
                     </div>
                 </div>

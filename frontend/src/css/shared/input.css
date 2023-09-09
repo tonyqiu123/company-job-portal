@@ -41,6 +41,6 @@
     outline: 1px solid #313131;
   }
   
-  .input.darkMode::placeholder {
-    color: #A0A0A0;
+  .input::placeholder {
+    color: #9b9b9b;
   }

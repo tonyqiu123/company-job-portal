@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { login } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
-import Input from '../shared/Input';
+import Input from 'src/components/shared/Input';
 
 interface LoginProps {
     setUserJwt: (jwt: string | null) => void;
@@ -39,7 +39,7 @@ const Login: React.FC<LoginProps> = ({ setUserJwt }) => {
             </div>
             <div className='inputCont column'>
                 <h6>Password</h6>
-                <input type="password" placeholder='Enter your password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Input type='password' placeHolder='Enter your password' search={password} setSearch={setPassword} />
             </div>
             {error && <div>
                 <p className='errorMsg'>{error}</p>

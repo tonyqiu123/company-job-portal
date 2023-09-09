@@ -1,21 +1,38 @@
-import React, {  HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import 'src/css/shared/input.css';
 
 type InputProps = {
+    type?: string; // Added 'type' prop
     placeHolder?: string;
     darkMode?: boolean;
     fullWidth?: boolean;
     iconSrc?: string;
-    search: string
+    search: string;
     setSearch: React.Dispatch<React.SetStateAction<string>>;
-} & HTMLAttributes<HTMLElement>
+} & HTMLAttributes<HTMLInputElement>;
 
-const Input: React.FC<InputProps> = ({ search, setSearch, placeHolder = 'Search', darkMode = false, fullWidth, iconSrc, ...props }) => {
-
+const Input: React.FC<InputProps> = ({
+    type = 'text', // Default to 'text' if not specified
+    search,
+    setSearch,
+    placeHolder = 'Search',
+    darkMode = false,
+    fullWidth,
+    iconSrc,
+    ...props
+}) => {
     return (
-        <div {...props} className={'inputContainer'}>
+        <div className={`inputContainer ${props.className}`}>
             {iconSrc && <img alt='' width={16} height={16} src={iconSrc} />}
-            <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder={placeHolder} className={`${props.className ? props.className : ''} input ${darkMode ? 'darkMode' : ''} ${iconSrc ? 'inputWithImg' : ''} ${fullWidth ? 'fullWidth' : ''}`} type="text" />
+            <input
+                type={type} // Use the 'type' prop here
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={placeHolder}
+                className={`input ${darkMode ? 'darkMode' : ''} ${iconSrc ? 'inputWithImg' : ''} ${
+                    fullWidth ? 'fullWidth' : ''
+                }`}
+            />
         </div>
     );
 };

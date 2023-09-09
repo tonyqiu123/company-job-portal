@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/dateUtils'
@@ -27,12 +27,12 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
 
   const jobsPerPage: number = 10
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setAppliedJobs(userData.appliedJobs || [])
     setShortlistedJobs(userData.shortlisted || [])
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let filtered = jobData
     if (search || location || position) {
 

@@ -59,7 +59,7 @@ export default function ProfileAttachmentModal({
     const updateAttachment = async () => {
         try {
             if (!selectedFile || !fileType) {
-                setError('Please select a file and file name');
+                setError('Please select a file');
                 throw new Error('');
             }
             const fileId = await uploadFile(userJwt, selectedFile);
@@ -129,12 +129,14 @@ export default function ProfileAttachmentModal({
                 )}
 
                 <div className="profileModalBtnContainer row">
-                    <button onClick={() => setShowAttachmentModal(false)}>
-                        <p>Cancel</p>
-                    </button>
+                    <Button
+                        text="Cancel"
+                        variant='outline'
+                        handleClick={async () => setShowAttachmentModal(false)}
+                    />
                     <Button
                         text="Update"
-                       variant='primary'
+                        variant='primary'
                         handleClick={updateAttachment}
                     ></Button>
                 </div>
