@@ -19,6 +19,10 @@ import NotFound from "src/pages/shared/NotFound";
 import ViewApplicant from "src/pages/admin/ViewApplicant";
 import CreateJob from "./pages/admin/CreateJob";
 import Demo from "./pages/shared/demo";
+import io from 'socket.io-client';
+
+// websocket
+export const socket = io('http://localhost:5000', { transports: ["websocket"] });
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);

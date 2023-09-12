@@ -1,8 +1,7 @@
 import { JobInterface } from "./interfaces";
-
 // api.ts
-// const API_BASE_URL = 'http://localhost:5000/api';
-const API_BASE_URL = 'https://company-job-portal-production.up.railway.app/api';
+const API_BASE_URL = 'http://localhost:5000';
+// const API_BASE_URL = 'https://company-job-portal-production.up.railway.app';
 
 async function handleErrorResponse(response: Response) {
   try {
@@ -225,6 +224,21 @@ export async function createJob(jwt: string, jobDetails: JobInterface) {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${jwt}`
+    }
+  })
+    .then(handleErrorResponse)
+    .catch(error => {
+      throw error;
+    });
+}
+
+export async function sendEmail(adminJwt: string, role: string, applicantEmail: string): Promise<Response> {
+  return fetch(`${API_BASE_URL}/admin/sendEmail`, {
+    method: 'POST',
+    body: JSON.stringify({ role, applicantEmail }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${adminJwt}`
     }
   })
     .then(handleErrorResponse)

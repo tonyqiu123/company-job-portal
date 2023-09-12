@@ -1,15 +1,39 @@
 const express = require('express');
-const app = express();
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv').config();
 const port = process.env.PORT || 5000;
 const { errorHandler } = require('./middleware/errorMiddleware');
-const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const cors = require('cors');
 const cron = require('node-cron');
 const aggregateMonthlyData = require('./controllers/dataAggregator');
+const http = require('http')
+
+const { Server } = require('socket.io')
+
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*'
+  }
+});
+
+// websocket
+io.on('connection', (socket) => {
+  console.log('Websocket connection opened')
+
+  // handle job applications
+  socket.on('message', (email, action, jobTitle) => {
+    console.log(`${email} ${action} ${jobTitle}`)
+    io.emit('message', { email, action, jobTitle})
+  })
+
+  socket.on('disconnect', () => {
+    console.log('WebSocket connection closed')
+  })
+})
 
 
 connectDB();
@@ -42,15 +66,14 @@ app.use(
   })
 );
 
-app.use('/api/users', require('./routes/userRoutes'))
-app.use('/api/jobs', require('./routes/jobRoutes'))
-app.use('/api/admin', require('./routes/adminRoutes'))
-app.use('/api/monthlyData', require('./routes/monthlyDataRoutes'))
+app.use('/users', require('./routes/userRoutes'))
+app.use('/jobs', require('./routes/jobRoutes'))
+app.use('/admin', require('./routes/adminRoutes'))
+app.use('/monthlyData', require('./routes/monthlyDataRoutes'))
 app.use('/files', express.static('files')); // Static file serving
-app.use('/api/users/files', require('./routes/fileRoutes'))
+app.use('/users/files', require('./routes/fileRoutes'))
 
 app.use(errorHandler)
-
 
 // Schedule a job to run at 00:00 on the first day of every month
 cron.schedule('0 0 1 * *', async () => {
@@ -73,5 +96,6 @@ cron.schedule('*/10 * * * *', async () => {
 });
 
 
-
-app.listen(port, () => console.log(`Server started on port ${port}`));
+server.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});

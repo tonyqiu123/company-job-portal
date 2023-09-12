@@ -1,8 +1,9 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/dateUtils'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
+import { socket } from 'src/App'
 
 interface JobResultsProps {
   userJwt: string
@@ -18,6 +19,7 @@ interface JobResultsProps {
 
 
 const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, setUserData, search, location, position, application = false, shortlist = false }) => {
+
   const [filteredJobs, setFilteredJobs] = useState<JobInterface[]>([])
   const [appliedJobs, setAppliedJobs] = useState<string[]>([])
   const [shortlistedJobs, setShortlistedJobs] = useState<string[]>([])
@@ -61,7 +63,7 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   }, [search, location, position, appliedJobs, shortlistedJobs])
 
 
-  const handleJobAction = async (jobID: string, action: string) => {
+  const handleJobAction = async (jobID: string, action: string, jobTitle: string | undefined) => {
     return new Promise<void>(async (resolve, reject) => {
       try {
         const newAppliedJobs = action === 'apply' ? [...appliedJobs, jobID] : appliedJobs.filter(id => id !== jobID)
@@ -70,6 +72,8 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
           appliedJobs: newAppliedJobs,
           shortlisted: newShortlistedJobs
         }), applyJob(userJwt, userData._id || '', jobID, action)])
+
+        socket.emit('message', userData.email, action, jobTitle)
 
         setAppliedJobs(newAppliedJobs)
         setShortlistedJobs(newShortlistedJobs)

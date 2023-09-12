@@ -33,7 +33,7 @@ const AdminLogin: React.FC<LoginProps> = ({ setAdminJwt }) => {
             <h3>Login to an admin account</h3>
             <div className='inputCont column'>
                 <h6>Password ("abc123")</h6>
-                <Input placeHolder='Enter your password' search={password} setSearch={setPassword} />
+                <Input type='password' placeHolder='Enter your password' search={password} setSearch={setPassword} />
             </div>
             {error && <div>
                 <p className='errorMsg'>{error}</p>

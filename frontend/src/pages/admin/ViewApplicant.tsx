@@ -3,7 +3,7 @@ import 'src/css/admin/dashboard.css'
 import { Link, useLocation } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
-import { getJobs, getUsersById, getFileContent, updateJob, getMonthlyData } from 'src/util/apiFunctions';
+import { getJobs, getUsersById, getFileContent, updateJob, getMonthlyData, sendEmail } from 'src/util/apiFunctions';
 import Button from 'src/components/shared/Button';
 import 'src/css/admin/viewApplicant.css'
 
@@ -36,7 +36,6 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     }
 
     useEffect(() => {
-        console.log(monthlyData)
         fetchMonthlyData()
     }, [])
 
@@ -85,11 +84,8 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
             } else {
                 setApplicantStatus('');
             }
-        } else {
-            console.log('jobData or applicantData is not yet defined');
-        }
+        }  
     }
-
 
 
     const applicantAction = async (action: string) => {
@@ -110,6 +106,9 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                     updatedJobData.shortlisted.push(applicantData._id);
                 } else if (action === 'select') {
                     updatedJobData.selected.push(applicantData._id);
+                    if (updatedJobData.title && applicantData.email) {
+                        sendEmail(adminJwt, updatedJobData.title, applicantData.email)
+                    }
                 }
 
                 await updateJob(adminJwt, updatedJobData);
@@ -120,7 +119,6 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
             console.error(err);
         }
     };
-
 
 
     useEffect(() => {
