@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import 'src/css/user/jobQuery.css';
-import searchIcon from 'src/assets/images/search.svg';
-import locationIcon from 'src/assets/images/locationIcon.svg';
 import JobResults from 'src/components/user/JobResults';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
 import { Link } from 'react-router-dom';

@@ -25,3 +25,5 @@ files/*
 *.njsproj
 *.sln
 *.sw?
+
+.vercel

@@ -3,7 +3,7 @@ import 'src/css/admin/dashboard.css'
 import { Link, useLocation } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
-import { getJobs, getUsersById, getFileContent, updateJob, getMonthlyData, sendEmail } from 'src/util/apiFunctions';
+import { getJobs, getUsersById, getFileContent, updateJob, sendEmail } from 'src/util/apiFunctions';
 import Button from 'src/components/shared/Button';
 import 'src/css/admin/viewApplicant.css'
 
@@ -23,21 +23,8 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     const [fileContent, setFileContent] = useState<string[]>([]);
     const [selectedFileType, setSelectedFileType] = useState<number>(0);
     const [applicantStatus, setApplicantStatus] = useState<string>('')
-    const [monthlyData, setMonthlyData] = useState<any>([{}])
-
-
-    const fetchMonthlyData = async (): Promise<void> => {
-        try {
-            const data = await getMonthlyData()
-            setMonthlyData(data)
-        } catch (err) {
-            console.error(err);
-        }
-    }
-
-    useEffect(() => {
-        fetchMonthlyData()
-    }, [])
+ 
+ 
 
 
     const location = useLocation();

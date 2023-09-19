@@ -4,7 +4,6 @@ import profile from 'src/assets/images/profile.svg';
 import deleteIcon from 'src/assets/images/deleteIcon.svg';
 import Button from 'src/components/shared/Button';
 import { UserInterface } from 'src/util/interfaces';
-import Input from 'src/components/shared/Input';
 
 interface ProfileUserModalProps {
     userJwt: string;
