@@ -7,7 +7,7 @@ import SectionLoading from 'src/components/shared/SectionLoading';
 // import MonthlyStat from 'src/components/admin/DataCard'; 
 import DataCard from 'src/components/admin/DataCard';
 import SimpleLineChart from 'src/components/admin/SimpleLineChart';
-import { socket } from 'src/App';
+import { io } from 'socket.io-client';
 
 
 interface DashboardProps {
@@ -21,13 +21,7 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [monthlyData, setMonthlyData] = useState<any[]>([{}])
     const [recentApplications, setRecentApplications] = useState<any[]>([])
-
-
-    socket.on('message', (data) => {
-        setRecentApplications(prev => [data, ...prev])
-        // Handle the data received from the server here
-    });
-
+    const [socketConnection, setSocketConnection] = useState<any>(null);
 
     const fetchMonthlyData = async (): Promise<void> => {
         try {
@@ -42,6 +36,26 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
     useEffect(() => {
         fetchMonthlyData()
     }, [])
+
+    useEffect(() => {
+        if (!socketConnection) {
+            const socket = io('https://company-job-portal-production.up.railway.app', { transports: ["websocket"] });
+            socket.on('message', (data) => {
+                setRecentApplications(prev => [data, ...prev])
+                // Handle the data received from the server here
+            });
+
+            setSocketConnection(socket);
+        }
+
+        // Clean up the socket connection when the component unmounts
+        return () => {
+            if (socketConnection) {
+                socketConnection.disconnect();
+            }
+        };
+    }, [socketConnection]);
+
 
 
     return (

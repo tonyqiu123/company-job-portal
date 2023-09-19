@@ -1,9 +1,10 @@
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/dateUtils'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
-import { socket } from 'src/App'
+import { io } from 'socket.io-client';
+
 
 interface JobResultsProps {
   userJwt: string
@@ -26,6 +27,21 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [showJobDetailsCard, setShowJobDetailsCard] = useState<boolean>(false)
   const [jobDetailsCardData, setJobDetailsCardData] = useState<any>(null)
+  const [socket, setSocket] = useState<any>(null);
+
+  useEffect(() => {
+    if (!socket) {
+        const socket = io('https://company-job-portal-production.up.railway.app', { transports: ["websocket"] });
+        setSocket(socket);
+    }
+
+    // Clean up the socket connection when the component unmounts
+    return () => {
+        if (socket) {
+          socket.disconnect();
+        }
+    };
+}, [socket]);
 
   const jobsPerPage: number = 10
 
@@ -103,6 +119,7 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   for (let i = 1; i <= Math.ceil(filteredJobs.length / jobsPerPage); i++) {
     pageNumbers.push(i);
   }
+
 
 
   return (
