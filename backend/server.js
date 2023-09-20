@@ -9,6 +9,9 @@ const cors = require('cors');
 const cron = require('node-cron');
 const aggregateMonthlyData = require('./controllers/dataAggregator');
 const http = require('http')
+const AWS = require('aws-sdk')
+
+const s3 = new AWS.S3();
 
 const { Server } = require('socket.io')
 
@@ -27,7 +30,7 @@ io.on('connection', (socket) => {
   // handle job applications
   socket.on('message', (email, action, jobTitle) => {
     console.log(`${email} ${action} ${jobTitle}`)
-    io.emit('message', { email, action, jobTitle})
+    io.emit('message', { email, action, jobTitle })
   })
 
   socket.on('disconnect', () => {
