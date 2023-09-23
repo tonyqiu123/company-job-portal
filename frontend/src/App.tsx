@@ -29,22 +29,7 @@ const App: React.FC = () => {
   const [userJwt, setUserJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_jwt'));
   const [adminJwt, setAdminJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_AdminJwt'));
   const [userData, setUserData] = useState<UserInterface>({});
-
-  useEffect(() => {
-    // Create a script element
-    const script = document.createElement('script');
-    
-    // Set the script source to your web analytics tracker URL
-    script.src = 'https://web-analytics-83e1.vercel.app/tracker.js';
-    
-    // Add the script to the document's head
-    document.head.appendChild(script);
-    
-    // Clean up by removing the script when the component unmounts
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
+ 
 
   useEffect(() => {
     getJobs().then(data => setJobData(data));
