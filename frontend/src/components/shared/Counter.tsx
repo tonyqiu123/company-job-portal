@@ -7,7 +7,7 @@ type CounterProps = {
     duration?: number;
 } & HTMLAttributes<HTMLElement>
 
-const Counter: React.FC<CounterProps> = ({ percent = false, target = 100, increment = 1, duration = 1000, ...props }) => {
+const Counter: React.FC<CounterProps> = ({ percent = false, target = 100, increment = Math.ceil(target / 100), duration = 1250, ...props }) => {
     const [currentValue, setCurrentValue] = useState(0);
     const numberRef = useRef<HTMLHeadingElement>(null);
 

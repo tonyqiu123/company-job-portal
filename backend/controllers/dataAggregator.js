@@ -10,7 +10,10 @@ const aggregateMonthlyData = async (update = false) => {
   const month = currentDate.toLocaleString('default', { month: 'long' }); // get the full name of the month
   const year = currentDate.getFullYear();
 
-  const jobs = await Job.find({ created: { $gte: new Date(year, currentDate.getMonth(), 1), $lte: currentDate } });
+  const jobs = await Job.find();
+
+  let lastMonthsData = await MonthlyData.find()
+  lastMonthsData = lastMonthsData[lastMonthsData.length - 2]
 
   const activeJobs = jobs.length;
 
@@ -20,6 +23,8 @@ const aggregateMonthlyData = async (update = false) => {
     applications += job.applicants.length;
     views += job.views;
   }
+
+  views = views - lastMonthsData.views
 
   const jobsPosted = await Job.countDocuments({ created: { $gte: new Date(year, currentDate.getMonth(), 1), $lte: currentDate } });
 

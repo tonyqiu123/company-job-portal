@@ -50,7 +50,6 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
 
         try {
             const response = await createJob(adminJwt, jobDetails);
-            console.log(response)
         } catch (error: any) {
             setError(error.message)
         }

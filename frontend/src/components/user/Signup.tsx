@@ -77,7 +77,7 @@ const Signup: React.FC<SignupProps> = ({ setUserJwt }) => {
       </div>
       <div className='inputCont column'>
         <h6>Password</h6>
-        <Input placeHolder='Password' search={password} setSearch={setPassword} />
+        <Input type='password' placeHolder='Password' search={password} setSearch={setPassword} />
         <p className='passwordWarning'>Password must be 8 characters, contain one uppercase letter, one lowercase letter, one digit, and one special character</p>
       </div>
       {error && <div>

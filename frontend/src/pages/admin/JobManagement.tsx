@@ -11,6 +11,7 @@ import { useNavigate, Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
 import DataCard from 'src/components/admin/DataCard';
 import Select from 'src/components/shared/Select';
+import AddIcon from 'src/assets/images/addIcon.svg'
 
 interface JobManagementProps {
     adminJwt: string
@@ -22,6 +23,10 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const [jobs, setJobs] = useState<JobInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [monthlyData, setMonthlyData] = useState<any>([{}])
+
+    const handleOutOfFocus = () => {
+        
+    }
 
 
     const fetchMonthlyData = async (): Promise<void> => {
@@ -126,6 +131,7 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
                                 <Button variant='primary' text="Search" handleClick={fetchJobs} />
                             </div>
                             <Button
+                                imageSrc={AddIcon}
                                 variant='primary'
                                 text="Create New Job"
                                 handleClick={async () => navigate('/admin/job-management/create-job')}

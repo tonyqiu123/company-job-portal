@@ -10,6 +10,8 @@ const cron = require('node-cron');
 const aggregateMonthlyData = require('./controllers/dataAggregator');
 const http = require('http')
 const AWS = require('aws-sdk')
+const asyncHandler = require('express-async-handler');
+const { AccessToken } = require('livekit-server-sdk');
 
 const s3 = new AWS.S3();
 
@@ -75,6 +77,25 @@ app.use('/admin', require('./routes/adminRoutes'))
 app.use('/monthlyData', require('./routes/monthlyDataRoutes'))
 app.use('/files', express.static('files')); // Static file serving
 app.use('/users/files', require('./routes/fileRoutes'))
+
+app.put('/interview/getToken', asyncHandler(async (req, res) => {
+  try {
+
+    const { roomName, participantName } = req.body;
+    // identifier to be used for participant.
+    // it's available as LocalParticipant.identity with livekit-client SDK
+
+    const at = new AccessToken(process.env.LK_API_KEY, process.env.LK_API_SECRET, {
+      identity: participantName,
+    });
+    at.addGrant({ roomJoin: true, room: roomName });
+
+    return res.status(200).json(at.toJwt())
+  } catch (err) {
+    return res.status(400).json({ message: 'Bad interview request' })
+  }
+}));
+
 
 app.use(errorHandler)
 

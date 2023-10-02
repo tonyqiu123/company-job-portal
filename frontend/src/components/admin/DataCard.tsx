@@ -42,7 +42,7 @@ function DataCard({ data }: DataCardProps): JSX.Element {
         return (
           <div className="data-card" key={key}>
             <h2>{key}</h2>
-            <Counter percent={key === 'applicationRate' ? true : false} style={{ fontSize: '40px' }} target={roundToTwoDecimalPlaces(lastData)} increment={1} duration={750} />
+            <Counter percent={key === 'applicationRate' ? true : false} style={{ fontSize: '40px' }} target={roundToTwoDecimalPlaces(lastData)} />
             <p style={{ fontSize: '14px', color: colorCode(lastData, previousData) }}>
               {calculatePercentage(lastData, previousData)} from last month ({(lastData - previousData) > 0 ? '+' : ''}{roundToTwoDecimalPlaces(lastData - previousData)})
             </p>

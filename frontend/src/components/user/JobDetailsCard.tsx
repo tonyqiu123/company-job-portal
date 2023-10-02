@@ -10,16 +10,14 @@ interface JobDetailsCardProps {
   handleJobAction: (jobID: string, action: string, jobTitle: string | undefined) => Promise<void>
   application?: boolean
   shortlist?: boolean
+  interview?: boolean
 }
 
-const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetailsCard, handleJobAction, application, shortlist }) => {
+const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetailsCard, handleJobAction, application, shortlist, interview = false }) => {
 
   const [errorState, setErrorState] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [job, setJob] = useState<null | JobInterface>(null);
-
-
-
 
   const handleJobFetch = async () => {
     try {
@@ -71,14 +69,18 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
                 <li key={index}><p>{benefit}</p></li>
               ))}
             </ul>
-            <div className='hr'></div>
-            <div className="jobDetailsCard-btnCont row">
+            {!interview ?
+              <>
+                <div className='hr'></div>
+                <div className="jobDetailsCard-btnCont row">
 
-              {!shortlist && !application && <Button text='Shortlist' variant='primary' handleClick={() => handleJobAction(job?._id, "shortlist", job?.title)}></Button>}
-              {shortlist && <Button variant='outline' text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist", job?.title)}></Button>}
-              {application && <Button variant='outline' text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply", job?.title)}></Button>}
-              {!application && <Button text='Apply' variant='primary' handleClick={() => handleJobAction(job?._id, "apply", job?.title)}></Button>}
-            </div>
+                  {!interview && !shortlist && !application && <Button text='Shortlist' variant='primary' handleClick={() => handleJobAction(job?._id, "shortlist", job?.title)}></Button>}
+                  {shortlist && <Button variant='outline' text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist", job?.title)}></Button>}
+                  {application && <Button variant='outline' text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply", job?.title)}></Button>}
+                  {!interview && !application && <Button text='Apply' variant='primary' handleClick={() => handleJobAction(job?._id, "apply", job?.title)}></Button>}
+                </div>
+              </>
+              : null}
 
           </div>
         }

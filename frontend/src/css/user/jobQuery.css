@@ -4,7 +4,7 @@
 }
 
 .searchJobs-inputContainer {
-    gap: 20px;
+    gap: 10px;
 }
 
 .searchJobs-inputContainer> :nth-child(2) {

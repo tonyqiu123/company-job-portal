@@ -3,8 +3,6 @@ import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/dateUtils'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
-import { io } from 'socket.io-client';
-
 
 interface JobResultsProps {
   userJwt: string
@@ -16,39 +14,36 @@ interface JobResultsProps {
   position: string
   application?: boolean
   shortlist?: boolean
+  filterByInterview?: boolean
 }
 
 
-const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, setUserData, search, location, position, application = false, shortlist = false }) => {
+const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, setUserData, search, location, position, application = false, shortlist = false, filterByInterview = false }) => {
 
   const [filteredJobs, setFilteredJobs] = useState<JobInterface[]>([])
   const [appliedJobs, setAppliedJobs] = useState<string[]>([])
   const [shortlistedJobs, setShortlistedJobs] = useState<string[]>([])
+  const [selectedForInterviewJobs, setSelectedForInterviewJobs] = useState<string[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [showJobDetailsCard, setShowJobDetailsCard] = useState<boolean>(false)
   const [jobDetailsCardData, setJobDetailsCardData] = useState<any>(null)
-  const [socket, setSocket] = useState<any>(null);
-
-  useEffect(() => {
-    if (!socket) {
-        const socket = io('https://company-job-portal-production.up.railway.app', { transports: ["websocket"] });
-        setSocket(socket);
-    }
-
-    // Clean up the socket connection when the component unmounts
-    return () => {
-        if (socket) {
-          socket.disconnect();
-        }
-    };
-}, [socket]);
 
   const jobsPerPage: number = 10
 
   useLayoutEffect(() => {
-    setAppliedJobs(userData.appliedJobs || [])
-    setShortlistedJobs(userData.shortlisted || [])
-  }, [])
+    setAppliedJobs(userData.appliedJobs || []);
+    setShortlistedJobs(userData.shortlisted || []);
+    if (filterByInterview) {
+      let temp: string[] = [];
+      jobData.forEach((job) => {
+        const userId = userData._id || '';
+        if (job.selectedForInterview?.includes(userId)) {
+          temp.push(job._id);
+        }
+      });
+      setSelectedForInterviewJobs(temp);
+    }
+  }, []);
 
   useLayoutEffect(() => {
     let filtered = jobData
@@ -72,11 +67,12 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
     filtered = filtered.filter(job => {
       const applied = appliedJobs.includes(job._id)
       const shortlisted = shortlistedJobs.includes(job._id)
-      return (application && applied) || (shortlist && shortlisted) || (!application && !shortlist && !applied && !shortlisted)
+      const selectedForInterview = selectedForInterviewJobs.includes(job._id)
+      return (application && applied) || (shortlist && shortlisted) || (!filterByInterview && !application && !shortlist && !applied && !shortlisted) || (filterByInterview && selectedForInterview)
     })
 
     setFilteredJobs(filtered)
-  }, [search, location, position, appliedJobs, shortlistedJobs])
+  }, [search, location, position, appliedJobs, shortlistedJobs, selectedForInterviewJobs])
 
 
   const handleJobAction = async (jobID: string, action: string, jobTitle: string | undefined) => {
@@ -88,8 +84,6 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
           appliedJobs: newAppliedJobs,
           shortlisted: newShortlistedJobs
         }), applyJob(userJwt, userData._id || '', jobID, action)])
-
-        socket.emit('message', userData.email, action, jobTitle)
 
         setAppliedJobs(newAppliedJobs)
         setShortlistedJobs(newShortlistedJobs)
@@ -127,7 +121,7 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
       <div className='jobsBody column'>
         {userData && (
           <>
-            {showJobDetailsCard && <JobDetailsCard shortlist={shortlist} application={application} jobId={jobDetailsCardData} setShowJobDetailsCard={setShowJobDetailsCard} handleJobAction={handleJobAction} />}
+            {showJobDetailsCard && <JobDetailsCard interview={filterByInterview} shortlist={shortlist} application={application} jobId={jobDetailsCardData} setShowJobDetailsCard={setShowJobDetailsCard} handleJobAction={handleJobAction} />}
             <h6>{filteredJobs.length === 0 ? 'No' : filteredJobs.length} Results <span>(viewing {Math.min((Math.max(currentPage, 1) - 1) * jobsPerPage + 1, filteredJobs.length)} to {Math.min(currentPage * jobsPerPage, filteredJobs.length)})</span></h6>
             {filteredJobs.length > 0 && (
               <div className='jobsBody-jobs column'>

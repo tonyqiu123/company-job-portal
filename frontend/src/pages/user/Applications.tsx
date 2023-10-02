@@ -41,14 +41,20 @@ const Applications: React.FC<ApplicationsProps> = ({ userJwt, jobData, userData,
         <div className='hr'></div>
         <section className='searchJobs column'>
           <div className='searchJobs-inputContainer column'>
-
-            <div className='searchJobs-input row' style={{ gridTemplateColumns: '1fr' }} >
+            <div className='searchJobs-input column' style={{ gap: '4px' }} >
+              <p>Search</p>
               <Input search={search} setSearch={setSearch} placeHolder="Search" />
             </div>
 
             <div className='searchJobs-input row'>
-              <Input search={location} setSearch={setLocation} placeHolder="Location" />
-              <Select queries={positions} selected={position} setSelected={setPosition} />
+              <div className='column' style={{ gap: '4px', width: '100%' }}>
+                <p>Location</p>
+                <Input search={location} setSearch={setLocation} placeHolder="Location" />
+              </div>
+              <div className='column' style={{ gap: '4px', width: '200px' }}>
+                <p>Role Type</p>
+                <Select queries={positions} selected={position} setSelected={setPosition} />
+              </div>
             </div>
           </div>
           <JobResults {...filters} application={true} jobData={jobData} userJwt={userJwt} userData={userData} setUserData={setUserData} />

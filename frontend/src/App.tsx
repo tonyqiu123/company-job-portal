@@ -19,7 +19,9 @@ import NotFound from "src/pages/shared/NotFound";
 import ViewApplicant from "src/pages/admin/ViewApplicant";
 import CreateJob from "./pages/admin/CreateJob";
 import Demo from "./pages/shared/demo";
- 
+import InterviewRoom from "src/pages/user/InterviewRoom";
+import InterviewDashboard from "./pages/user/InterviewDashboard";
+
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -29,13 +31,14 @@ const App: React.FC = () => {
   const [userJwt, setUserJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_jwt'));
   const [adminJwt, setAdminJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_AdminJwt'));
   const [userData, setUserData] = useState<UserInterface>({});
- 
+
+
 
   useEffect(() => {
-    getJobs().then(data => setJobData(data));
-  }, [userJwt]);
-
-  useEffect(() => {
+    // if applicant/admin has jwt in their localstorage, fetch job data
+    if (userJwt) {
+      getJobs().then(data => setJobData(data));
+    }
     if (!isUserUrl) {
       return
     }
@@ -51,6 +54,7 @@ const App: React.FC = () => {
     }
   }, [userJwt]);
 
+
   useEffect(() => {
     if (!isAdminUrl) {
       return
@@ -65,7 +69,7 @@ const App: React.FC = () => {
   }, [adminJwt]);
 
 
-  const isUserUrl = ['/search', '/applications', '/shortlist', '/profile'].includes(window.location.pathname)
+  const isUserUrl = ['/search', '/applications', '/shortlist', '/profile', '/applicantInterviews', '/applicantInterviews/room'].includes(window.location.pathname)
   const isAdminUrl = [
     '/admin/dashboard',
     '/admin/job-management',
@@ -110,6 +114,20 @@ const App: React.FC = () => {
           path="/profile"
           element={isUserAuthenticated
             ? <Profile setUserData={setUserData} userJwt={userJwt || ''} userData={userData} />
+            : loadingComponent
+          }
+        />
+        <Route
+          path="/applicantInterviews"
+          element={isUserAuthenticated
+            ? <InterviewDashboard userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
+            : loadingComponent
+          }
+        />
+        <Route
+          path="/applicantInterviews/room"
+          element={isUserAuthenticated
+            ? <InterviewRoom />
             : loadingComponent
           }
         />

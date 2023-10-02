@@ -15,19 +15,19 @@ const Login: React.FC<LoginProps> = ({ setUserJwt }) => {
     const [error, setError] = useState<string>('')
 
     const handleLogin = async (): Promise<void> => {
-            try {
-                if (!email || !password) {
-                    setError('Please enter an email and password')
-                    throw new Error('Please enter your email and password');
-                }
-                const data = await login(email, password)
-                localStorage.setItem('modernJobPortal_jwt', data.token);
-                setUserJwt(data.token);
-                window.location.href = '/search';
-            } catch (err: any) {
-                setError(err.message)
-                throw err
+        try {
+            if (!email || !password) {
+                setError('Please enter an email and password')
+                throw new Error('Please enter your email and password');
             }
+            const data = await login(email, password)
+            localStorage.setItem('modernJobPortal_jwt', data.token);
+            setUserJwt(data.token);
+            window.location.href = '/search';
+        } catch (err: any) {
+            setError(err.message)
+            throw err
+        }
     }
 
     return (

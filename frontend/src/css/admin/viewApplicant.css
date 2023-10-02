@@ -35,7 +35,7 @@
 
 
 .activeTab {
-    background-color: var(--neutral-6);
+    background-color: var(--neutral-6); 
     color: var(--neutral-1) !important;
 }
 
@@ -45,9 +45,8 @@
 }
 
 .applicantFiles-file {
-    max-width: 1500px;
     height: calc(100svh - 215px);
-    background-color: var(--neutral-2);
+    background: var(--neutral-2);
 }
 
 .applicantFiles-file>iframe {

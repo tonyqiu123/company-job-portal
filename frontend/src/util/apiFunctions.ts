@@ -1,7 +1,7 @@
 import { JobInterface } from "./interfaces";
 // api.ts
-// const API_BASE_URL = 'http://localhost:5000';
-const API_BASE_URL = 'https://company-job-portal-production.up.railway.app';
+const API_BASE_URL = 'http://localhost:5000';
+// const API_BASE_URL = 'https://company-job-portal-production.up.railway.app';
 
 async function handleErrorResponse(response: Response) {
   try {
@@ -14,6 +14,40 @@ async function handleErrorResponse(response: Response) {
   } catch (error) {
     throw error;
   }
+}
+
+// Interview
+
+export async function getInterviewToken() {
+  return fetch(`${API_BASE_URL}/interview/getToken`, {
+    method: 'PUT',
+    body: JSON.stringify({ roomName: 'test', participantName: 'tony' }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(handleErrorResponse)
+    .catch(error => {
+      throw error;
+    });
+}
+
+
+// Jobs
+
+export async function applyJob(jwt: string, userId: string, jobId: string, action: string) {
+  return fetch(`${API_BASE_URL}/jobs/apply/${jobId}`, {
+    method: 'PUT',
+    body: JSON.stringify({ userId, action }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${jwt}`
+    }
+  })
+    .then(handleErrorResponse)
+    .catch(error => {
+      throw error;
+    });
 }
 
 export async function getJobs(params = {}, jobIds: string[] = [], search?: string, position?: string) {
@@ -32,6 +66,8 @@ export async function getJobs(params = {}, jobIds: string[] = [], search?: strin
     });
 }
 
+
+// User
 export async function getUserData(jwt: string) {
   return fetch(`${API_BASE_URL}/users/`, {
     method: 'GET',
@@ -94,21 +130,6 @@ export async function uploadFile(jwt: string, file: any) {
     headers: {
       'Authorization': `Bearer ${jwt}`
     },
-  })
-    .then(handleErrorResponse)
-    .catch(error => {
-      throw error;
-    });
-}
-
-export async function applyJob(jwt: string, userId: string, jobId: string, action: string) {
-  return fetch(`${API_BASE_URL}/jobs/apply/${jobId}`, {
-    method: 'PUT',
-    body: JSON.stringify({ userId, action }),
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${jwt}`
-    }
   })
     .then(handleErrorResponse)
     .catch(error => {

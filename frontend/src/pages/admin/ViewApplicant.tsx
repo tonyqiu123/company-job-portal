@@ -23,8 +23,8 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     const [fileContent, setFileContent] = useState<string[]>([]);
     const [selectedFileType, setSelectedFileType] = useState<number>(0);
     const [applicantStatus, setApplicantStatus] = useState<string>('')
- 
- 
+
+
 
 
     const location = useLocation();
@@ -71,7 +71,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
             } else {
                 setApplicantStatus('');
             }
-        }  
+        }
     }
 
 
@@ -132,16 +132,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                         {applicantData && <Link to={location}><h2>{applicantData.firstName} {applicantData.lastName}</h2></Link>}
                     </div>
                     <div className='hr'></div>
-                    <section className='jobManagement viewApplicant row'>
-                        <div className='prevNext column'>
-                            <p>← previous</p>
-                            <p>({applicantData?.firstName} {applicantData?.lastName})</p>
-                        </div>
-                        <div className='prevNext column'>
-                            <p>next →</p>
-                            <p>({applicantData?.firstName} {applicantData?.lastName})</p>
-                        </div>
-
+                    <section className='jobManagement viewApplicant row' style={{ justifyContent: 'flex-start' }}>
                         <div className='applicantFiles column'>
                             <div className='applicantFiles-tabs row'>
                                 {applicantData?.attachments?.map((file, index) => {
@@ -149,16 +140,19 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                                 })}
                             </div>
                             <div className='applicantFiles-file'>
-                                <iframe src={fileContent[selectedFileType]}>
+                                {fileContent[selectedFileType] ?
+                                    <iframe src={fileContent[selectedFileType]}>
 
-                                </iframe>
+                                    </iframe>
+                                    :
+                                    <h3 style={{ padding: '24px' }}>User did not upload a file</h3>}
                             </div>
                         </div>
 
                         <div className='applicantInfo column'>
                             <div className='row' style={{ justifyContent: 'flex-start', gap: '8px' }}>
                                 <p>Status:</p>
-                                <h6>{applicantStatus === '' ? 'Pending' : applicantStatus}</h6>
+                                <h6 style={{ whiteSpace: 'nowrap' }}>{applicantStatus === '' ? 'Pending' : applicantStatus}</h6>
                             </div>
                             <h2>{applicantData?.firstName} {applicantData?.lastName}</h2>
                             <p>{applicantData?.email}</p>

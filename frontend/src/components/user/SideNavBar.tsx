@@ -6,6 +6,7 @@ import applications from 'src/assets/images/applications.svg';
 import shortlist from 'src/assets/images/shortlist.svg';
 import profile from 'src/assets/images/profile.svg';
 import signOut from 'src/assets/images/sign-out.svg';
+import interview from 'src/assets/images/interview.svg';
 
 const SideNavBar: React.FC = () => {
 
@@ -54,6 +55,14 @@ const SideNavBar: React.FC = () => {
         >
           <img src={profile} />
           <p>Profile</p>
+        </Link>
+        <Link
+          to="/applicantInterviews"
+          className="sideNav-top-link row"
+          id={location.pathname === '/applicantInterviews' || location.pathname === '/applicantInterviews/room' ? 'activeNavLink' : ''}
+        >
+          <img src={interview} />
+          <p>Interviews</p>
         </Link>
       </div>
 

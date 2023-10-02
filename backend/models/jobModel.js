@@ -11,14 +11,14 @@ const jobSchema = new Schema({
   responsibilities: { type: [String], default: [] },
   skills: { type: [String], default: [] },
   whatWereLookingFor: { type: [String], default: [] },
-  created: { type: Date, default: Date.now },
+  created: { type: Date, default: getCurrentDate },
   deadline: { type: Date, default: getDefaultDeadline },
   remote: { type: Boolean, default: false },
   benefits: { type: [String], default: [] },
   applicants: { type: [String], default: [] },
   selected: { type: [String], default: [] },
   selectedForInterview: { type: [String], default: [] },
-  shortlisted: { type: [String], default: [] }, 
+  shortlisted: { type: [String], default: [] },
   rejected: { type: [String], default: [] },
   requiredDocuments: { type: [String], enum: ['resume', 'coverletter', 'references', 'portfolio', 'certificates'] },
   jobQuestions: { type: [String], default: [] },
@@ -34,5 +34,10 @@ function getDefaultDeadline() {
   return deadline;
 }
 
+function getCurrentDate() {
+  const deadline = new Date();
+  deadline.setDate(deadline.getDate());
+  return deadline;
+}
 const Job = mongoose.model('Job', jobSchema);
 module.exports = Job;
