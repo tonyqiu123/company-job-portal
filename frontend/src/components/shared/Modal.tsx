@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useEffect, useState } from 'react';
+import React, { HTMLAttributes } from 'react';
 import 'src/css/shared/modal.css'
 import Backdrop from 'src/components/shared/Backdrop';
 

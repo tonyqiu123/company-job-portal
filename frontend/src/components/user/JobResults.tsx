@@ -1,9 +1,8 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/dateUtils'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
-import Button from '../shared/Button'
 
 interface JobResultsProps {
   userJwt: string
@@ -76,7 +75,7 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   }, [search, location, position, appliedJobs, shortlistedJobs, selectedForInterviewJobs])
 
 
-  const handleJobAction = async (jobID: string, action: string, jobTitle: string | undefined) => {
+  const handleJobAction = async (jobID: string, action: string) => {
     return new Promise<void>(async (resolve, reject) => {
       try {
         const newAppliedJobs = action === 'apply' ? [...appliedJobs, jobID] : appliedJobs.filter(id => id !== jobID)
@@ -104,10 +103,6 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
         reject()
       }
     })
-  }
-
-  const getJobStatus = (job: JobInterface) => {
-
   }
 
   const indexOfLastJob = currentPage * jobsPerPage

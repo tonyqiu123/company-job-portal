@@ -49,7 +49,7 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
         };
 
         try {
-            const response = await createJob(adminJwt, jobDetails);
+            await createJob(adminJwt, jobDetails);
         } catch (error: any) {
             setError(error.message)
         }
@@ -81,55 +81,55 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
                         <div className='fillFieldsContainer column'>
                             <div className='column'>
                                 <Tooltip toolTipText='Title'>
-                                    <p>Title <span style={{ color:"red" }}>*</span></p>
+                                    <p>Title <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <Input placeHolder='Title' search={title} setSearch={setTitle} />
                             </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Description'>
-                                    <p>Description <span style={{ color:"red" }}>*</span></p>
+                                    <p>Description <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <Input placeHolder='Description' search={description} setSearch={setDescription} />
                             </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Location'>
-                                    <p>Location <span style={{ color:"red" }}>*</span></p>
+                                    <p>Location <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <Input placeHolder='Location' search={location} setSearch={setLocation} />
                             </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Salary'>
-                                    <p>Salary <span style={{ color:"red" }}>*</span></p>
+                                    <p>Salary <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <Input placeHolder='Salary' search={salary} setSearch={setSalary} />
                             </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Position'>
-                                    <p>Position <span style={{ color:"red" }}>*</span></p>
+                                    <p>Position <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <Select queries={employmentTypes} selected={position} setSelected={setPosition} />
                             </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Requirements'>
-                                    <p>Requirements <span style={{ color:"red" }}>*</span></p>
+                                    <p>Requirements <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <MultiSelect placeholder='Requirements' selected={requirements} setSelected={setRequirements} />
                             </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Responsibilities'>
-                                    <p>Responsibilities <span style={{ color:"red" }}>*</span></p>
+                                    <p>Responsibilities <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <MultiSelect placeholder='Responsibilities' selected={responsibilities} setSelected={setResponsibilities} />
                             </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Skills'>
-                                    <p>Skills <span style={{ color:"red" }}>*</span></p>
+                                    <p>Skills <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <MultiSelect placeholder='Skills' selected={skills} setSelected={setSkills} />
-                            </div> 
+                            </div>
                             <div className='column'>
                                 <Tooltip toolTipText='Files'>
-                                    <p>Required Files <span style={{ color:"red" }}>*</span></p>
+                                    <p>Required Files <span style={{ color: "red" }}>*</span></p>
                                 </Tooltip>
                                 <MultiSelect placeholder='Files' selected={requiredFiles} setSelected={setRequiredFiles} queries={documentTypes} />
                             </div>

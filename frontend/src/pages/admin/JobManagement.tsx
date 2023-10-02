@@ -4,12 +4,11 @@ import Button from 'src/components/shared/Button';
 import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 import Input from 'src/components/shared/Input';
-import { deleteJobs, getJobs, getMonthlyData } from 'src/util/apiFunctions';
+import { deleteJobs, getJobs } from 'src/util/apiFunctions';
 import { JobInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
 import { useNavigate, Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
-import DataCard from 'src/components/admin/DataCard';
 import Select from 'src/components/shared/Select';
 import AddIcon from 'src/assets/images/addIcon.svg'
 
@@ -22,22 +21,6 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const [position, setPosition] = useState<string>('');
     const [jobs, setJobs] = useState<JobInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [monthlyData, setMonthlyData] = useState<any>([{}])
-
-    const fetchMonthlyData = async (): Promise<void> => {
-        try {
-            const data = await getMonthlyData()
-            setMonthlyData(data)
-            setIsLoading(false)
-        } catch (err) {
-            console.error(err);
-        }
-    }
-
-    useEffect(() => {
-        fetchMonthlyData()
-    }, [])
-
 
     // const jobStatus: string[] = ['All', 'Pre-deadline', 'Post-deadline', 'Interviewing', 'Filled', 'Trashed'];
     const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Internship'];
@@ -54,6 +37,7 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
             });
 
             setJobs(jobs);
+            setIsLoading(false)
         } catch (err) {
             console.error(err);
         }
@@ -89,7 +73,6 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
 
     useEffect(() => {
         fetchJobs();
-        fetchMonthlyData();
     }, []);
 
     return (
