@@ -3,6 +3,7 @@ import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/dateUtils'
 import { JobInterface, UserInterface } from 'src/util/interfaces'
+import Button from '../shared/Button'
 
 interface JobResultsProps {
   userJwt: string
@@ -105,6 +106,10 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
     })
   }
 
+  const getJobStatus = (job: JobInterface) => {
+
+  }
+
   const indexOfLastJob = currentPage * jobsPerPage
   const indexOfFirstJob = indexOfLastJob - jobsPerPage
   const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob)
@@ -135,9 +140,9 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
                         <h6>{job.title}</h6>
                         <p>{job.remote ? `Remote - ${job.location}` : job.location}</p>
                         <p>{job.position}</p>
-                        <p>{formatDate(job.date || '')}</p>
+                        <p>Closes {formatDate(job.deadline || '')}</p>
                       </div>
-                      <div className='tagsContainer row'>
+                      <div className='tagsContainer row' style={{ justifyContent: 'flex-start' }}>
                         {job.skills && job.skills.slice(0, 5).map((skill, index) => (
                           <p key={index}>{skill}</p>
                         ))}

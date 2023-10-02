@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import Button from '../shared/Button';
 import { formatDate } from 'src/util/dateUtils'
 import { JobInterface } from 'src/util/interfaces';
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import Modal from '../shared/Modal';
 
 interface JobDetailsCardProps {
   jobId: string
@@ -18,6 +21,7 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
   const [errorState, setErrorState] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [job, setJob] = useState<null | JobInterface>(null);
+  const [showJoinRoomModal, setShowJoinRoomModal] = useState(false)
 
   const handleJobFetch = async () => {
     try {
@@ -34,6 +38,15 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
 
   return (
     <div className="modalContainer">
+      <Modal showModal={showJoinRoomModal} setShowModal={setShowJoinRoomModal}>
+        <h2>Confirm joining interview room for {job?.title}?</h2>
+        <div className='row' style={{ gap: '20px', width: '100%' }}>
+          <Button style={{ width: '100%' }} text='Cancel' variant='outline' handleClick={async () => setShowJoinRoomModal(false)}></Button>
+          <Link style={{ width: '100%' }} to={`/applicantInterviews/room?roomId=${job?._id}`}>
+            <Button style={{ width: '100%' }} text='Join interview room' variant='primary'></Button>
+          </Link>
+        </div>
+      </Modal>
 
       <div className="modalDarkBackground" onClick={() => setShowJobDetailsCard(false)}></div>
 
@@ -41,8 +54,14 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
         {!loading &&
 
           <div className='jobDetailsCard-loadedContainer column'>
+            {interview ?
+              <Fragment>
+                <h4>Interview starts: October 6th, 2023 14:00 EST</h4>
+                <Button style={{ maxWidth: '200px' }} text='Join interview room' variant='primary' handleClick={async () => setShowJoinRoomModal(true)}></Button>
+                <div className='hr'></div>
+              </Fragment>
+              : null}
             <h3>{job?.title}</h3>
-            <p>Posted {job && job.date && formatDate(job.date)}</p>
             <p>{job?.remote ? `Remote - ${job?.location}` : job?.location}</p>
             <p>{job?.position}</p>
             {job?.requiredEducation && <p>{job?.requiredEducation}</p>}
@@ -73,8 +92,7 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
               <>
                 <div className='hr'></div>
                 <div className="jobDetailsCard-btnCont row">
-
-                  {!interview && !shortlist && !application && <Button text='Shortlist' variant='primary' handleClick={() => handleJobAction(job?._id, "shortlist", job?.title)}></Button>}
+                  {!shortlist && !application && <Button text='Shortlist' variant='primary' handleClick={() => handleJobAction(job?._id, "shortlist", job?.title)}></Button>}
                   {shortlist && <Button variant='outline' text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist", job?.title)}></Button>}
                   {application && <Button variant='outline' text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply", job?.title)}></Button>}
                   {!interview && !application && <Button text='Apply' variant='primary' handleClick={() => handleJobAction(job?._id, "apply", job?.title)}></Button>}

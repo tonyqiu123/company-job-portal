@@ -8,7 +8,7 @@ import SectionLoading from 'src/components/shared/SectionLoading';
 import DataCard from 'src/components/admin/DataCard';
 import SimpleLineChart from 'src/components/admin/SimpleLineChart';
 import { io } from 'socket.io-client';
-
+import { Tabs, TabsContent, TabsTrigger } from 'src/components/shared/Tabs';
 
 interface DashboardProps {
     adminJwt: string
@@ -75,30 +75,46 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
 
                         <div className='row' style={{ alignItems: 'flex-start', gap: '20px' }}>
 
-                            <div className='dashboard-graphs column'>
-                                <div className='dashboard-graph column'>
-                                    <Tooltip toolTipText='Traffic Source'><h4>Applications</h4></Tooltip>
-                                    <SimpleLineChart data={monthlyData} yAxis='applications' />
-                                </div>
-                                <div className='dashboard-graph column'>
-                                    <Tooltip toolTipText='Traffic Source'><h4>Application Rate</h4></Tooltip>
-                                    <SimpleLineChart data={monthlyData} yAxis='applicationRate' />
-                                </div>
-                                <div className='dashboard-graph column'>
-                                    <Tooltip toolTipText='Traffic Source'><h4>Jobs Posted</h4></Tooltip>
-                                    <SimpleLineChart data={monthlyData} yAxis='jobsPosted' />
-                                </div>
-                                <div className='dashboard-graph column'>
-                                    <Tooltip toolTipText='Traffic Source'><h4>Signups</h4></Tooltip>
-                                    <SimpleLineChart data={monthlyData} yAxis='signups' />
-                                </div>
-                                <div className='dashboard-graph column'>
-                                    <Tooltip toolTipText='Traffic Source'><h4>Views</h4></Tooltip>
-                                    <SimpleLineChart data={monthlyData} yAxis='views' />
-                                </div>
+                            <div style={{ width:'100%' }} className='dashboard-recentStats column'>
 
+                                <Tabs darkMode={false}>
+                                    <TabsTrigger value='Applications'><p>Applications</p></TabsTrigger>
+                                    <TabsTrigger value='Application Rate'><p>Application Rate</p></TabsTrigger>
+                                    <TabsTrigger value='Jobs Posted'><p>Jobs Posted</p></TabsTrigger>
+                                    <TabsTrigger value='Signups'><p>Signups</p></TabsTrigger>
+                                    <TabsTrigger value='Views'><p>Views</p></TabsTrigger>
+                                    <TabsContent value='Applications'>
+                                        <div className='dashboard-graph column'>
+                                            <Tooltip toolTipText='Number of applications'><h4>Number of Applications</h4></Tooltip>
+                                            <SimpleLineChart data={monthlyData} yAxis='applications' />
+                                        </div>
+                                    </TabsContent>
+                                    <TabsContent value='Application Rate'>
+                                        <div className='dashboard-graph column'>
+                                            <Tooltip toolTipText='Views divided by applications'><h4>Application Rate</h4></Tooltip>
+                                            <SimpleLineChart data={monthlyData} yAxis='applicationRate' />
+                                        </div>
+                                    </TabsContent>
+                                    <TabsContent value='Jobs Posted'>
+                                        <div className='dashboard-graph column'>
+                                            <Tooltip toolTipText='Jobs posted this month'><h4>Jobs Posted</h4></Tooltip>
+                                            <SimpleLineChart data={monthlyData} yAxis='jobsPosted' />
+                                        </div>
+                                    </TabsContent>
+                                    <TabsContent value='Signups'>
+                                        <div className='dashboard-graph column'>
+                                            <Tooltip toolTipText='Signups this month'><h4>Signups</h4></Tooltip>
+                                            <SimpleLineChart data={monthlyData} yAxis='signups' />
+                                        </div>
+                                    </TabsContent>
+                                    <TabsContent value='Views'>
+                                        <div className='dashboard-graph column'>
+                                            <Tooltip toolTipText='Views this month'><h4>Views</h4></Tooltip>
+                                            <SimpleLineChart data={monthlyData} yAxis='views' />
+                                        </div>
+                                    </TabsContent>
+                                </Tabs>
                             </div>
-
 
                             <div className='dashboard-recentStats column'>
                                 <Tooltip toolTipText='Recent Applications'><h4>Recent Applications</h4></Tooltip>

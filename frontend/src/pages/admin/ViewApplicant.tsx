@@ -6,7 +6,7 @@ import { JobInterface, UserInterface } from 'src/util/interfaces';
 import { getJobs, getUsersById, getFileContent, updateJob, sendEmail } from 'src/util/apiFunctions';
 import Button from 'src/components/shared/Button';
 import 'src/css/admin/viewApplicant.css'
-
+import Modal from 'src/components/shared/Modal';
 
 
 interface ViewApplicantProps {
@@ -24,7 +24,9 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     const [selectedFileType, setSelectedFileType] = useState<number>(0);
     const [applicantStatus, setApplicantStatus] = useState<string>('')
 
-
+    const [showModal, setShowModal] = useState(false)
+    const [modalText, setModalText] = useState('')
+    const [action, setAction] = useState('')
 
 
     const location = useLocation();
@@ -75,7 +77,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     }
 
 
-    const applicantAction = async (action: string) => {
+    const applicantAction = async () => {
         try {
             if (applicantData && applicantData._id && jobData) {
                 const updatedJobData: JobInterface = { ...jobData };
@@ -101,6 +103,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                 await updateJob(adminJwt, updatedJobData);
                 setJobData(updatedJobData);
                 updateUserStatus();
+                setShowModal(false)
             }
         } catch (err) {
             console.error(err);
@@ -119,6 +122,13 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
 
     return (
         <>
+            <Modal showModal={showModal} setShowModal={setShowModal}>
+                <h3>Are you sure you want to {modalText}?</h3>
+                <div className='row' style={{ gap: '20px', width: '100%' }}>
+                    <Button style={{ width: '100%' }} text="Cancel" handleClick={async () => setShowModal(false)} variant='outline' />
+                    <Button style={{ width: '100%' }} text="Confirm" handleClick={applicantAction} variant='primary' />
+                </div>
+            </Modal>
             <div className={`sectionLoading column ${!isLoading && 'skele-exit'}`}>
                 <SectionLoading />
             </div>
@@ -159,31 +169,63 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                             <div className='row'>
                                 {applicantStatus === '' &&
                                     <>
-                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} variant='primary' />
-                                        <Button text="Shortlist" handleClick={() => applicantAction('shortlist')} variant='primary' />
-                                        <Button text="Reject" handleClick={() => applicantAction('reject')} variant='outline' />
+                                        <Button text="Select for interview" handleClick={async () => {
+                                            setShowModal(true);
+                                            setModalText(`select ${applicantData?.firstName} ${applicantData?.lastName} for the interview`);
+                                            setAction('selectForInterview')
+                                        }} variant='primary' />
+                                        <Button text="Shortlist" handleClick={async () => {
+                                            setShowModal(true);
+                                            setModalText(`shortlist ${applicantData?.firstName} ${applicantData?.lastName}`);
+                                            setAction('shortlist')
+                                        }} variant='primary' />
+                                        <Button text="Reject" handleClick={async () => {
+                                            setShowModal(true);
+                                            setModalText(`reject ${applicantData?.firstName} ${applicantData?.lastName}`);
+                                            setAction('reject')
+                                        }} variant='outline' />
                                     </>
 
                                 }
                                 {applicantStatus === 'Shortlisted' &&
                                     <>
-                                        <Button text="Select for interview" handleClick={() => applicantAction('selectForInterview')} variant='primary' />
-                                        <Button text="Unshortlist" handleClick={() => applicantAction('unshortlist')} variant='outline' />
+                                        <Button text="Select for interview" handleClick={async () => { setShowModal(true); setModalText(`select ${applicantData?.firstName} ${applicantData?.lastName} for the interview`); setAction('selectForInterview') }} variant='primary' />
+                                        <Button text="Unshortlist" handleClick={async () => {
+                                            setShowModal(true);
+                                            setModalText(`unshortlist ${applicantData?.firstName} ${applicantData?.lastName}`);
+                                            setAction('unshortlist')
+                                        }} variant='outline' />
                                     </>
                                 }
                                 {applicantStatus === 'Offered Position' &&
-                                    <Button text="Rescind Offer" handleClick={() => applicantAction('unselect')} variant='outline' />
+                                    <Button text="Rescind Offer" handleClick={async () => {
+                                        setShowModal(true);
+                                        setModalText(`rescind the offer from ${applicantData?.firstName} ${applicantData?.lastName}`);
+                                        setAction('unselect')
+                                    }} variant='outline' />
 
                                 }
                                 {applicantStatus === 'Selected For Interview' &&
                                     <>
-                                        <Button text="Unselect for interview" handleClick={() => applicantAction('unselectForInterview')} variant='outline' />
-                                        <Button text="Offer Position" handleClick={() => applicantAction('select')} variant='primary' />
+                                        <Button text="Unselect for interview" handleClick={async () => {
+                                            setShowModal(true);
+                                            setModalText(`unselect ${applicantData?.firstName} ${applicantData?.lastName} from the interview`);
+                                            setAction('unselectForInterview')
+                                        }} variant='outline' />
+                                        <Button text="Offer Position" handleClick={async () => {
+                                            setModalText(`offer the position to ${applicantData?.firstName} ${applicantData?.lastName}`)
+                                            setShowModal(true);
+                                            setAction('select')
+                                        }} variant='primary' />
                                     </>
                                 }
                                 {applicantStatus === 'Rejected' &&
                                     <>
-                                        <Button text="Unreject" handleClick={() => applicantAction('unreject')} variant='outline' />
+                                        <Button text="Unreject" handleClick={async () => {
+                                            setShowModal(true);
+                                            setModalText(`unreject ${applicantData?.firstName} ${applicantData?.lastName}`)
+                                            setAction('unreject')
+                                        }} variant='outline' />
                                     </>
 
                                 }

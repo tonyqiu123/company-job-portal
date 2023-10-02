@@ -1,0 +1,19 @@
+.backdrop {
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1000;
+    position: fixed;
+    background-color: var(--modal-bg);
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.backdrop.darkMode {
+    background-color: rgba(0, 0, 0, 0.596);
+}
+
+.showBackdrop {
+    pointer-events: unset;
+    opacity: 1;
+}

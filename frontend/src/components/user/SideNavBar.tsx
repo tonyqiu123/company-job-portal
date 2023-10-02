@@ -49,20 +49,20 @@ const SideNavBar: React.FC = () => {
           <p>Applications</p>
         </Link>
         <Link
-          to="/profile"
-          className="sideNav-top-link row"
-          id={location.pathname === '/profile' ? 'activeNavLink' : ''}
-        >
-          <img src={profile} />
-          <p>Profile</p>
-        </Link>
-        <Link
           to="/applicantInterviews"
           className="sideNav-top-link row"
           id={location.pathname === '/applicantInterviews' || location.pathname === '/applicantInterviews/room' ? 'activeNavLink' : ''}
         >
           <img src={interview} />
           <p>Interviews</p>
+        </Link>
+        <Link
+          to="/profile"
+          className="sideNav-top-link row"
+          id={location.pathname === '/profile' ? 'activeNavLink' : ''}
+        >
+          <img src={profile} />
+          <p>Profile</p>
         </Link>
       </div>
 

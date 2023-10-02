@@ -24,11 +24,6 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [monthlyData, setMonthlyData] = useState<any>([{}])
 
-    const handleOutOfFocus = () => {
-        
-    }
-
-
     const fetchMonthlyData = async (): Promise<void> => {
         try {
             const data = await getMonthlyData()
@@ -82,7 +77,6 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     const navigate = useNavigate();
 
     const actions = {
-        // view job
         View_Applicants: async (selectedJob: number) => {
             try {
                 const jobId = jobs[selectedJob]._id;
@@ -90,17 +84,13 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
             } catch (err) {
                 console.error(err);
             }
-        },
-        // edit job
+        }
     }
 
     useEffect(() => {
         fetchJobs();
         fetchMonthlyData();
     }, []);
-
-
-
 
     return (
         <>
@@ -114,10 +104,6 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
                     </div>
                     <div className='hr'></div>
                     <section className='jobManagement column'>
-                        <div className='dashboard-overviewStats row'>
-                            <DataCard data={monthlyData} />
-
-                        </div>
                         <div style={{ alignItems: 'flex-start' }} className='row'>
                             <div className='jobManagement-search row'>
                                 <div className='column'>

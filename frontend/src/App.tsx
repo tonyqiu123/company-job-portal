@@ -126,8 +126,8 @@ const App: React.FC = () => {
         />
         <Route
           path="/applicantInterviews/room"
-          element={isUserAuthenticated
-            ? <InterviewRoom />
+          element={isUserAuthenticated || isAdminAuthenticated
+            ? <InterviewRoom isAdmin={isAdminAuthenticated} />
             : loadingComponent
           }
         />
@@ -161,6 +161,14 @@ const App: React.FC = () => {
           path="/admin/job-management/job/applicant"
           element={isAdminAuthenticated
             ? <ViewApplicant adminJwt={adminJwt || ''} />
+            : loadingComponent
+          }
+        />
+
+        <Route
+          path="/admin/job-management/job/interview"
+          element={isAdminAuthenticated
+            ? <CreateJob adminJwt={adminJwt || ''} />
             : loadingComponent
           }
         />

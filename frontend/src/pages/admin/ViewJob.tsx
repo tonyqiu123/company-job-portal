@@ -5,12 +5,12 @@ import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 // import SelectDropdown from 'src/components/shared/SelectDropdown';
 import Input from 'src/components/shared/Input';
-import { getJobs, getMonthlyData, getUsersById } from 'src/util/apiFunctions';
+import { getJobs, getUsersById } from 'src/util/apiFunctions';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
 import Table from 'src/components/shared/Table';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
-import DataCard from 'src/components/admin/DataCard';
+import Modal from 'src/components/shared/Modal';
 
 interface ViewJobProps {
     adminJwt: string;
@@ -22,23 +22,7 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
     const [job, setJob] = useState<JobInterface>();
     const [applicantData, setApplicantData] = useState<UserInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [monthlyData, setMonthlyData] = useState<any>([{}])
-
-
-    const fetchMonthlyData = async (): Promise<void> => {
-        try {
-            const data = await getMonthlyData()
-            setMonthlyData(data)
-
-        } catch (err) {
-            console.error(err);
-        }
-    }
-
-    useEffect(() => {
-        fetchMonthlyData()
-    }, [])
-    // const userStatus: string[] = ['Unseen', 'Selected', 'Rejected', 'Shortlisted'];
+    const [showJoinRoomModal, setShowJoinRoomModal] = useState(false)
 
     const location = useLocation();
 
@@ -91,8 +75,7 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
     const navigate = useNavigate();
 
     const actions = {
-        // view job
-        View: async (selectedUser: number) => {
+        View_Applicant: async (selectedUser: number) => {
             try {
                 const userId = applicantData[selectedUser]._id;
                 navigate(`/admin/job-management/job/applicant?jobId=${job?._id}&applicantId=${userId}`);
@@ -108,6 +91,16 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
 
     return (
         <>
+            <Modal showModal={showJoinRoomModal} setShowModal={setShowJoinRoomModal}>
+                <h2>Confirm joining interview room for {job?.title}?</h2>
+                <div className='row' style={{ gap: '20px', width: '100%' }}>
+                    <Button style={{ width: '100%' }} text='Cancel' variant='outline' handleClick={async () => setShowJoinRoomModal(false)}></Button>
+                    <Link style={{ width: '100%' }} to={`/applicantInterviews/room?roomId=${job?._id}`}>
+                        <Button style={{ width: '100%' }} text='Join interview room' variant='primary' ></Button>
+                    </Link>
+                </div>
+            </Modal>
+
             <div className={`sectionLoading column ${!isLoading && 'skele-exit'}`}>
                 <SectionLoading />
             </div>
@@ -120,19 +113,13 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
                     </div>
                     <div className='hr'></div>
                     <section className='jobManagement column'>
-                        <div className='dashboard-overviewStats row'>
-                            <DataCard data={monthlyData} />
-
-                        </div>
+                        <h4>Next interview starts: October 6th, 2023 14:00 EST</h4>
+                        <Button style={{ maxWidth: '200px' }} text='Join interview room' variant='primary' handleClick={async () => setShowJoinRoomModal(true)}></Button>
                         <div className='jobManagement-search row'>
                             <div className='column'>
                                 <Tooltip toolTipText='Search'><h6>Search</h6></Tooltip>
                                 <Input search={search} setSearch={setSearch} placeholder="Tony Qiu" />
                             </div>
-                            {/* <div className='column'>
-                                <Tooltip toolTipText='Status'><h6>Status</h6></Tooltip>
-                                <SelectDropdown values={userStatus} handleSetState={setStatus} />
-                            </div> */}
                             <Button variant='primary' text="Search" handleClick={fetchJobData} />
                         </div>
                         {applicantData.length > 0 ? <Table data={applicantData} actions={actions} /> :

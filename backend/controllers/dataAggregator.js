@@ -25,6 +25,7 @@ const aggregateMonthlyData = async (update = false) => {
   }
 
   views = views - lastMonthsData.views
+  applications = applications - lastMonthsData.applications
 
   const jobsPosted = await Job.countDocuments({ created: { $gte: new Date(year, currentDate.getMonth(), 1), $lte: currentDate } });
 

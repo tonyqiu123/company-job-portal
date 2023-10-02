@@ -1,0 +1,24 @@
+.modal {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background-color: var(--neutral-1);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.showModal {
+    pointer-events: unset;
+    opacity: 1;
+}
+
+.modal.showModal {
+    /* This gives depth perception */
+    transform: translate(-50%, -50%);
+}
