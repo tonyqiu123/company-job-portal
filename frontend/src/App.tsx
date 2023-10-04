@@ -71,6 +71,9 @@ const App: React.FC = () => {
     if (!isAdminUrl) {
       return
     }
+    if (jwts.adminJwt) {
+      getJobs().then(data => dispatch(overwriteJobsData(data)));
+    }
     if (jwts.adminJwt && isAdminUrl) {
       validateAdminJwt(jwts.adminJwt)
         .then(() => setIsAdminAuthenticated(true))

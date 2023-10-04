@@ -75,7 +75,7 @@ const ViewApplicant: React.FC = () => {
 
 
     const applicantAction = async () => {
-        try {
+        try { 
             if (applicantData && applicantData._id && jobData && adminJwt) {
                 const updatedJobData: JobInterface = { ...jobData };
 
