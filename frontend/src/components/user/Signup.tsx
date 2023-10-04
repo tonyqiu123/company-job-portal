@@ -51,7 +51,7 @@ const Signup: React.FC = () => {
       const data = await signup(firstName, lastName, email, password)
       localStorage.setItem('modernJobPortal_jwt', data.token);
       dispatch(overwriteUserData(data.jwt));
-      window.location.href = '/search';
+      window.location.href = '/profile';
     } catch (err) {
       throw err
     }
