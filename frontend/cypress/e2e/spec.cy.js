@@ -25,10 +25,10 @@ describe('Login to account and apply to a job', () => {
   it('should fill in the login form', () => {
     cy.visit('https://company-job-portal.netlify.app/login')
     // Fill in the Email input
-    cy.get('input[placeholder="Enter your email"]').type('tonyqiu12345@gmail.com');
+    cy.get('input[placeholder="Enter your email"]').type('john.doe@example.com');
 
     // Fill in the Password input
-    cy.get('input[placeholder="Enter your password"]').type('Tonyqiu1@');
+    cy.get('input[placeholder="Enter your password"]').type('P@ssw0rd');
 
     // Click the Sign Up button
     cy.contains('button', 'Login').click();
@@ -40,10 +40,10 @@ describe('Login to account and apply to a job', () => {
   it('should fill in the login form', () => {
     cy.visit('https://company-job-portal.netlify.app/login')
     // Fill in the Email input
-    cy.get('input[placeholder="Enter your email"]').type('tonyqiu12345@gmail.com');
+    cy.get('input[placeholder="Enter your email"]').type('john.doe@example.com');
 
     // Fill in the Password input
-    cy.get('input[placeholder="Enter your password"]').type('Tonyqiu1@');
+    cy.get('input[placeholder="Enter your password"]').type('P@ssw0rd');
 
     // Click the Sign Up button
     cy.contains('button', 'Login').click();
