@@ -1,7 +1,7 @@
 import { JobInterface } from "./interfaces";
 // api.ts
-// const API_BASE_URL = 'http://localhost:5000';
-const API_BASE_URL = 'https://company-job-portal-production.up.railway.app';
+const API_BASE_URL = 'http://localhost:5000';
+// const API_BASE_URL = 'https://company-job-portal-production.up.railway.app';
 
 async function handleErrorResponse(response: Response) {
   try {
