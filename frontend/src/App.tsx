@@ -27,18 +27,23 @@ import { overwriteUserJwt, overwriteAdminJwt } from "./redux/jwtSlice";
 import { RootState } from "./redux/store";
 
 const App: React.FC = () => {
+
+  // State for loading indicator
   const [loading, setLoading] = useState<boolean>(true);
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
 
+  // Redux setup
   const dispatch = useDispatch();
   const jwts = useSelector((state: RootState) => state.jwt)
 
+  // UseEffect to initialize user JWT from local storage
   useEffect(() => {
     dispatch(overwriteUserJwt(localStorage.getItem('modernJobPortal_jwt')));
     dispatch(overwriteAdminJwt(localStorage.getItem('modernJobPortal_AdminJwt')));
   }, [])
 
+  // UseEffect to fetch user data and jobs when user JWT changes
   useEffect(() => {
     if (!isUserUrl) {
       return
@@ -54,10 +59,14 @@ const App: React.FC = () => {
         })
         .catch(() => setLoading(false))
     } else {
+      // Delay setting loading to false by a couple of hundred milliseconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     }
   }, [jwts.userJwt]);
 
-
+  // UseEffect to validate admin JWT
   useEffect(() => {
     if (!isAdminUrl) {
       return
@@ -67,12 +76,17 @@ const App: React.FC = () => {
         .then(() => setIsAdminAuthenticated(true))
         .catch(() => setLoading(false))
     } else {
-      console.log('hi')
+      // Delay setting loading to false by a couple of hundred milliseconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     }
   }, [jwts.adminJwt]);
 
 
-  const isUserUrl = ['/search', '/applications', '/shortlist', '/profile', '/applicantInterviews', '/applicantInterviews/room'].includes(window.location.pathname)
+  // Check if the current URL is for user pages
+  const isUserUrl = ['/search', '/applications', '/shortlist', '/profile', '/applicantInterviews', '/applicantInterviews/room'].includes(window.location.pathname);
+  // Check if the current URL is for admin pages
   const isAdminUrl = [
     '/admin/dashboard',
     '/admin/job-management',
@@ -80,6 +94,8 @@ const App: React.FC = () => {
     '/admin/user-management/view'
   ].some(url => window.location.pathname.startsWith(url));
 
+
+  // Determine the component to render while loading
   const loadingComponent = loading ? <Loading /> : <BadLogin isAdminUrl={isAdminUrl} />;
 
   return (

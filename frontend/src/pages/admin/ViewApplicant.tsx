@@ -11,8 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/redux/store';
 import { updateJobById } from 'src/redux/jobsSlice';
 
-
-
 const ViewApplicant: React.FC = () => {
 
     const adminJwt = useSelector((state: RootState) => state.jwt.adminJwt)
