@@ -39,6 +39,7 @@ const JobResults: React.FC<JobResultsProps> = ({ search, location, position, app
   const jobsPerPage: number = 10
 
   const jobData = useSelector((state: RootState) => state.jobs)
+  console.log(jobData)
 
   useEffect(() => {
     if (!socket) {
@@ -96,7 +97,7 @@ const JobResults: React.FC<JobResultsProps> = ({ search, location, position, app
     })
 
     setFilteredJobs(filtered)
-  }, [search, location, position, appliedJobs, shortlistedJobs, selectedForInterviewJobs])
+  }, [userJwt, search, location, position, appliedJobs, shortlistedJobs, selectedForInterviewJobs])
 
 
   const handleJobAction = async (jobID: string, action: string, jobTitle: string | undefined) => {
