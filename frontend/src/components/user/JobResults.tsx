@@ -40,11 +40,11 @@ const JobResults: React.FC<JobResultsProps> = ({ search, location, position, app
 
   const jobData = useSelector((state: RootState) => state.jobs)
   console.log(jobData)
-
+  
   useEffect(() => {
     if (!socket) {
-      const socket = io('http://localhost:5000', { transports: ["websocket"] });
-        // const socket = io('https://company-job-portal-production.up.railway.app', { transports: ["websocket"] });
+      // const socket = io('http://localhost:5000', { transports: ["websocket"] });
+        const socket = io('https://company-job-portal-production.up.railway.app', { transports: ["websocket"] });
         setSocket(socket);
     }
 
