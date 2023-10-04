@@ -9,12 +9,6 @@ const attachmentSchema = new Schema({
     }
 });
 
-
-const jobQuestionResponseSchema = new Schema({
-    questionId: String,
-    response: String,
-})
-
 const userSchema = new Schema(
     {
         firstName: { type: String, required: true },
@@ -28,7 +22,6 @@ const userSchema = new Schema(
         date: { type: Date, default: Date.now },
         appliedJobs: { type: [String], default: [] },
         shortlisted: { type: [String], default: [] }, 
-        jobQuestionResponse: { type: [jobQuestionResponseSchema], default: [] },
     },
     { timestamps: true }
 );

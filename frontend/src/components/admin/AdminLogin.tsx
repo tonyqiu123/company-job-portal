@@ -2,15 +2,16 @@ import { useState } from 'react'
 import { adminLogin } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
 import Input from '../shared/Input';
+import { useDispatch } from 'react-redux';
+import { overwriteAdminJwt } from 'src/redux/jwtSlice';
 
-interface LoginProps {
-    setAdminJwt: (jwt: string | null) => void;
-}
 
-const AdminLogin: React.FC<LoginProps> = ({ setAdminJwt }) => {
+const AdminLogin: React.FC = () => {
 
     const [password, setPassword] = useState<string>("")
     const [error, setError] = useState<string>('')
+
+    const dispatch = useDispatch()
 
     const handleLogin = async (): Promise<void> => {
         try {
@@ -20,7 +21,7 @@ const AdminLogin: React.FC<LoginProps> = ({ setAdminJwt }) => {
             }
             const data = await adminLogin(password)
             localStorage.setItem('modernJobPortal_AdminJwt', data.token);
-            setAdminJwt(data.token);
+            dispatch(overwriteAdminJwt(data.token));
             window.location.href = '/admin/dashboard';
         } catch (err: any) {
             setError(err.message)

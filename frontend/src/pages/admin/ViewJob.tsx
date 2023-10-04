@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Tooltip from 'src/components/shared/Tooltip';
 import Button from 'src/components/shared/Button';
 import "src/css/admin/jobManagement.css";
-import 'src/css/shared/table.css';
-// import SelectDropdown from 'src/components/shared/SelectDropdown';
+import 'src/css/shared/table.css'; 
 import Input from 'src/components/shared/Input';
 import { getJobs, getUsersById } from 'src/util/apiFunctions';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
@@ -11,14 +10,15 @@ import Table from 'src/components/shared/Table';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 import Modal from 'src/components/shared/Modal';
+import { RootState } from 'src/redux/store';
+import { useSelector } from 'react-redux';
 
-interface ViewJobProps {
-    adminJwt: string;
-}
 
-const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
-    const [search, setSearch] = useState<string>('');
-    // const [status, setStatus] = useState<string>('Unseen');
+const ViewJob: React.FC = () => {
+
+    const adminJwt = useSelector((state: RootState) => state.jwt.adminJwt)
+
+    const [search, setSearch] = useState<string>(''); 
     const [job, setJob] = useState<JobInterface>();
     const [applicantData, setApplicantData] = useState<UserInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -30,7 +30,7 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
         try {
             const searchParams = new URLSearchParams(location.search);
             const jobId = searchParams.get('jobId')
-            if (jobId) {
+            if (jobId && adminJwt) {
                 const jobData = await getJobs({}, [jobId]);
                 setJob(jobData[0]);
                 const userIds = jobData[0].applicants
@@ -59,7 +59,7 @@ const ViewJob: React.FC<ViewJobProps> = ({ adminJwt }) => {
                             return { ...applicant, status: 'Rejected' };
                         }
                     }
-                    return { ...applicant, status: 'Pending' }; // assuming default status is 'pending'
+                    return { ...applicant, status: 'Pending' };  
                 });
                 setApplicantData(applicantData);
             } else {

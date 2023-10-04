@@ -11,38 +11,39 @@ import { useNavigate, Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
 import Select from 'src/components/shared/Select';
 import AddIcon from 'src/assets/images/addIcon.svg'
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/redux/store';
 
-interface JobManagementProps {
-    adminJwt: string
-}
+const JobManagement: React.FC = () => {
 
-const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
+    const adminJwt = useSelector((state: RootState) => state.jwt.adminJwt)
+
     const [search, setSearch] = useState<string>('');
     const [position, setPosition] = useState<string>('');
     const [jobs, setJobs] = useState<JobInterface[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    // const jobStatus: string[] = ['All', 'Pre-deadline', 'Post-deadline', 'Interviewing', 'Filled', 'Trashed'];
     const positions: string[] = ['All', 'Full Time', 'Part Time', 'Contract', 'Internship'];
 
     const fetchJobs = async (): Promise<void> => {
         try {
-            let jobs = await getJobs({ location: true, views: true, salary: true, date: true, deadline: true, remote: true, applicants: true, yoe: true, title: true, position: true }, [], search, position);
+            const fixedPosition = position === 'All' ? '' : position;
+            let jobs = await getJobs({ location: true, views: true, salary: true, date: true, deadline: true, remote: true, applicants: true, yoe: true, title: true, position: true }, [], search, fixedPosition);
 
-            jobs = jobs.map((job: JobInterface) => {
-                return {
-                    ...job,
-                    applications: job.applicants?.length,
-                };
-            });
-
+            if (jobs.length > 0) {
+                jobs = jobs.map((job: JobInterface) => {
+                    return {
+                        ...job,
+                        applications: job.applicants?.length,
+                    };
+                });
+            }
             setJobs(jobs);
             setIsLoading(false)
         } catch (err) {
             console.error(err);
         }
     };
-
 
     const handleDelete = async (selectedRows: Set<string>) => {
         try {
@@ -59,7 +60,6 @@ const JobManagement: React.FC<JobManagementProps> = ({ adminJwt }) => {
     };
 
     const navigate = useNavigate();
-
     const actions = {
         View_Applicants: async (selectedJob: number) => {
             try {

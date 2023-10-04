@@ -3,13 +3,12 @@ import { updateUser } from 'src/util/apiFunctions';
 import profile from 'src/assets/images/profile.svg';
 import deleteIcon from 'src/assets/images/deleteIcon.svg';
 import Button from 'src/components/shared/Button';
-import { UserInterface } from 'src/util/interfaces';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'src/redux/store';
+import { overwriteUserData } from 'src/redux/userSlice';
 
 interface ProfileUserModalProps {
-    userJwt: string;
-    userData: UserInterface;
     setShowUserModal: (show: boolean) => void;
-    setUserData: (data: UserInterface) => void;
 }
 
 interface UserData {
@@ -20,7 +19,11 @@ interface UserData {
     urls: string[];
 }
 
-export default function ProfileUserModal({ userJwt, userData, setShowUserModal, setUserData }: ProfileUserModalProps) {
+export default function ProfileUserModal({ setShowUserModal }: ProfileUserModalProps) {
+
+    const userData = useSelector((state: RootState) => state.user)
+    const userJwt = useSelector((state: RootState) => state.jwt.userJwt)
+
     const [firstName, setFirstName] = useState(userData.firstName);
     const [lastName, setLastName] = useState(userData.lastName);
     const [location, setLocation] = useState(userData.location);
@@ -28,6 +31,8 @@ export default function ProfileUserModal({ userJwt, userData, setShowUserModal, 
     const [url, setUrl] = useState('');
     const [listOfUrls, setListOfUrls] = useState(userData.urls);
     const [error, setError] = useState('');
+
+    const dispatch = useDispatch()
 
     const addUrl = () => {
         if (listOfUrls?.length === 5) {
@@ -68,8 +73,10 @@ export default function ProfileUserModal({ userJwt, userData, setShowUserModal, 
                 urls: listOfUrls || [],
                 phone: phoneNumber,
             };
-            await updateUser(userJwt, updatedUserData);
-            setUserData(updatedUserData);
+            if (userJwt) {
+                await updateUser(userJwt, updatedUserData);
+            }
+            dispatch(overwriteUserData(updatedUserData));
             setShowUserModal(false);
         } catch (err) {
             setError('Failed to update user');

@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import 'src/css/user/jobQuery.css'
 import JobResults from 'src/components/user/JobResults'
-import { JobInterface, UserInterface } from 'src/util/interfaces'
 import { Link } from 'react-router-dom'
 import Input from 'src/components/shared/Input'
 import Select from 'src/components/shared/Select'
 
-interface ShortlistProps {
-  userJwt: string
-  jobData: JobInterface[]
-  setUserData: (userData: UserInterface) => void
-  userData: UserInterface
-}
 
-const Shortlist: React.FC<ShortlistProps> = ({ userJwt, jobData, userData, setUserData }) => {
+const Shortlist: React.FC = () => {
   const [filters, setFilters] = useState({ search: '', location: '', position: '' })
   const [search, setSearch] = useState('')
   const [location, setLocation] = useState('')
@@ -55,7 +48,7 @@ const Shortlist: React.FC<ShortlistProps> = ({ userJwt, jobData, userData, setUs
               </div>
             </div>
           </div>
-          <JobResults {...filters} shortlist={true} jobData={jobData} userJwt={userJwt} userData={userData} setUserData={setUserData} />
+          <JobResults {...filters} shortlist={true} />
         </section>
       </div>
     </>

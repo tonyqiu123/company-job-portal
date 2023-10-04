@@ -1,0 +1,73 @@
+/* Default Badge */
+.badge {
+    font-size: 12px !important;
+    background-color: #242424;
+    color: #ffffff;
+    padding: 5px 10px;
+    transition: all 350ms cubic-bezier(0.32, 0.72, 0, 1);
+    width: fit-content;
+    cursor: default;
+    white-space: nowrap;
+}
+
+.badge:hover {
+    opacity: .75;
+}
+
+.badge.darkMode {
+    color: #161616;
+    background-color: #f1f1f1;
+}
+
+/* Secondary Badge */
+.badge.secondary {
+    background-color: #f1f1f1;
+    color: #494949;
+    padding: 5px 10px;
+}
+
+.badge.darkMode.secondary {
+    background-color: #333;
+}
+
+/* Outline Badge */
+.badge.outline {
+    background-color: transparent;
+    border: 1px solid #dbdbdb;
+    color: #363636;
+    padding: 4px 9px;
+}
+
+.badge.darkMode.outline {
+    border-color: #474747;
+}
+
+/* Destructive Badge */
+.badge.destructive {
+    background-color: #e23131;
+    padding: 5px 10px;
+}
+
+.badge.darkMode.destructive {
+    background-color: #9c2525;
+}
+
+/* Success Badge */
+.badge.success {
+    background-color: #35ad53;
+    padding: 5px 10px;
+}
+
+.badge.darkMode.success {
+    background-color: #31a826;
+}
+
+/* Warning Badge */
+.badge.warning {
+    background-color: #d3b221;
+    padding: 5px 10px;
+}
+
+.badge.darkMode.warning {
+    background-color: #95a826;
+}

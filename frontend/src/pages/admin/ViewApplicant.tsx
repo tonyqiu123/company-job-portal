@@ -3,23 +3,22 @@ import 'src/css/admin/dashboard.css'
 import { Link, useLocation } from 'react-router-dom';
 import SectionLoading from 'src/components/shared/SectionLoading';
 import { JobInterface, UserInterface } from 'src/util/interfaces';
-import { getJobs, getUsersById, getFileContent, updateJob, sendEmail } from 'src/util/apiFunctions';
+import { getUsersById, getFileContent, updateJob, sendEmail } from 'src/util/apiFunctions';
 import Button from 'src/components/shared/Button';
 import 'src/css/admin/viewApplicant.css'
 import Modal from 'src/components/shared/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'src/redux/store';
+import { updateJobById } from 'src/redux/jobsSlice';
 
 
-interface ViewApplicantProps {
-    adminJwt: string;
-}
 
-const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
+const ViewApplicant: React.FC = () => {
 
-
+    const adminJwt = useSelector((state: RootState) => state.jwt.adminJwt)
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [applicantData, setApplicantData] = useState<UserInterface>();
-    const [jobData, setJobData] = useState<JobInterface>();
     const [fileContent, setFileContent] = useState<string[]>([]);
     const [selectedFileType, setSelectedFileType] = useState<number>(0);
     const [applicantStatus, setApplicantStatus] = useState<string>('')
@@ -28,28 +27,28 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
     const [modalText, setModalText] = useState('')
     const [action, setAction] = useState('')
 
+    const dispatch = useDispatch()
 
-    const location = useLocation();
+    const searchParams = new URLSearchParams(useLocation().search);
+    const jobId = searchParams.get('jobId');
+    const jobData = useSelector((state: RootState) =>
+        state.jobs.find((job) => job._id === jobId)
+    );
+
     const fetchApplicantData = async (): Promise<void> => {
         try {
-            const searchParams = new URLSearchParams(location.search);
             const applicantId = searchParams.get('applicantId');
-            const jobId = searchParams.get('jobId');
-            if (jobId) {
-                const jobData = await getJobs({}, [jobId]);
-                setJobData(jobData[0]);
-                if (applicantId) {
-                    const applicantData = await getUsersById({}, adminJwt, '', [applicantId]);
-                    setApplicantData(applicantData[0]);
-                    if (applicantData[0].attachments.length > 0) {
-                        let files: string[] = []
-                        for (let i = 0; i < applicantData[0].attachments.length; i++) {
-                            const fetchedFile = await getFileContent(applicantData[0].attachments[i]._id);
-                            files = [...files, fetchedFile]
-                        }
-                        setFileContent(files)
-                        updateUserStatus()
+            if (applicantId && adminJwt) {
+                const applicantData = await getUsersById({}, adminJwt, '', [applicantId]);
+                setApplicantData(applicantData[0]);
+                if (applicantData[0].attachments.length > 0) {
+                    let files: string[] = []
+                    for (let i = 0; i < applicantData[0].attachments.length; i++) {
+                        const fetchedFile = await getFileContent(applicantData[0].attachments[i]._id);
+                        files = [...files, fetchedFile]
                     }
+                    setFileContent(files)
+                    updateUserStatus()
                 }
             }
         } catch (err) {
@@ -79,7 +78,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
 
     const applicantAction = async () => {
         try {
-            if (applicantData && applicantData._id && jobData) {
+            if (applicantData && applicantData._id && jobData && adminJwt) {
                 const updatedJobData: JobInterface = { ...jobData };
 
                 updatedJobData.rejected = updatedJobData.rejected ? updatedJobData.rejected.filter(id => id !== applicantData._id) : [];
@@ -101,7 +100,7 @@ const ViewApplicant: React.FC<ViewApplicantProps> = ({ adminJwt }) => {
                 }
 
                 await updateJob(adminJwt, updatedJobData);
-                setJobData(updatedJobData);
+                dispatch(updateJobById(updatedJobData));
                 updateUserStatus();
                 setShowModal(false)
             }

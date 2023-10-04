@@ -3,14 +3,10 @@ import 'src/css/shared/login.css'
 import AdminLogin from 'src/components/admin/AdminLogin';
 import desktopLogo from 'src/assets/images/desktopLogo.svg'
 
-interface LandingProps {
-  setAdminJwt: (jwt: string | null) => void;
-}
 
-const AdminLanding: React.FC<LandingProps> = ({ setAdminJwt }) => {
+const AdminLanding: React.FC = () => {
 
   const [currentImg, setCurrentImg] = useState(0);
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,9 +15,6 @@ const AdminLanding: React.FC<LandingProps> = ({ setAdminJwt }) => {
     return () => clearInterval(interval);
   }, []);
 
-
-
-
   return (
 
 
@@ -29,7 +22,7 @@ const AdminLanding: React.FC<LandingProps> = ({ setAdminJwt }) => {
       <img src={desktopLogo} />
       <div className='landing-left'>
         <div className='landing-left-child column'>
-          <AdminLogin setAdminJwt={setAdminJwt} />
+          <AdminLogin />
         </div>
       </div>
       <div className='landing-right column'>

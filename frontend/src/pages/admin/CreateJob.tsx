@@ -5,21 +5,19 @@ import "src/css/admin/jobManagement.css";
 import 'src/css/shared/table.css';
 import "src/css/admin/createJob.css";
 import { createJob } from 'src/util/apiFunctions';
-// import { JobInterface } from 'src/util/interfaces';
-// import Table from 'src/components/shared/Table';
 import { Link } from "react-router-dom";
 import SectionLoading from 'src/components/shared/SectionLoading';
 import MultiSelect from 'src/components/shared/MultiSelect';
 import Input from 'src/components/shared/Input';
 import Select from 'src/components/shared/Select';
-// import MonthlyStat from 'src/components/admin/DataCard';
-
-interface CreateJobProps {
-    adminJwt: string
-}
+import { RootState } from 'src/redux/store';
+import { useSelector } from 'react-redux';
 
 
-const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
+const CreateJob: React.FC = () => {
+
+    const adminJwt = useSelector((state: RootState) => state.jwt.adminJwt)
+
     const [position, setPosition] = useState<'Full Time' | 'Part Time' | 'Contract' | 'Internship'>('Full Time');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [title, setTitle] = useState<string>('');
@@ -35,21 +33,23 @@ const CreateJob: React.FC<CreateJobProps> = ({ adminJwt }) => {
 
 
     const handlePublish = async () => {
-        const jobDetails = {
-            title,
-            description,
-            location,
-            salary: Number(salary),
-            position,
-            requirements: requirements, // Assuming you're entering these as comma separated strings
-            responsibilities: responsibilities,
-            skills: skills,
-            deadline,
-            requiredFiles
-        };
-
         try {
-            await createJob(adminJwt, jobDetails);
+            if (adminJwt) {
+                const jobDetails = {
+                    _id: '',
+                    title,
+                    description,
+                    location,
+                    salary: Number(salary),
+                    position,
+                    requirements: requirements,
+                    responsibilities: responsibilities,
+                    skills: skills,
+                    deadline,
+                    requiredDocuments: requiredFiles
+                };
+                await createJob(adminJwt, jobDetails);
+            }
         } catch (error: any) {
             setError(error.message)
         }

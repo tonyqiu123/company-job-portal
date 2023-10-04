@@ -1,15 +1,17 @@
 import { getJobs } from 'src/util/apiFunctions'
 import { useEffect, useState } from 'react';
-import Button from '../shared/Button';
-import { JobInterface } from 'src/util/interfaces';
+import Button from '../shared/Button'; 
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../shared/Modal';
+import { formatDate } from 'src/util/dateUtils';
+import Badge from '../shared/Badge';
+import { JobInterface } from 'src/util/interfaces';
 
 interface JobDetailsCardProps {
   jobId: string
   setShowJobDetailsCard: (show: boolean) => void
-  handleJobAction: (jobID: string, action: string) => Promise<void>
+  handleJobAction: (jobID: string, action: string, jobTitle: string | undefined) => Promise<void>
   application?: boolean
   shortlist?: boolean
   interview?: boolean
@@ -31,6 +33,17 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
       setErrorState(error);
     }
   };
+
+  const getJobStatus = (job: JobInterface) => {
+    if (job?.selected && job?.selected?.length > 0) {
+      return <Badge variant='destructive' text='Offers sent' />
+    }
+    if (job?.selectedForInterview && job?.selectedForInterview?.length > 0) {
+      return <Badge variant='warning' text='Interviewing stage' />
+    }
+    return <Badge variant='success' text='Open to applications' />
+  }
+
   useEffect(() => {
     handleJobFetch();
   }, []);
@@ -60,13 +73,16 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
                 <div className='hr'></div>
               </Fragment>
               : null}
+            {job && getJobStatus(job)}
             <h3>{job?.title}</h3>
+            <p>Closes {formatDate(job?.deadline || '')}</p>
             <p>{job?.remote ? `Remote - ${job?.location}` : job?.location}</p>
             <p>{job?.position}</p>
             {job?.requiredEducation && <p>{job?.requiredEducation}</p>}
             {job?.salary && <p>${job?.salary} per year plus any listed benefits</p>}
-            <div className='hr' style={{ marginBottom: '12px' }}></div>
-            <p>At TD Bank, our goal is to empower individuals and businesses with the financial tools they need to succeed. We're a team of passionate professionals dedicated to shaping the future of banking and delivering innovative solutions.When hiring at TD Bank, we value candidates who thrive in a collaborative and inclusive culture. We seek individuals who embrace feedback, contribute unique perspectives, and are committed to making a positive impact on customers' lives. We prioritize a mission-driven approach, focusing on exceeding customer expectations and supporting their financial goals. We also value curiosity, adaptability, and an eagerness to stay informed about emerging trends in banking. At TD Bank, we welcome talent from around the world and offer remote work opportunities. Join our dynamic organization and be part of shaping the future of banking.</p>
+            <div className='hr'></div>
+            <h6>Company Description</h6>
+            <p>NCR's Waterloo Software Engineering organization is building world-class banking applications used by some of the top financial organizations in the world. We are currently hiring several co-op students for Software Development positions in our Waterloo office. If you're looking for a chance to get hands-on real-world software development experience, helping to solve challenging issues and build high-quality applications used by some of the top banking organizations in the world, consider joining our NCR team. NCR was recently named a "Top 100 Global Tech Leader" by Thomson Reuters. We also won the 2022 FinTech Breakthrough Award for the Best Banking Infrastructure Platform, demonstrating NCR's leadership as an innovator in banking. Our Software Engineering organization uses state of the art technologies along with Agile software development methodologies to deliver innovative solutions to the customers we serve.</p>
             <h6>Job Description</h6>
             <p>{job?.description}</p>
             <h6>What you will be doing:</h6>
@@ -75,26 +91,40 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
                 <li key={index}><p>{responsibility}</p></li>
               ))}
             </ul>
-            <h6>What we are looking for:</h6>
+            {job?.benefits && job.benefits.length > 0 ?
+              <>
+                <h6>Benefits:</h6>
+                <ul>
+                  {job?.benefits?.map((benefit, index) => (
+                    <li key={index}><p>{benefit}</p></li>
+                  ))}
+                </ul>
+              </>
+              : null}
+            <h6>Required Skills:</h6>
             <ul>
-              {job?.whatWereLookingFor?.map((whatWereLookingFor, index) => (
-                <li key={index}><p>{whatWereLookingFor}</p></li>
+              {job?.skills?.map((skill, index) => (
+                <li key={index}><p>{skill}</p></li>
               ))}
             </ul>
-            <h6>Benefits:</h6>
-            <ul>
-              {job?.benefits?.map((benefit, index) => (
-                <li key={index}><p>{benefit}</p></li>
-              ))}
-            </ul>
-            {!interview ?
+            {job?.requiredDocuments && job.requiredDocuments.length > 0 ?
+              <>
+                <h6>Required Files:</h6>
+                <ul>
+                  {job?.requiredDocuments?.map((document, index) => (
+                    <li key={index}><p>{document}</p></li>
+                  ))}
+                </ul>
+              </>
+              : null}
+            {!interview && job?.selected && job?.selected?.length === 0 && job?.selectedForInterview && job?.selectedForInterview?.length === 0 ?
               <>
                 <div className='hr'></div>
                 <div className="jobDetailsCard-btnCont row">
-                  {!shortlist && !application && <Button text='Shortlist' variant='primary' handleClick={() => handleJobAction(job?._id, "shortlist")}></Button>}
-                  {shortlist && <Button variant='outline' text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist")}></Button>}
-                  {application && <Button variant='outline' text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply")}></Button>}
-                  {!interview && !application && <Button text='Apply' variant='primary' handleClick={() => handleJobAction(job?._id, "apply")}></Button>}
+                  {!shortlist && !application && <Button text='Shortlist' variant='primary' handleClick={() => handleJobAction(job?._id, "shortlist", job?.title)}></Button>}
+                  {shortlist && <Button variant='outline' text='Unshortlist' handleClick={() => handleJobAction(job?._id, "unshortlist", job?.title)}></Button>}
+                  {application && <Button variant='outline' text='Unapply' handleClick={() => handleJobAction(job?._id, "unapply", job?.title)}></Button>}
+                  {!interview && !application && <Button text='Apply' variant='primary' handleClick={() => handleJobAction(job?._id, "apply", job?.title)}></Button>}
                 </div>
               </>
               : null}

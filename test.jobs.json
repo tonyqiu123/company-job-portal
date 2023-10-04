@@ -1,1123 +1,629 @@
 [{
   "_id": {
-    "$oid": "64789895cb03a4c55a42a315"
+    "$oid": "651b46127b5645a900d64cd5"
   },
   "title": "Software Engineer",
-  "location": "San Francisco, CA, USA",
-  "description": "We are seeking a skilled Software Engineer to join our development team. The ideal candidate will be responsible for designing, developing, and testing software applications. Strong programming skills, knowledge of software development methodologies, and the ability to work in a collaborative environment are required.",
+  "location": "Victoria, British Columbia, Canada",
+  "description": "As a Software Engineer, you will play a crucial role in designing, developing, and maintaining software applications and systems. Your responsibilities will include writing clean, efficient code, collaborating with cross-functional teams to gather and analyze requirements, and troubleshooting and debugging software issues to ensure optimal functionality and user satisfaction. Strong programming skills, problem-solving abilities, and a solid understanding of software development methodologies are essential for success in this role.",
+  "salary": 80000,
+  "position": "Full Time",
+  "requirements": [
+    "Proficiency in multiple programming languages, such as Java, Python, or C++, with a strong focus on writing well-structured and efficient code.",
+    "Experience with software development tools and methodologies, including version control systems (e.g., Git), Agile or Scrum practices, and continuous integration/continuous deployment (CI/CD) pipelines.",
+    "Ability to collaborate effectively with cross-functional teams, gather and document software requirements, and communicate technical concepts to non-technical stakeholders."
+  ],
+  "responsibilities": [
+    "Develop and maintain software applications to meet project requirements and deliverables.",
+    "Debug and troubleshoot software issues to identify and implement effective solutions.",
+    "Collaborate with team members to design, code, and test software components, ensuring optimal functionality and user experience."
+  ],
+  "skills": [
+    "Data analysis and visualization",
+    "Project management",
+    "Machine learning and artificial intelligence",
+    "Cloud computing (e.g., AWS, Azure, GCP)",
+    "UI/UX design"
+  ],
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-02T22:37:06.000Z"
+  },
+  "deadline": {
+    "$date": "2023-12-31T23:37:06.000Z"
+  },
+  "remote": false,
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0",
+    "651cb6e45db3412679930814"
+  ],
+  "selected": [
+    "651b422d7b5645a900d64cb0"
+  ],
+  "selectedForInterview": [],
+  "shortlisted": [],
+  "rejected": [],
+  "requiredDocuments": [
+    "resume"
+  ],
+  "jobQuestions": [],
+  "views": 109,
+  "yoe": 3,
+  "__v": 8
+},
+{
+  "_id": {
+    "$oid": "651b917c7b5645a900d64e49"
+  },
+  "title": "Registered Nurse",
+  "location": "Toronto, Ontario, Canada",
+  "description": "As a Registered Nurse, your primary focus will be on providing high-quality patient care and ensuring the well-being of individuals in healthcare settings. You will assess patients' conditions, administer medications, and coordinate with healthcare teams to develop and implement care plans. Compassion, attention to detail, and a deep knowledge of medical procedures and protocols are vital for delivering safe and effective nursing care.",
+  "salary": 70000,
+  "position": "Full Time",
+  "requirements": [
+    "A current and valid nursing license in the applicable jurisdiction is mandatory.",
+    "Strong medical and nursing knowledge, typically with a BSN or ADN degree, and a commitment to ongoing professional development are essential.",
+    "Excellent communication and interpersonal abilities for effective patient interaction and collaboration within the healthcare team are required."
+  ],
+  "responsibilities": [
+    "Perform comprehensive patient assessments, develop care plans, and administer treatments to ensure optimal patient well-being.",
+    " Safely administer medications, monitor their effects, and educate patients on medication regimens.",
+    "Collaborate with healthcare teams, including physicians and support staff, to provide coordinated and holistic patient care."
+  ],
+  "skills": [
+    "Clinical Competence",
+    "Communication",
+    "Critical Thinking"
+  ],
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T03:58:52.403Z"
+  },
+  "deadline": {
+    "$date": "2024-01-01T04:58:52.403Z"
+  },
+  "remote": false,
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
+  "selected": [],
+  "selectedForInterview": [],
+  "shortlisted": [],
+  "rejected": [],
+  "requiredDocuments": [
+    "resume"
+  ],
+  "jobQuestions": [],
+  "views": 13,
+  "yoe": 3,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "651b91f27b5645a900d64e68"
+  },
+  "title": "Marketing Manager",
+  "location": "Toronto, Ontario, Canada",
+  "description": "As a Marketing Manager, you will lead marketing strategies and campaigns to promote products or services, drive brand awareness, and achieve business goals. Your responsibilities will include market research, developing marketing plans, managing budgets, and overseeing creative and promotional efforts. Effective communication, strategic thinking, and a strong grasp of digital marketing tools and trends are critical for success in this dynamic role.",
   "salary": 90000,
   "position": "Full Time",
   "requirements": [
-    "Proficiency in programming languages such as Java, C++, or Python",
-    "Experience with software development methodologies",
-    "Ability to work in a team and independently"
+    "A bachelor's degree in marketing, business, or a related field is typically required.",
+    "Proven experience in marketing, including developing and implementing successful marketing strategies.",
+    "Strong leadership and management skills to lead a marketing team effectively."
   ],
   "responsibilities": [
-    "Designing and implementing software applications",
-    "Testing and debugging code",
-    "Collaborating with cross-functional teams"
-  ],
-  "whatWereLookingFor": [
-    "Strong programming skills in Java, C++, or Python",
-    "Knowledge of software development methodologies (Agile, Scrum, etc.)",
-    "Ability to solve complex problems",
-    "Excellent communication and teamwork skills"
+    "Create and execute comprehensive marketing strategies to achieve business objectives, including market research and competitor analysis.",
+    "Manage marketing budgets efficiently to maximize ROI and track expenditures accurately.",
+    "Oversee the planning, execution, and evaluation of marketing campaigns across various channels, both online and offline."
   ],
   "skills": [
-    "Programming languages (Java, C++, Python)",
-    "Software development methodologies",
-    "Problem-solving",
-    "Communication skills",
-    "Teamwork"
+    "Digital Marketing",
+    "Strategic Thinking",
+    "Effective Communication"
   ],
-  "date": {
-    "$date": "2023-06-15T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:00:50.507Z"
   },
   "deadline": {
-    "$date": "2023-07-15T23:59:59.999Z"
+    "$date": "2024-01-01T05:00:50.507Z"
   },
   "remote": false,
-  "applicants": [],
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 3,
   "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 2,
+  "views": 6,
   "yoe": 3,
-  "created": {
-    "$date": "2023-07-13T20:37:26.487Z"
-  }
+  "__v": 1
 },
 {
   "_id": {
-    "$oid": "64789895cb03a4c55a42a320"
-  },
-  "title": "Sales Manager",
-  "location": "New York City, NY, USA",
-  "description": "We are looking for an experienced Sales Manager to lead our sales team. The ideal candidate will be responsible for setting sales goals, developing sales strategies, and managing a team of sales representatives. Strong leadership skills, a deep understanding of sales processes, and the ability to drive results are required for this role.",
-  "salary": 80000,
-  "position": "Part Time",
-  "requirements": [
-    "Proven experience as a Sales Manager",
-    "Strong leadership and team management skills",
-    "Deep understanding of sales processes and strategies"
-  ],
-  "responsibilities": [
-    "Setting sales goals and targets",
-    "Developing and implementing sales strategies",
-    "Managing and coaching a team of sales representatives"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience as a Sales Manager",
-    "Strong leadership and team management skills",
-    "Deep understanding of sales processes and strategies",
-    "Excellent communication and interpersonal abilities"
-  ],
-  "skills": [
-    "Sales management",
-    "Leadership",
-    "Team management",
-    "Sales strategies",
-    "Communication",
-    "Interpersonal skills"
-  ],
-  "date": {
-    "$date": "2023-08-10T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-09-10T23:59:59.999Z"
-  },
-  "remote": false,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Performance-based bonuses"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 2,
-  "yoe": 3,
-  "created": {
-    "$date": "2023-07-13T20:37:32.700Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a317"
+    "$oid": "651b92577b5645a900d64e6a"
   },
   "title": "Data Scientist",
-  "location": "Boston, MA, USA",
-  "description": "We are seeking a talented Data Scientist to join our dashboard team. The ideal candidate will be responsible for analyzing complex data sets, developing statistical models, and providing data-driven insights. Strong analytical skills, proficiency in programming languages, and knowledge of machine learning algorithms are required for this role.",
-  "salary": 95000,
-  "position": "Full Time",
-  "requirements": [
-    "Proficiency in programming languages such as Python or R",
-    "Experience in data analysis and statistical modeling",
-    "Knowledge of machine learning algorithms"
-  ],
-  "responsibilities": [
-    "Analyzing large data sets and extracting insights",
-    "Developing statistical models and algorithms",
-    "Collaborating with cross-functional teams to drive data-driven decision making"
-  ],
-  "whatWereLookingFor": [
-    "Strong analytical and problem-solving skills",
-    "Proficiency in programming languages (Python, R)",
-    "Experience in data visualization",
-    "Knowledge of machine learning algorithms",
-    "Excellent communication and presentation skills"
-  ],
-  "skills": [
-    "Data analysis",
-    "Statistical modeling",
-    "Programming languages (Python, R)",
-    "Machine learning algorithms",
-    "Data visualization",
-    "Communication skills",
-    "Problem-solving"
-  ],
-  "date": {
-    "$date": "2023-06-25T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-07-25T23:59:59.999Z"
-  },
-  "remote": false,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Professional development opportunities"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a31c"
-  },
-  "title": "Mobile App Developer",
-  "location": "San Francisco, CA, USA",
-  "description": "We are seeking a skilled Mobile App Developer to join our mobile development team. The ideal candidate will be responsible for designing, developing, and maintaining mobile applications for iOS and Android platforms. Strong knowledge of mobile development languages such as Swift or Kotlin, as well as experience with mobile frameworks, is required for this role.",
-  "salary": 75000,
+  "location": "Markham, Ontario, Canada",
+  "description": "As a Data Scientist, your role revolves around collecting, analyzing, and interpreting large datasets to derive actionable insights and inform business decisions. You will use statistical analysis, machine learning algorithms, and data visualization techniques to solve complex problems and provide data-driven recommendations. Proficiency in programming languages such as Python or R, expertise in data manipulation, and a solid understanding of statistical concepts are key competencies for excelling in this field.",
+  "salary": 40000,
   "position": "Contract",
   "requirements": [
-    "Proficiency in mobile development languages (Swift, Kotlin)",
-    "Experience with mobile frameworks (e.g., UIKit, Flutter)",
-    "Knowledge of iOS and Android development guidelines"
+    "Bachelor's or higher degree in a relevant field such as Computer Science, Statistics, or Data Science.",
+    "Strong knowledge of SQL and experience with database management systems.",
+    "Excellent communication skills to convey complex findings to non-technical stakeholders."
   ],
   "responsibilities": [
-    "Designing and developing mobile applications for iOS and Android",
-    "Testing and debugging mobile apps",
-    "Collaborating with designers and backend developers"
-  ],
-  "whatWereLookingFor": [
-    "Strong mobile development skills (Swift, Kotlin)",
-    "Experience with mobile frameworks (UIKit, Flutter)",
-    "Knowledge of iOS and Android development guidelines",
-    "Attention to detail and ability to work in a team"
+    "Collect and preprocess large datasets to ensure data quality and integrity.",
+    "Develop and implement machine learning models for predictive analytics and data-driven decision-making.",
+    "Create informative data visualizations and reports to communicate insights effectively."
   ],
   "skills": [
-    "Swift",
-    "Kotlin",
-    "Mobile frameworks (UIKit, Flutter)",
-    "iOS and Android development",
-    "Attention to detail",
-    "Teamwork"
+    "Python",
+    "R",
+    "Pandas",
+    "Matplotlib ",
+    "Seaborn"
   ],
-  "date": {
-    "$date": "2023-07-20T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:02:31.539Z"
   },
   "deadline": {
-    "$date": "2023-08-20T23:59:59.999Z"
+    "$date": "2024-01-01T05:02:31.539Z"
   },
   "remote": false,
-  "applicants": [],
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0",
+    "651cb6e45db3412679930814"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 3,
   "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
+  "views": 5,
+  "yoe": 3,
+  "__v": 2
 },
 {
   "_id": {
-    "$oid": "64789895cb03a4c55a42a324"
+    "$oid": "651b930e7b5645a900d64eb4"
   },
-  "title": "Digital Marketing Specialist",
-  "location": "Austin, TX, USA",
-  "description": "We are seeking a skilled Digital Marketing Specialist to join our marketing team. The ideal candidate will be responsible for planning and executing digital marketing campaigns, managing social media platforms, and analyzing campaign performance. Strong knowledge of digital marketing strategies, proficiency in marketing tools, and excellent communication skills are required for this role.",
-  "salary": 60000,
+  "title": "Data Analyst Intern",
+  "location": "Markham, Ontario, Canada",
+  "description": "As a Data Analyst Intern you will have the opportunity to work on real-world data analysis projects that impact our business. You will collaborate with our data team to gather, analyze, and interpret data, turning it into valuable insights that drive decision-making. This role provides an excellent learning opportunity for individuals looking to kickstart their career in data analytics.",
+  "salary": 40000,
   "position": "Internship",
   "requirements": [
-    "Experience in planning and executing digital marketing campaigns",
-    "Proficiency in social media management",
-    "Strong analytical and communication skills"
+    "Currently enrolled in a bachelor's or master's degree program in a related field (e.g., Data Science, Statistics, Computer Science).",
+    "Strong analytical skills and a passion for working with data.",
+    "Proficiency in data analysis tools and programming languages (e.g., Python, R, SQL)."
   ],
   "responsibilities": [
-    "Planning and executing digital marketing campaigns",
-    "Managing social media platforms",
-    "Analyzing campaign performance and optimizing strategies"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience in digital marketing",
-    "Knowledge of social media trends",
-    "Strong analytical and communication skills",
-    "Ability to work in a fast-paced environment"
+    "Develop and execute data analysis scripts and queries using tools like Python, R, or SQL.",
+    "Perform exploratory data analysis to uncover trends, patterns, and anomalies.",
+    "Assist in gathering data from various sources, including databases, spreadsheets, and external datasets."
   ],
   "skills": [
-    "Digital marketing",
-    "Social media management",
-    "Analytical skills",
-    "Communication skills",
-    "Attention to detail",
-    "Proficiency in marketing tools",
-    "Knowledge of social media trends"
+    "Seaborn",
+    "R",
+    "Python",
+    "SQL"
   ],
-  "date": "2023-09-01T00:00:00.000Z",
-  "deadline": "2023-10-01T23:59:59.999Z",
-  "remote": false,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a31e"
-  },
-  "title": "Cybersecurity Analyst",
-  "location": "London, UK",
-  "description": "We are looking for a skilled Cybersecurity Analyst to join our security team. The ideal candidate will be responsible for monitoring and analyzing security systems, identifying potential threats, and implementing security measures. Strong knowledge of cybersecurity principles, experience with security tools, and the ability to stay updated on the latest threats are required for this role.",
-  "salary": 80000,
-  "position": "Part Time",
-  "requirements": [
-    "Proficiency in cybersecurity principles and best practices",
-    "Experience with security tools (e.g., SIEM, IDS/IPS)",
-    "Knowledge of network protocols and vulnerabilities"
-  ],
-  "responsibilities": [
-    "Monitoring and analyzing security systems",
-    "Identifying and investigating potential security incidents",
-    "Implementing security measures and controls"
-  ],
-  "whatWereLookingFor": [
-    "Strong knowledge of cybersecurity principles and best practices",
-    "Experience with security tools (SIEM, IDS/IPS)",
-    "Knowledge of network protocols and vulnerabilities",
-    "Analytical and problem-solving skills"
-  ],
-  "skills": [
-    "Cybersecurity",
-    "Security tools (SIEM, IDS/IPS)",
-    "Network protocols",
-    "Vulnerability assessment",
-    "Analytical skills",
-    "Problem-solving"
-  ],
-  "date": {
-    "$date": "2023-07-30T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:05:34.426Z"
   },
   "deadline": {
-    "$date": "2023-08-30T23:59:59.999Z"
+    "$date": "2024-01-01T05:05:34.426Z"
   },
   "remote": false,
-  "applicants": [],
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 4,
   "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 2,
+  "views": 4,
   "yoe": 3,
-  "created": {
-    "$date": "2023-07-08T16:55:48.273Z"
-  }
+  "__v": 1
 },
 {
   "_id": {
-    "$oid": "64789895cb03a4c55a42a31a"
+    "$oid": "651b93a97b5645a900d64ebc"
   },
-  "title": "Frontend Developer",
-  "location": "Toronto, Canada",
-  "description": "We are seeking a skilled Frontend Developer to join our development team. The ideal candidate will be responsible for creating visually appealing and user-friendly web interfaces. Strong knowledge of frontend technologies such as HTML, CSS, and JavaScript, as well as experience with frontend frameworks, is required for this role.",
-  "salary": 70000,
-  "position": "Contract",
+  "title": "Full Stack Developer Intern",
+  "location": "Pickering, Ontario, Canada",
+  "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
+  "salary": 30000,
+  "position": "Internship",
   "requirements": [
-    "Proficiency in HTML, CSS, and JavaScript",
-    "Experience with frontend frameworks (e.g., React, Vue.js)",
-    "Knowledge of responsive design principles"
+    "Currently enrolled in a bachelor's or master's degree program in Computer Science, Software Engineering, or a related field.",
+    "Basic understanding of web development fundamentals (HTML, CSS, JavaScript).",
+    "Familiarity with one or more programming languages (e.g., JavaScript, Python, Ruby, Java)."
   ],
   "responsibilities": [
-    "Creating visually appealing and user-friendly web interfaces",
-    "Implementing responsive designs",
-    "Collaborating with designers and backend developers"
-  ],
-  "whatWereLookingFor": [
-    "Strong frontend development skills (HTML, CSS, JavaScript)",
-    "Experience with frontend frameworks (React, Vue.js)",
-    "Knowledge of responsive design principles",
-    "Attention to detail and ability to work in a team"
+    "Collaborate with designers and developers to create responsive and user-friendly web interfaces.",
+    "Assist in developing server-side applications and APIs using frameworks like Node.js, Django, or Ruby on Rails.",
+    "Integrate front-end and back-end components to create seamless user experiences."
   ],
   "skills": [
     "HTML",
     "CSS",
     "JavaScript",
-    "Frontend frameworks (React, Vue.js)",
-    "Responsive design",
-    "Attention to detail",
-    "Teamwork"
+    "Node",
+    "Ruby on Rails"
   ],
-  "date": {
-    "$date": "2023-07-11T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:08:09.753Z"
   },
   "deadline": {
-    "$date": "2023-08-11T23:59:59.999Z"
+    "$date": "2024-01-01T05:08:09.753Z"
   },
   "remote": false,
+  "benefits": [],
   "applicants": [
-    "64a9bac2713febbc622028cd"
+    "651b422d7b5645a900d64cb0"
   ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 9,
   "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 43,
+  "views": 3,
   "yoe": 3,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "651b94577b5645a900d64ecf"
+  },
+  "title": "Integration Tester",
+  "location": "Waterloo, Ontario, Canada",
+  "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
+  "salary": 30000,
+  "position": "Internship",
+  "requirements": [
+    "Excellent school performance",
+    "Great analytical and problem solving skills",
+    "Ability to work independently on diverse problems",
+    "Excellent oral and written communication skills",
+    "Attention to detail"
+  ],
+  "responsibilities": [
+    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+    "Participating in test scenario/test case reviews",
+    "Deploying and configuring various systems, tools and applications for development and testing purposes",
+    "Troubleshooting deployment problems"
+  ],
+  "skills": [
+    "GCP and AWS",
+    "APIs and JSON/REST",
+    "Docker",
+    "HTML 5 and CSS",
+    "k8s",
+    "Spring Boot"
+  ],
+  "whatWereLookingFor": [],
   "created": {
-    "$date": "2023-07-06T16:57:16.082Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a328"
-  },
-  "title": "Marketing Manager",
-  "location": "Sydney, Australia",
-  "description": "We are looking for an experienced Marketing Manager to lead our marketing team. The ideal candidate will be responsible for developing and implementing marketing strategies, managing marketing campaigns, and overseeing brand promotion. Strong leadership skills, a deep understanding of marketing principles, and the ability to drive results are required for this role.",
-  "salary": 80000,
-  "position": "Full Time",
-  "requirements": [
-    "Proven experience as a Marketing Manager",
-    "Strong leadership and team management skills",
-    "Deep understanding of marketing principles and strategies"
-  ],
-  "responsibilities": [
-    "Developing and implementing marketing strategies",
-    "Managing marketing campaigns and initiatives",
-    "Overseeing brand promotion and positioning"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience as a Marketing Manager",
-    "Strong leadership and team management skills",
-    "Deep understanding of marketing principles and strategies",
-    "Excellent communication and interpersonal abilities"
-  ],
-  "skills": [
-    "Marketing management",
-    "Leadership",
-    "Team management",
-    "Marketing strategies",
-    "Communication",
-    "Interpersonal skills"
-  ],
-  "date": {
-    "$date": "2023-09-20T00:00:00.000Z"
+    "$date": "2023-10-03T04:11:03.698Z"
   },
   "deadline": {
-    "$date": "2023-10-20T23:59:59.999Z"
+    "$date": "2024-01-01T05:11:03.698Z"
   },
   "remote": false,
-  "applicants": [],
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 3,
   "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 6,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a323"
-  },
-  "title": "Sales Operations Analyst",
-  "location": "Sydney, Australia",
-  "description": "We are looking for a detail-oriented Sales Operations Analyst to support our sales team. The ideal candidate will be responsible for analyzing sales data, creating reports, and providing insights to drive sales effectiveness. Strong analytical skills, proficiency in CRM tools, and the ability to work with cross-functional teams are required for this role.",
-  "salary": 65000,
-  "position": "Internship",
-  "requirements": [
-    "Strong analytical and data interpretation skills",
-    "Proficiency in CRM tools (e.g., Salesforce)",
-    "Ability to work with cross-functional teams"
-  ],
-  "responsibilities": [
-    "Analyzing sales data and performance",
-    "Creating reports and dashboards",
-    "Identifying areas for sales process improvement"
-  ],
-  "whatWereLookingFor": [
-    "Strong analytical and data interpretation skills",
-    "Proficiency in CRM tools (Salesforce, etc.)",
-    "Ability to work with cross-functional teams",
-    "Attention to detail and problem-solving abilities"
-  ],
-  "skills": [
-    "Analytical skills",
-    "Data interpretation",
-    "CRM tools (Salesforce)",
-    "Cross-functional collaboration",
-    "Attention to detail",
-    "Problem-solving"
-  ],
-  "date": {
-    "$date": "2023-08-25T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-09-25T23:59:59.999Z"
-  },
-  "remote": false,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Professional development opportunities"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a325"
-  },
-  "title": "Content Marketing Manager",
-  "location": "San Francisco, CA, USA",
-  "description": "We are looking for a talented Content Marketing Manager to join our marketing team. The ideal candidate will be responsible for developing and executing content marketing strategies, creating engaging content, and managing content distribution channels. Strong writing skills, knowledge of content marketing best practices, and proficiency in SEO are required for this role.",
-  "salary": 70000,
-  "position": "Internship",
-  "requirements": [
-    "Proven experience in content marketing",
-    "Strong writing and editing skills",
-    "Knowledge of content marketing best practices and SEO"
-  ],
-  "responsibilities": [
-    "Developing and executing content marketing strategies",
-    "Creating and editing engaging content",
-    "Managing content distribution channels"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience in content marketing",
-    "Strong writing and editing skills",
-    "Knowledge of content marketing best practices and SEO",
-    "Excellent organizational and project management abilities"
-  ],
-  "skills": [
-    "Content marketing",
-    "Writing skills",
-    "Editing skills",
-    "SEO",
-    "Organizational skills",
-    "Project management"
-  ],
-  "date": {
-    "$date": "2023-09-05T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-10-05T23:59:59.999Z"
-  },
-  "remote": false,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a319"
-  },
-  "title": "DevOps Engineer",
-  "location": "Chicago, IL, USA",
-  "description": "We are seeking a skilled DevOps Engineer to join our operations team. The ideal candidate will be responsible for designing and implementing automation processes, managing infrastructure, and ensuring smooth deployment of software systems. Strong knowledge of DevOps principles, experience with cloud platforms, and proficiency in scripting languages are required for this role.",
-  "salary": 80000,
-  "position": "Contract",
-  "requirements": [
-    "Knowledge of DevOps principles and best practices",
-    "Experience with cloud platforms (AWS, Azure, or GCP)",
-    "Proficiency in scripting languages (Python, Bash, or PowerShell)"
-  ],
-  "responsibilities": [
-    "Designing and implementing automation processes",
-    "Managing infrastructure and monitoring systems",
-    "Ensuring smooth software deployments"
-  ],
-  "whatWereLookingFor": [
-    "Strong knowledge of DevOps tools and technologies",
-    "Experience with cloud platforms (AWS, Azure, or GCP)",
-    "Proficiency in scripting languages (Python, Bash, PowerShell)",
-    "Excellent problem-solving and troubleshooting skills"
-  ],
-  "skills": [
-    "DevOps principles",
-    "Cloud platforms (AWS, Azure, GCP)",
-    "Scripting languages (Python, Bash, PowerShell)",
-    "Automation",
-    "Infrastructure management",
-    "Problem-solving",
-    "Troubleshooting"
-  ],
-  "date": {
-    "$date": "2023-07-06T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-08-06T23:59:59.999Z"
-  },
-  "remote": true,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Professional development opportunities"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a318"
-  },
-  "title": "Product Manager",
-  "location": "Austin, TX, USA",
-  "description": "We are looking for a skilled Product Manager to oversee the development and launch of our products. The ideal candidate will be responsible for defining product roadmaps, conducting market research, and collaborating with cross-functional teams. Strong leadership skills, knowledge of product management methodologies, and excellent communication abilities are required.",
-  "salary": 85000,
-  "position": "Full Time",
-  "requirements": [
-    "Experience in product management",
-    "Knowledge of product development lifecycle",
-    "Strong leadership and communication skills"
-  ],
-  "responsibilities": [
-    "Defining product strategy and roadmaps",
-    "Conducting market research and competitive analysis",
-    "Collaborating with engineering, design, and marketing teams"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience in product management",
-    "Knowledge of product development methodologies (Agile, Scrum, etc.)",
-    "Strong leadership and decision-making skills",
-    "Excellent communication and interpersonal abilities"
-  ],
-  "skills": [
-    "Product management",
-    "Product development lifecycle",
-    "Leadership skills",
-    "Communication skills",
-    "Decision-making",
-    "Collaboration"
-  ],
-  "date": {
-    "$date": "2023-07-01T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-08-01T23:59:59.999Z"
-  },
-  "remote": true,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a326"
-  },
-  "title": "Marketing Analyst",
-  "location": "New York City, NY, USA",
-  "description": "We are seeking a detail-oriented Marketing Analyst to join our marketing team. The ideal candidate will be responsible for collecting and analyzing marketing data, conducting market research, and providing insights to optimize marketing strategies. Strong analytical skills, proficiency in data analysis tools, and the ability to translate data into actionable recommendations are required for this role.",
-  "salary": 65000,
-  "position": "Internship",
-  "requirements": [
-    "Strong analytical and data interpretation skills",
-    "Proficiency in data analysis tools (e.g., Excel, Google Analytics)",
-    "Knowledge of market research methodologies"
-  ],
-  "responsibilities": [
-    "Collecting and analyzing marketing data",
-    "Conducting market research",
-    "Providing insights and recommendations to optimize marketing strategies"
-  ],
-  "whatWereLookingFor": [
-    "Strong analytical and data interpretation skills",
-    "Proficiency in data analysis tools (Excel, Google Analytics)",
-    "Knowledge of market research methodologies",
-    "Excellent communication and presentation skills"
-  ],
-  "skills": [
-    "Data analysis",
-    "Market research",
-    "Analytical skills",
-    "Data interpretation",
-    "Communication skills",
-    "Presentation skills"
-  ],
-  "date": {
-    "$date": "2023-09-10T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-10-10T23:59:59.999Z"
-  },
-  "remote": false,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Professional development opportunities"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a314"
-  },
-  "title": "Marketing Coordinator",
-  "location": "Los Angeles, CA, USA",
-  "description": "We are seeking a Marketing Coordinator to support our marketing team. The ideal candidate will assist in the execution of marketing campaigns, manage social media platforms, and analyze marketing data. Strong organizational skills, attention to detail, and proficiency in marketing tools are required for this role.",
-  "salary": 55000,
-  "position": "Full Time",
-  "requirements": [
-    "Experience in marketing coordination",
-    "Proficiency in social media management",
-    "Strong analytical and organizational skills"
-  ],
-  "responsibilities": [
-    "Assisting in marketing campaign execution",
-    "Managing social media platforms",
-    "Analyzing marketing data"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience in marketing coordination",
-    "Knowledge of social media trends",
-    "Excellent organizational and analytical skills",
-    "Ability to work in a fast-paced environment"
-  ],
-  "skills": [
-    "Marketing coordination",
-    "Social media management",
-    "Analytical skills",
-    "Organizational skills",
-    "Attention to detail",
-    "Proficiency in marketing tools",
-    "Knowledge of social media trends"
-  ],
-  "date": {
-    "$date": "2023-06-10T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-07-10T23:59:59.999Z"
-  },
-  "remote": true,
-  "applicants": [],
-  "selected": [],
-  "shortlisted": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "401(k) retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
-  ],
-  "__v": 4,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 492,
+  "views": 3,
   "yoe": 3,
-  "selectedForInterview": [],
-  "rejected": [],
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "651b94897b5645a900d64ef5"
+  },
+  "title": "Integration Tester",
+  "location": "Waterloo, Ontario, Canada",
+  "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
+  "salary": 30000,
+  "position": "Internship",
+  "requirements": [
+    "Excellent school performance",
+    "Great analytical and problem solving skills",
+    "Ability to work independently on diverse problems",
+    "Excellent oral and written communication skills",
+    "Attention to detail"
+  ],
+  "responsibilities": [
+    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+    "Participating in test scenario/test case reviews",
+    "Deploying and configuring various systems, tools and applications for development and testing purposes",
+    "Troubleshooting deployment problems"
+  ],
+  "skills": [
+    "GCP and AWS",
+    "APIs and JSON/REST",
+    "Docker",
+    "HTML 5 and CSS",
+    "k8s",
+    "Spring Boot"
+  ],
+  "whatWereLookingFor": [],
   "created": {
-    "$date": "2023-07-06T16:57:17.739Z"
-  }
+    "$date": "2023-10-03T04:11:53.082Z"
+  },
+  "deadline": {
+    "$date": "2024-01-01T05:11:53.082Z"
+  },
+  "remote": false,
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
+  "selected": [],
+  "selectedForInterview": [],
+  "shortlisted": [],
+  "rejected": [],
+  "requiredDocuments": [
+    "resume"
+  ],
+  "jobQuestions": [],
+  "views": 4,
+  "yoe": 3,
+  "__v": 1
 },
 {
   "_id": {
-    "$oid": "64789895cb03a4c55a42a322"
+    "$oid": "651b94ee7b5645a900d64f0f"
   },
-  "title": "Business Development Manager",
-  "location": "London, UK",
-  "description": "We are seeking a talented Business Development Manager to drive growth and expand our customer base. The ideal candidate will be responsible for identifying new business opportunities, building strategic partnerships, and negotiating contracts. Strong analytical skills, excellent communication abilities, and a proven track record in business development are required for this role.",
-  "salary": 85000,
+  "title": "Frontend Software Developer",
+  "location": "Waterloo, Ontario, Canada",
+  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+  "salary": 50000,
   "position": "Internship",
   "requirements": [
-    "Proven experience in business development or sales",
-    "Strong negotiation and deal-closing skills",
-    "Ability to identify and pursue new business opportunities"
+    "Excellent school performance",
+    "Great analytical and problem solving skills",
+    "Ability to work independently on diverse problems",
+    "Excellent oral and written communication skills",
+    "Attention to detail"
   ],
   "responsibilities": [
-    "Identifying new business opportunities",
-    "Building and maintaining strategic partnerships",
-    "Negotiating and closing business deals"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience in business development or sales",
-    "Strong negotiation and deal-closing skills",
-    "Ability to identify and pursue new business opportunities",
-    "Excellent communication and presentation skills"
+    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+    "Participating in test scenario/test case reviews",
+    "Deploying and configuring various systems, tools and applications for development and testing purposes",
+    "Troubleshooting deployment problems"
   ],
   "skills": [
-    "Business development",
-    "Sales",
-    "Negotiation",
-    "Partnership building",
-    "Communication",
-    "Presentation skills"
+    "GCP and AWS",
+    "APIs and JSON/REST",
+    "Docker",
+    "HTML 5 and CSS",
+    "k8s",
+    "Spring Boot"
   ],
-  "date": {
-    "$date": "2023-08-20T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:13:34.680Z"
   },
   "deadline": {
-    "$date": "2023-09-20T23:59:59.999Z"
+    "$date": "2024-01-01T05:13:34.680Z"
   },
   "remote": false,
-  "applicants": [],
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Performance-based bonuses"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 3,
   "jobQuestions": [],
-  "requiredDocuments": [],
   "views": 1,
-  "yoe": 3
+  "yoe": 3,
+  "__v": 1
 },
 {
   "_id": {
-    "$oid": "64789895cb03a4c55a42a327"
+    "$oid": "651b94fa7b5645a900d64f17"
   },
-  "title": "Marketing Coordinator",
-  "location": "London, UK",
-  "description": "We are seeking a Marketing Coordinator to support our marketing team. The ideal candidate will assist in the execution of marketing campaigns, manage social media platforms, and analyze marketing data. Strong organizational skills, attention to detail, and proficiency in marketing tools are required for this role.",
-  "salary": 55000,
+  "title": "Backend Software Developer",
+  "location": "Waterloo, Ontario, Canada",
+  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+  "salary": 50000,
   "position": "Internship",
   "requirements": [
-    "Experience in marketing coordination",
-    "Proficiency in social media management",
-    "Strong analytical and organizational skills"
+    "Excellent school performance",
+    "Great analytical and problem solving skills",
+    "Ability to work independently on diverse problems",
+    "Excellent oral and written communication skills",
+    "Attention to detail"
   ],
   "responsibilities": [
-    "Assisting in marketing campaign execution",
-    "Managing social media platforms",
-    "Analyzing marketing data"
-  ],
-  "whatWereLookingFor": [
-    "Proven experience in marketing coordination",
-    "Knowledge of social media trends",
-    "Excellent organizational and analytical skills",
-    "Ability to work in a fast-paced environment"
+    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+    "Participating in test scenario/test case reviews",
+    "Deploying and configuring various systems, tools and applications for development and testing purposes",
+    "Troubleshooting deployment problems"
   ],
   "skills": [
-    "Marketing coordination",
-    "Social media management",
-    "Analytical skills",
-    "Organizational skills",
-    "Attention to detail",
-    "Proficiency in marketing tools",
-    "Knowledge of social media trends"
+    "GCP and AWS",
+    "APIs and JSON/REST",
+    "Docker",
+    "HTML 5 and CSS",
+    "k8s",
+    "Spring Boot"
   ],
-  "date": {
-    "$date": "2023-09-15T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:13:46.984Z"
   },
   "deadline": {
-    "$date": "2023-10-15T23:59:59.999Z"
+    "$date": "2024-01-01T05:13:46.984Z"
   },
   "remote": false,
-  "applicants": [],
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid vacation and sick leave",
-    "Retirement plan",
-    "Flexible work schedule",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 3,
   "jobQuestions": [],
-  "requiredDocuments": [],
   "views": 1,
-  "yoe": 3
+  "yoe": 3,
+  "__v": 1
 },
 {
   "_id": {
-    "$oid": "64789895cb03a4c55a42a31d"
+    "$oid": "651b950c7b5645a900d64f1f"
   },
-  "title": "Data Engineer",
-  "location": "Seattle, WA, USA",
-  "description": "We are seeking a talented Data Engineer to join our data team. The ideal candidate will be responsible for designing and implementing data pipelines, as well as maintaining and optimizing data infrastructure. Strong knowledge of data modeling, ETL processes, and experience with cloud platforms is required for this role.",
-  "salary": 90000,
-  "position": "Part Time",
+  "title": "Performance Test Developer",
+  "location": "Waterloo, Ontario, Canada",
+  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+  "salary": 50000,
+  "position": "Internship",
   "requirements": [
-    "Proficiency in data modeling and SQL",
-    "Experience with ETL processes and data integration",
-    "Knowledge of cloud platforms (e.g., AWS, Azure, GCP)"
+    "Excellent school performance",
+    "Great analytical and problem solving skills",
+    "Ability to work independently on diverse problems",
+    "Excellent oral and written communication skills",
+    "Attention to detail"
   ],
   "responsibilities": [
-    "Designing and implementing data pipelines",
-    "Maintaining and optimizing data infrastructure",
-    "Collaborating with data analysts and scientists"
-  ],
-  "whatWereLookingFor": [
-    "Strong data engineering skills (data modeling, SQL)",
-    "Experience with ETL processes and data integration",
-    "Knowledge of cloud platforms (AWS, Azure, GCP)",
-    "Problem-solving and teamwork abilities"
+    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+    "Participating in test scenario/test case reviews",
+    "Deploying and configuring various systems, tools and applications for development and testing purposes",
+    "Troubleshooting deployment problems"
   ],
   "skills": [
-    "Data modeling",
-    "SQL",
-    "ETL processes",
-    "Cloud platforms (AWS, Azure, GCP)",
-    "Problem-solving",
-    "Teamwork"
+    "GCP and AWS",
+    "APIs and JSON/REST",
+    "Docker",
+    "HTML 5 and CSS",
+    "k8s",
+    "Spring Boot"
   ],
-  "date": {
-    "$date": "2023-07-25T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:14:04.505Z"
   },
   "deadline": {
-    "$date": "2023-08-25T23:59:59.999Z"
+    "$date": "2024-01-01T05:14:04.505Z"
   },
-  "remote": true,
-  "applicants": [],
+  "remote": false,
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 3,
   "jobQuestions": [],
-  "requiredDocuments": [],
   "views": 1,
-  "yoe": 3
+  "yoe": 3,
+  "__v": 1
 },
 {
   "_id": {
-    "$oid": "64789895cb03a4c55a42a31b"
+    "$oid": "651b951a7b5645a900d64f27"
   },
-  "title": "Backend Developer",
-  "location": "Berlin, Germany",
-  "description": "We are looking for a skilled Backend Developer to join our development team. The ideal candidate will be responsible for designing and implementing server-side applications and APIs. Strong knowledge of programming languages such as Java, Python, or Ruby, as well as experience with backend frameworks, is required for this role.",
-  "salary": 80000,
-  "position": "Contract",
+  "title": "Software Developer in Test",
+  "location": "Waterloo, Ontario, Canada",
+  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+  "salary": 50000,
+  "position": "Internship",
   "requirements": [
-    "Proficiency in programming languages (Java, Python, Ruby)",
-    "Experience with backend frameworks (e.g., Spring, Django, Ruby on Rails)",
-    "Knowledge of database systems (SQL, NoSQL)"
+    "Excellent school performance",
+    "Great analytical and problem solving skills",
+    "Ability to work independently on diverse problems",
+    "Excellent oral and written communication skills",
+    "Attention to detail"
   ],
   "responsibilities": [
-    "Designing and implementing server-side applications and APIs",
-    "Integrating with external services and databases",
-    "Collaborating with frontend developers and other team members"
-  ],
-  "whatWereLookingFor": [
-    "Strong backend development skills (Java, Python, Ruby)",
-    "Experience with backend frameworks (Spring, Django, Ruby on Rails)",
-    "Knowledge of database systems (SQL, NoSQL)",
-    "Problem-solving and teamwork abilities"
+    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+    "Participating in test scenario/test case reviews",
+    "Deploying and configuring various systems, tools and applications for development and testing purposes",
+    "Troubleshooting deployment problems"
   ],
   "skills": [
-    "Java",
-    "Python",
-    "Ruby",
-    "Backend frameworks (Spring, Django, Ruby on Rails)",
-    "Database systems (SQL, NoSQL)",
-    "Problem-solving",
-    "Teamwork"
+    "GCP and AWS",
+    "APIs and JSON/REST",
+    "Docker",
+    "HTML 5 and CSS",
+    "k8s",
+    "Spring Boot"
   ],
-  "date": {
-    "$date": "2023-07-15T00:00:00.000Z"
+  "whatWereLookingFor": [],
+  "created": {
+    "$date": "2023-10-03T04:14:18.434Z"
   },
   "deadline": {
-    "$date": "2023-08-15T23:59:59.999Z"
+    "$date": "2024-01-01T05:14:18.434Z"
   },
   "remote": false,
-  "applicants": [],
+  "benefits": [],
+  "applicants": [
+    "651b422d7b5645a900d64cb0"
+  ],
   "selected": [],
   "selectedForInterview": [],
   "shortlisted": [],
   "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Professional development opportunities"
+  "requiredDocuments": [
+    "resume"
   ],
-  "__v": 3,
   "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
-},
-{
-  "_id": {
-    "$oid": "64789895cb03a4c55a42a321"
-  },
-  "title": "Account Executive",
-  "location": "San Francisco, CA, USA",
-  "description": "We are seeking a motivated Account Executive to join our sales team. The ideal candidate will be responsible for acquiring new clients, managing existing accounts, and achieving sales targets. Strong relationship-building skills, excellent communication abilities, and a proven sales track record are required for this role.",
-  "salary": 70000,
-  "position": "Part Time",
-  "requirements": [
-    "Proven track record in sales",
-    "Excellent communication and presentation skills",
-    "Ability to build and maintain client relationships"
-  ],
-  "responsibilities": [
-    "Prospecting and acquiring new clients",
-    "Managing and growing existing accounts",
-    "Meeting or exceeding sales targets"
-  ],
-  "whatWereLookingFor": [
-    "Proven sales experience and a successful track record",
-    "Excellent communication and negotiation skills",
-    "Ability to build and maintain strong client relationships",
-    "Self-motivated and target-driven"
-  ],
-  "skills": [
-    "Sales",
-    "Communication",
-    "Negotiation",
-    "Client relationship management",
-    "Presentation skills",
-    "Self-motivation",
-    "Target-driven"
-  ],
-  "date": {
-    "$date": "2023-08-15T00:00:00.000Z"
-  },
-  "deadline": {
-    "$date": "2023-09-15T23:59:59.999Z"
-  },
-  "remote": false,
-  "applicants": [],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "benefits": [
-    "Health insurance",
-    "Paid time off",
-    "Retirement plan",
-    "Flexible work hours",
-    "Commission-based incentives"
-  ],
-  "__v": 3,
-  "jobQuestions": [],
-  "requiredDocuments": [],
-  "views": 1,
-  "yoe": 3
+  "views": 3,
+  "yoe": 3,
+  "__v": 1
 }]

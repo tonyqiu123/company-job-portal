@@ -6,25 +6,25 @@ import phoneIcon from 'src/assets/images/phoneIcon.svg';
 import editIcon from 'src/assets/images/editIcon.svg';
 import ProfileAttachmentModal from 'src/components/user/userProfileModals/ProfileAttachmentModal';
 import ProfileUserModal from 'src/components/user/userProfileModals/ProfileUserModal';
-import { UserInterface } from 'src/util/interfaces';
 import { Link } from 'react-router-dom';
-
-interface ProfileProps {
-    userJwt: string;
-    userData: UserInterface;
-    setUserData: (userData: UserInterface) => void;
-}
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/redux/store';
 
 
-const Profile: React.FC<ProfileProps> = ({ userJwt, userData, setUserData }) => {
+
+
+const Profile: React.FC = () => {
 
     const [showAttachmentModal, setShowAttachmentModal] = useState(false);
     const [showUserModal, setShowUserModal] = useState(false);
 
+    const userData = useSelector((state: RootState) => state.user)
+
+
     return (
         <>
-            {showAttachmentModal && <ProfileAttachmentModal userJwt={userJwt} userData={userData} setShowAttachmentModal={setShowAttachmentModal} setUserData={setUserData} />}
-            {showUserModal && <ProfileUserModal userJwt={userJwt} userData={userData} setShowUserModal={setShowUserModal} setUserData={setUserData} />}
+            {showAttachmentModal && <ProfileAttachmentModal setShowAttachmentModal={setShowAttachmentModal} />}
+            {showUserModal && <ProfileUserModal setShowUserModal={setShowUserModal} />}
             <div className='body'>
                 <div className='dashboardTitle row'>
                     <Link to="/profile"><h2>Profile</h2></Link>

@@ -10,7 +10,6 @@ import React, { useEffect, useState } from 'react';
 import { getUserData, getJobs, validateAdminJwt } from "src/util/apiFunctions";
 import SideNavBar from "src/components/user/SideNavBar";
 import AdminSideNavBar from "src/components/admin/AdminSideNavBar";
-import { JobInterface, UserInterface } from "./util/interfaces";
 import AdminLanding from "src/pages/admin/AdminLanding";
 import AdminDashboard from "src/pages/admin/Dashboard";
 import JobManagement from "src/pages/admin/JobManagement";
@@ -21,52 +20,56 @@ import CreateJob from "./pages/admin/CreateJob";
 import Demo from "./pages/shared/demo";
 import InterviewRoom from "src/pages/user/InterviewRoom";
 import InterviewDashboard from "./pages/user/InterviewDashboard";
-
+import { useDispatch, useSelector } from "react-redux";
+import { overwriteJobsData } from './redux/jobsSlice'
+import { overwriteUserData } from './redux/userSlice'
+import { overwriteUserJwt, overwriteAdminJwt } from "./redux/jwtSlice";
+import { RootState } from "./redux/store";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
-  const [jobData, setJobData] = useState<JobInterface[]>([]);
-  const [userJwt, setUserJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_jwt'));
-  const [adminJwt, setAdminJwt] = useState<string | null>(localStorage.getItem('modernJobPortal_AdminJwt'));
-  const [userData, setUserData] = useState<UserInterface>({});
 
-
+  const dispatch = useDispatch();
+  const jwts = useSelector((state: RootState) => state.jwt)
 
   useEffect(() => {
-    // if applicant/admin has jwt in their localstorage, fetch job data
-    if (userJwt) {
-      getJobs().then(data => setJobData(data));
-    }
+    dispatch(overwriteUserJwt(localStorage.getItem('modernJobPortal_jwt')));
+    dispatch(overwriteAdminJwt(localStorage.getItem('modernJobPortal_AdminJwt')));
+  }, [])
+
+  useEffect(() => {
     if (!isUserUrl) {
       return
     }
-    if (userJwt && isUserUrl) {
-      getUserData(userJwt)
+    if (jwts.userJwt) {
+      getJobs().then(data => dispatch(overwriteJobsData(data)));
+    }
+    if (jwts.userJwt && isUserUrl) {
+      getUserData(jwts.userJwt)
         .then(data => {
-          setUserData(data);
+          dispatch(overwriteUserData(data))
           setIsUserAuthenticated(true);
         })
         .catch(() => setLoading(false))
     } else {
-      setLoading(false);
     }
-  }, [userJwt]);
+  }, [jwts.userJwt]);
 
 
   useEffect(() => {
     if (!isAdminUrl) {
       return
     }
-    if (adminJwt && isAdminUrl) {
-      validateAdminJwt(adminJwt)
+    if (jwts.adminJwt && isAdminUrl) {
+      validateAdminJwt(jwts.adminJwt)
         .then(() => setIsAdminAuthenticated(true))
         .catch(() => setLoading(false))
     } else {
-      setLoading(false);
+      console.log('hi')
     }
-  }, [adminJwt]);
+  }, [jwts.adminJwt]);
 
 
   const isUserUrl = ['/search', '/applications', '/shortlist', '/profile', '/applicantInterviews', '/applicantInterviews/room'].includes(window.location.pathname)
@@ -88,7 +91,7 @@ const App: React.FC = () => {
         <Route
           path="/search"
           element={isUserAuthenticated
-            ? <SearchJobs userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
+            ? <SearchJobs />
             : loadingComponent
           }
         />
@@ -99,28 +102,28 @@ const App: React.FC = () => {
         <Route
           path="/shortlist"
           element={isUserAuthenticated
-            ? <Shortlist userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
+            ? <Shortlist />
             : loadingComponent
           }
         />
         <Route
           path="/applications"
           element={isUserAuthenticated
-            ? <Applications userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
+            ? <Applications />
             : loadingComponent
           }
         />
         <Route
           path="/profile"
           element={isUserAuthenticated
-            ? <Profile setUserData={setUserData} userJwt={userJwt || ''} userData={userData} />
+            ? <Profile />
             : loadingComponent
           }
         />
         <Route
           path="/applicantInterviews"
           element={isUserAuthenticated
-            ? <InterviewDashboard userJwt={userJwt || ''} jobData={jobData} userData={userData} setUserData={setUserData} />
+            ? <InterviewDashboard />
             : loadingComponent
           }
         />
@@ -131,44 +134,36 @@ const App: React.FC = () => {
             : loadingComponent
           }
         />
-        <Route path="/login" element={<Landing setUserJwt={setUserJwt} />} />
-        <Route path="/sign-up" element={<Landing setUserJwt={setUserJwt} />} />
+        <Route path="/login" element={<Landing />} />
+        <Route path="/sign-up" element={<Landing />} />
 
         {/* ADMIN */}
-        <Route path="/admin/login" element={<AdminLanding setAdminJwt={setAdminJwt} />} />
+        <Route path="/admin/login" element={<AdminLanding />} />
         <Route
           path="/admin/dashboard"
           element={isAdminAuthenticated
-            ? <AdminDashboard adminJwt={adminJwt || ''} />
+            ? <AdminDashboard />
             : loadingComponent
           }
         />
         <Route
           path="/admin/job-management"
           element={isAdminAuthenticated
-            ? <JobManagement adminJwt={adminJwt || ''} />
+            ? <JobManagement />
             : loadingComponent
           }
         />
         <Route
           path="/admin/job-management/job"
           element={isAdminAuthenticated
-            ? <ViewJob adminJwt={adminJwt || ''} />
+            ? <ViewJob />
             : loadingComponent
           }
         />
         <Route
           path="/admin/job-management/job/applicant"
           element={isAdminAuthenticated
-            ? <ViewApplicant adminJwt={adminJwt || ''} />
-            : loadingComponent
-          }
-        />
-
-        <Route
-          path="/admin/job-management/job/interview"
-          element={isAdminAuthenticated
-            ? <CreateJob adminJwt={adminJwt || ''} />
+            ? <ViewApplicant />
             : loadingComponent
           }
         />
@@ -176,7 +171,7 @@ const App: React.FC = () => {
         <Route
           path="/admin/job-management/create-job"
           element={isAdminAuthenticated
-            ? <CreateJob adminJwt={adminJwt || ''} />
+            ? <CreateJob />
             : loadingComponent
           }
         />

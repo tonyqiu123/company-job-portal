@@ -1,14 +1,16 @@
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import JobDetailsCard from "src/components/user/JobDetailsCard"
 import { updateUser, applyJob } from 'src/util/apiFunctions'
 import { formatDate } from 'src/util/dateUtils'
-import { JobInterface, UserInterface } from 'src/util/interfaces'
+import Badge from '../shared/Badge'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from 'src/redux/store'
+import { overwriteUserData } from 'src/redux/userSlice'
+import { JobInterface } from 'src/util/interfaces'
+import { io } from 'socket.io-client';
+
 
 interface JobResultsProps {
-  userJwt: string
-  jobData: JobInterface[]
-  userData: UserInterface
-  setUserData: (userData: UserInterface) => void
   search: string
   location: string
   position: string
@@ -18,7 +20,12 @@ interface JobResultsProps {
 }
 
 
-const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, setUserData, search, location, position, application = false, shortlist = false, filterByInterview = false }) => {
+const JobResults: React.FC<JobResultsProps> = ({ search, location, position, application = false, shortlist = false, filterByInterview = false }) => {
+
+  const dispatch = useDispatch()
+
+  const userData = useSelector((state: RootState) => state.user)
+  const userJwt = useSelector((state: RootState) => state.jwt.userJwt)
 
   const [filteredJobs, setFilteredJobs] = useState<JobInterface[]>([])
   const [appliedJobs, setAppliedJobs] = useState<string[]>([])
@@ -27,21 +34,38 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [showJobDetailsCard, setShowJobDetailsCard] = useState<boolean>(false)
   const [jobDetailsCardData, setJobDetailsCardData] = useState<any>(null)
+  const [socket, setSocket] = useState<any>(null);
 
   const jobsPerPage: number = 10
+
+  const jobData = useSelector((state: RootState) => state.jobs)
+
+  useEffect(() => {
+    if (!socket) {
+      // const socket = io('http://localhost:5000', { transports: ["websocket"] });
+        const socket = io('https://company-job-portal-production.up.railway.app', { transports: ["websocket"] });
+        setSocket(socket);
+    }
+
+    // Clean up the socket connection when the component unmounts
+    return () => {
+        if (socket) {
+          socket.disconnect();
+        }
+    };
+}, [socket]);
 
   useLayoutEffect(() => {
     setAppliedJobs(userData.appliedJobs || []);
     setShortlistedJobs(userData.shortlisted || []);
+
     if (filterByInterview) {
-      let temp: string[] = [];
-      jobData.forEach((job) => {
-        const userId = userData._id || '';
-        if (job.selectedForInterview?.includes(userId)) {
-          temp.push(job._id);
-        }
-      });
-      setSelectedForInterviewJobs(temp);
+      const userId = userData._id || '';
+      const selectedJobs = jobData
+        .filter((job) => job.selectedForInterview?.includes(userId))
+        .map((job) => job._id);
+
+      setSelectedForInterviewJobs(selectedJobs);
     }
   }, []);
 
@@ -75,23 +99,27 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   }, [search, location, position, appliedJobs, shortlistedJobs, selectedForInterviewJobs])
 
 
-  const handleJobAction = async (jobID: string, action: string) => {
+  const handleJobAction = async (jobID: string, action: string, jobTitle: string | undefined) => {
     return new Promise<void>(async (resolve, reject) => {
       try {
         const newAppliedJobs = action === 'apply' ? [...appliedJobs, jobID] : appliedJobs.filter(id => id !== jobID)
         const newShortlistedJobs = action === 'shortlist' ? [...shortlistedJobs, jobID] : shortlistedJobs.filter(id => id !== jobID)
-        await Promise.all([updateUser(userJwt, {
-          appliedJobs: newAppliedJobs,
-          shortlisted: newShortlistedJobs
-        }), applyJob(userJwt, userData._id || '', jobID, action)])
+        if (userJwt) {
+          await Promise.all([updateUser(userJwt, {
+            appliedJobs: newAppliedJobs,
+            shortlisted: newShortlistedJobs
+          }), applyJob(userJwt, userData._id || '', jobID, action)])
+        }
+
+        socket.emit('message', userData.email, action, jobTitle)
 
         setAppliedJobs(newAppliedJobs)
         setShortlistedJobs(newShortlistedJobs)
 
-        setUserData({
+        dispatch(overwriteUserData({
           ...userData, appliedJobs: newAppliedJobs,
           shortlisted: newShortlistedJobs
-        })
+        }))
         if (currentJobs.length === 1) {
           setCurrentPage(currentPage - 1)
         }
@@ -115,6 +143,16 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
   }
 
 
+  const getJobStatus = (job: JobInterface) => {
+    if (job?.selected && job?.selected?.length > 0) {
+      return <Badge variant='destructive' text='Offers sent' />
+    }
+    if (job?.selectedForInterview && job?.selectedForInterview?.length > 0) {
+      return <Badge variant='warning' text='Interviewing stage' />
+    }
+    return <Badge variant='success' text='Open to applications' />
+  }
+
 
   return (
     <>
@@ -136,9 +174,10 @@ const JobResults: React.FC<JobResultsProps> = ({ userJwt, jobData, userData, set
                         <p>{job.remote ? `Remote - ${job.location}` : job.location}</p>
                         <p>{job.position}</p>
                         <p>Closes {formatDate(job.deadline || '')}</p>
+                        {job && getJobStatus(job)}
                       </div>
                       <div className='tagsContainer row' style={{ justifyContent: 'flex-start' }}>
-                        {job.skills && job.skills.slice(0, 5).map((skill, index) => (
+                        {job.skills && job.skills.slice(0, 5).map((skill: string, index: number) => (
                           <p key={index}>{skill}</p>
                         ))}
                       </div>

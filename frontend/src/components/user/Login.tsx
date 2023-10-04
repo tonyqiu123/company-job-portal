@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 import { login } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
 import Input from 'src/components/shared/Input';
+import { useDispatch } from 'react-redux';
+import { overwriteUserJwt } from 'src/redux/jwtSlice';
 
-interface LoginProps {
-    setUserJwt: (jwt: string | null) => void;
-}
 
-const Login: React.FC<LoginProps> = ({ setUserJwt }) => {
+const Login: React.FC = () => {
 
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [error, setError] = useState<string>('')
+
+    const dispatch = useDispatch()
 
     const handleLogin = async (): Promise<void> => {
         try {
@@ -22,7 +23,7 @@ const Login: React.FC<LoginProps> = ({ setUserJwt }) => {
             }
             const data = await login(email, password)
             localStorage.setItem('modernJobPortal_jwt', data.token);
-            setUserJwt(data.token);
+            dispatch(overwriteUserJwt(data.token));
             window.location.href = '/search';
         } catch (err: any) {
             setError(err.message)

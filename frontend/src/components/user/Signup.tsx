@@ -4,19 +4,19 @@ import 'src/css/shared/login.css'
 import { signup } from 'src/util/apiFunctions'
 import Button from 'src/components/shared/Button'
 import Input from '../shared/Input';
-
-interface SignupProps {
-  setUserJwt: (jwt: string) => void
-}
+import { useDispatch } from 'react-redux';
+import { overwriteUserData } from 'src/redux/userSlice';
 
 
-const Signup: React.FC<SignupProps> = ({ setUserJwt }) => {
+const Signup: React.FC = () => {
 
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState('')
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const emailWarning = document.querySelector('.emailWarning');
@@ -50,7 +50,7 @@ const Signup: React.FC<SignupProps> = ({ setUserJwt }) => {
       }
       const data = await signup(firstName, lastName, email, password)
       localStorage.setItem('modernJobPortal_jwt', data.token);
-      setUserJwt(data.jwt);
+      dispatch(overwriteUserData(data.jwt));
       window.location.href = '/search';
     } catch (err) {
       throw err
@@ -63,7 +63,7 @@ const Signup: React.FC<SignupProps> = ({ setUserJwt }) => {
       <div className='row' style={{ gap: '16px' }}>
         <div className='inputCont column'>
           <h6>First Name</h6>
-          <Input placeHolder='First name' search={firstName} setSearch={setFirstName} /> 
+          <Input placeHolder='First name' search={firstName} setSearch={setFirstName} />
         </div>
         <div className='inputCont column'>
           <h6>Last Name</h6>

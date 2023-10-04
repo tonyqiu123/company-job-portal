@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import 'src/css/user/jobQuery.css';
 import JobResults from 'src/components/user/JobResults';
-import { JobInterface, UserInterface } from 'src/util/interfaces';
 import { Link } from 'react-router-dom';
 import Input from 'src/components/shared/Input';
 import Select from 'src/components/shared/Select';
 
-interface ApplicationsProps {
-  userJwt: string
-  jobData: JobInterface[]
-  setUserData: (userData: UserInterface) => void
-  userData: UserInterface
-}
-
-const Applications: React.FC<ApplicationsProps> = ({ userJwt, jobData, userData, setUserData }) => {
+const Applications: React.FC = () => {
   const [filters, setFilters] = useState({ search: '', location: '', position: '' });
   const [search, setSearch] = useState('')
   const [location, setLocation] = useState('')
@@ -57,7 +49,7 @@ const Applications: React.FC<ApplicationsProps> = ({ userJwt, jobData, userData,
               </div>
             </div>
           </div>
-          <JobResults {...filters} application={true} jobData={jobData} userJwt={userJwt} userData={userData} setUserData={setUserData} />
+          <JobResults {...filters} application={true} />
         </section>
       </div>
     </>

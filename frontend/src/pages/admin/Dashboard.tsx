@@ -9,14 +9,13 @@ import DataCard from 'src/components/admin/DataCard';
 import SimpleLineChart from 'src/components/admin/SimpleLineChart';
 import { io } from 'socket.io-client';
 import { Tabs, TabsContent, TabsTrigger } from 'src/components/shared/Tabs';
-
-interface DashboardProps {
-    adminJwt: string
-}
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/redux/store';
 
 
+const Dashboard: React.FC = () => {
 
-const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
+    const adminJwt = useSelector((state: RootState) => state.jwt.adminJwt)
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [monthlyData, setMonthlyData] = useState<any[]>([{}])
@@ -39,6 +38,7 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
 
     useEffect(() => {
         if (!socketConnection) {
+            // const socket = io('http://localhost:5000', { transports: ["websocket"] });
             const socket = io('https://company-job-portal-production.up.railway.app', { transports: ["websocket"] });
             socket.on('message', (data) => {
                 setRecentApplications(prev => [data, ...prev])
@@ -75,7 +75,7 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
 
                         <div className='row' style={{ alignItems: 'flex-start', gap: '20px' }}>
 
-                            <div style={{ width:'100%' }} className='dashboard-recentStats column'>
+                            <div style={{ width: '100%' }} className='dashboard-recentStats column'>
 
                                 <Tabs darkMode={false}>
                                     <TabsTrigger value='Applications'><p>Applications</p></TabsTrigger>
@@ -124,9 +124,7 @@ const Dashboard: React.FC<DashboardProps> = ({ adminJwt }) => {
                                         <p key={index} style={{ margin: '8px 0' }}>{app.email} {app.action} {app.jobTitle}</p>
                                     )
                                 })}
-                                <p style={{ margin: '8px 0' }}>tonyqiu12345@gmail.com applied for Software Developer</p>
-                                <p style={{ margin: '8px 0' }}>test@gmail.com unapplied for Software Developer</p>
-                                <p style={{ margin: '8px 0' }}>test@gmail.com applied for Software Developer</p>
+                                <p style={{ margin: '-4px 0' }}> </p>
                             </div>
                         </div>
 

@@ -159,10 +159,12 @@
 .jobDetailsCard::-webkit-scrollbar {
     width: 0em;
 }
-
+.jobDetailsCard-loadedContainer>h6 {
+    margin-bottom: -12px;
+}
 .jobDetailsCard-loadedContainer>h6,
 .jobDetailsCard-loadedContainer>.hr {
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
 .jobDetailsCard-btnCont {

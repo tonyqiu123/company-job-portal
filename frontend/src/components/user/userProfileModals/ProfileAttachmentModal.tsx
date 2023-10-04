@@ -2,6 +2,9 @@ import { useState, ChangeEvent, DragEvent } from 'react';
 import fileIcon from 'src/assets/images/fileIcon.svg';
 import { uploadFile, updateUser } from 'src/util/apiFunctions.js';
 import Button from 'src/components/shared/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'src/redux/store';
+import { overwriteUserData } from 'src/redux/userSlice';
 
 interface Attachment {
     _id: string;
@@ -9,22 +12,22 @@ interface Attachment {
 }
 
 interface ProfileAttachmentModalProps {
-    userJwt: string;
-    userData: any;
     setShowAttachmentModal: (show: boolean) => void;
-    setUserData: (data: any) => void;
 }
 
 export default function ProfileAttachmentModal({
-    userJwt,
-    userData,
     setShowAttachmentModal,
-    setUserData,
 }: ProfileAttachmentModalProps) {
+
+    const userData = useSelector((state: RootState) => state.user)
+    const userJwt = useSelector((state: RootState) => state.jwt.userJwt)
+
     const [isDragging, setIsDragging] = useState(false);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [fileType, setFileType] = useState('Resume');
     const [error, setError] = useState('');
+
+    const dispatch = useDispatch()
 
     const handleDragEnter = (event: DragEvent<HTMLLabelElement>) => {
         event.preventDefault();
@@ -62,15 +65,17 @@ export default function ProfileAttachmentModal({
                 setError('Please select a file');
                 throw new Error('');
             }
-            const fileId = await uploadFile(userJwt, selectedFile);
             const updatedUserData = { ...userData };
-            updatedUserData.attachments.push({
-                _id: fileId.fileName,
-                fileType,
-            } as Attachment);
-            await updateUser(userJwt, updatedUserData);
-            setUserData(updatedUserData);
-            setShowAttachmentModal(false);
+            if (userJwt && updatedUserData.attachments) {
+                const fileId = await uploadFile(userJwt, selectedFile);
+                updatedUserData.attachments.push({
+                    _id: fileId.fileName,
+                    fileType,
+                } as Attachment);
+                await updateUser(userJwt, updatedUserData);
+                dispatch(overwriteUserData(updatedUserData));
+                setShowAttachmentModal(false);
+            }
         } catch (err) {
             throw err;
         }

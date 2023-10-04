@@ -1,15 +1,11 @@
-import React,  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import 'src/css/shared/login.css'
 import Signup from 'src/components/user/Signup';
 import Login from 'src/components/user/Login';
 import desktopLogo from 'src/assets/images/desktopLogo.svg'
 
-interface LandingProps {
-  setUserJwt: (jwt: string | null) => void;
-}
-
-const Landing: React.FC<LandingProps> = ({ setUserJwt }) => {
+const Landing: React.FC = () => {
 
   const [currentImg, setCurrentImg] = useState(0);
   const location = useLocation();
@@ -32,7 +28,7 @@ const Landing: React.FC<LandingProps> = ({ setUserJwt }) => {
       <img src={desktopLogo} />
       <div className='landing-left'>
         <div className='landing-left-child column'>
-          {location.pathname === '/login' ? <Login setUserJwt={setUserJwt} /> : <Signup setUserJwt={setUserJwt} />}
+          {location.pathname === '/login' ? <Login /> : <Signup />}
         </div>
       </div>
       <div className='landing-right column'>

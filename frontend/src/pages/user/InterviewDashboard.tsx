@@ -4,17 +4,10 @@ import Input from 'src/components/shared/Input';
 import Select from 'src/components/shared/Select';
 import JobResults from 'src/components/user/JobResults';
 import 'src/css/shared/interview.css'
-import { JobInterface, UserInterface } from 'src/util/interfaces';
 
 
-interface SearchJobsProps {
-    userJwt: string
-    jobData: JobInterface[]
-    userData: UserInterface
-    setUserData: (userData: UserInterface) => void
-}
 
-const InterviewDashboard: React.FC<SearchJobsProps> = ({ userJwt, jobData, userData, setUserData }) => {
+const InterviewDashboard: React.FC = () => {
 
     const [filters, setFilters] = useState({ search: '', location: '', position: '' });
     const [search, setSearch] = useState('')
@@ -55,7 +48,7 @@ const InterviewDashboard: React.FC<SearchJobsProps> = ({ userJwt, jobData, userD
                         </div>
                     </div>
                 </div>
-                <JobResults {...filters} jobData={jobData} userJwt={userJwt} userData={userData} setUserData={setUserData} filterByInterview={true} />
+                <JobResults {...filters} filterByInterview={true} />
             </section>
         </div>
     )
