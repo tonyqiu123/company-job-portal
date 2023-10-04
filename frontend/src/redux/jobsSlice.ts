@@ -33,7 +33,7 @@ export const jobsSlice = createSlice({
   name: 'jobs',
   initialState: initialJobsState,
   reducers: {
-    overwriteJobsData: (state, action) => {
+    overwriteJobsData: (_, action) => {
       return action.payload;
     },
     updateJobById: (state, action) => {

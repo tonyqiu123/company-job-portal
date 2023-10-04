@@ -27,7 +27,7 @@ export const userSlice = createSlice({
     name: 'user',
     initialState: initialUserState,
     reducers: {
-        overwriteUserData: (state, action) => {
+        overwriteUserData: (_, action) => {
             return action.payload;
         },
     },
