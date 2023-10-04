@@ -1,6 +1,6 @@
 import { getJobs } from 'src/util/apiFunctions'
 import { useEffect, useState } from 'react';
-import Button from '../shared/Button'; 
+import Button from '../shared/Button';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../shared/Modal';
@@ -82,7 +82,8 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ jobId, setShowJobDetail
             {job?.salary && <p>${job?.salary} per year plus any listed benefits</p>}
             <div className='hr'></div>
             <h6>Company Description</h6>
-            <p>NCR's Waterloo Software Engineering organization is building world-class banking applications used by some of the top financial organizations in the world. We are currently hiring several co-op students for Software Development positions in our Waterloo office. If you're looking for a chance to get hands-on real-world software development experience, helping to solve challenging issues and build high-quality applications used by some of the top banking organizations in the world, consider joining our NCR team. NCR was recently named a "Top 100 Global Tech Leader" by Thomson Reuters. We also won the 2022 FinTech Breakthrough Award for the Best Banking Infrastructure Platform, demonstrating NCR's leadership as an innovator in banking. Our Software Engineering organization uses state of the art technologies along with Agile software development methodologies to deliver innovative solutions to the customers we serve.</p>
+            <p>Wealthy Planet, founded in 2022, is a dynamic startup with a bold mission: to revolutionize financial planning for families. Our core focus is a mathematically optimal financial optimization engine that leverages classical techniques and cutting-edge AI methods.
+              What sets us apart? We're not just a fintech company; we're tackling fascinating challenges. Join us, and you'll collaborate with world-recognized AI researchers and computer science experts, pushing the boundaries of finance and technology. Together, we're shaping the future of financial planning. Join Wealthy Planet and be part of something extraordinary.</p>
             <h6>Job Description</h6>
             <p>{job?.description}</p>
             <h6>What you will be doing:</h6>

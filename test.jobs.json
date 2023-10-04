@@ -1,629 +1,603 @@
-[{
-  "_id": {
-    "$oid": "651b46127b5645a900d64cd5"
+[
+  {
+    "_id": {
+      "$oid": "651b46127b5645a900d64cd5"
+    },
+    "title": "Software Engineer",
+    "location": "Victoria, British Columbia, Canada",
+    "description": "As a Software Engineer, you will play a crucial role in designing, developing, and maintaining software applications and systems. Your responsibilities will include writing clean, efficient code, collaborating with cross-functional teams to gather and analyze requirements, and troubleshooting and debugging software issues to ensure optimal functionality and user satisfaction. Strong programming skills, problem-solving abilities, and a solid understanding of software development methodologies are essential for success in this role.",
+    "salary": 80000,
+    "position": "Full Time",
+    "requirements": [
+      "Proficiency in multiple programming languages, such as Java, Python, or C++, with a strong focus on writing well-structured and efficient code.",
+      "Experience with software development tools and methodologies, including version control systems (e.g., Git), Agile or Scrum practices, and continuous integration/continuous deployment (CI/CD) pipelines.",
+      "Ability to collaborate effectively with cross-functional teams, gather and document software requirements, and communicate technical concepts to non-technical stakeholders."
+    ],
+    "responsibilities": [
+      "Develop and maintain software applications to meet project requirements and deliverables.",
+      "Debug and troubleshoot software issues to identify and implement effective solutions.",
+      "Collaborate with team members to design, code, and test software components, ensuring optimal functionality and user experience."
+    ],
+    "skills": [
+      "Data analysis and visualization",
+      "Project management",
+      "Machine learning and artificial intelligence",
+      "Cloud computing (e.g., AWS, Azure, GCP)",
+      "UI/UX design"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-02T22:37:06.000Z"
+    },
+    "deadline": {
+      "$date": "2023-12-31T23:37:06.000Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 109,
+    "yoe": 3,
+    "__v": 8
   },
-  "title": "Software Engineer",
-  "location": "Victoria, British Columbia, Canada",
-  "description": "As a Software Engineer, you will play a crucial role in designing, developing, and maintaining software applications and systems. Your responsibilities will include writing clean, efficient code, collaborating with cross-functional teams to gather and analyze requirements, and troubleshooting and debugging software issues to ensure optimal functionality and user satisfaction. Strong programming skills, problem-solving abilities, and a solid understanding of software development methodologies are essential for success in this role.",
-  "salary": 80000,
-  "position": "Full Time",
-  "requirements": [
-    "Proficiency in multiple programming languages, such as Java, Python, or C++, with a strong focus on writing well-structured and efficient code.",
-    "Experience with software development tools and methodologies, including version control systems (e.g., Git), Agile or Scrum practices, and continuous integration/continuous deployment (CI/CD) pipelines.",
-    "Ability to collaborate effectively with cross-functional teams, gather and document software requirements, and communicate technical concepts to non-technical stakeholders."
-  ],
-  "responsibilities": [
-    "Develop and maintain software applications to meet project requirements and deliverables.",
-    "Debug and troubleshoot software issues to identify and implement effective solutions.",
-    "Collaborate with team members to design, code, and test software components, ensuring optimal functionality and user experience."
-  ],
-  "skills": [
-    "Data analysis and visualization",
-    "Project management",
-    "Machine learning and artificial intelligence",
-    "Cloud computing (e.g., AWS, Azure, GCP)",
-    "UI/UX design"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-02T22:37:06.000Z"
+  {
+    "_id": {
+      "$oid": "651b917c7b5645a900d64e49"
+    },
+    "title": "Registered Nurse",
+    "location": "Toronto, Ontario, Canada",
+    "description": "As a Registered Nurse, your primary focus will be on providing high-quality patient care and ensuring the well-being of individuals in healthcare settings. You will assess patients' conditions, administer medications, and coordinate with healthcare teams to develop and implement care plans. Compassion, attention to detail, and a deep knowledge of medical procedures and protocols are vital for delivering safe and effective nursing care.",
+    "salary": 70000,
+    "position": "Full Time",
+    "requirements": [
+      "A current and valid nursing license in the applicable jurisdiction is mandatory.",
+      "Strong medical and nursing knowledge, typically with a BSN or ADN degree, and a commitment to ongoing professional development are essential.",
+      "Excellent communication and interpersonal abilities for effective patient interaction and collaboration within the healthcare team are required."
+    ],
+    "responsibilities": [
+      "Perform comprehensive patient assessments, develop care plans, and administer treatments to ensure optimal patient well-being.",
+      " Safely administer medications, monitor their effects, and educate patients on medication regimens.",
+      "Collaborate with healthcare teams, including physicians and support staff, to provide coordinated and holistic patient care."
+    ],
+    "skills": [
+      "Clinical Competence",
+      "Communication",
+      "Critical Thinking"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T03:58:52.403Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T04:58:52.403Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 13,
+    "yoe": 3,
+    "__v": 1
   },
-  "deadline": {
-    "$date": "2023-12-31T23:37:06.000Z"
+  {
+    "_id": {
+      "$oid": "651b91f27b5645a900d64e68"
+    },
+    "title": "Marketing Manager",
+    "location": "Toronto, Ontario, Canada",
+    "description": "As a Marketing Manager, you will lead marketing strategies and campaigns to promote products or services, drive brand awareness, and achieve business goals. Your responsibilities will include market research, developing marketing plans, managing budgets, and overseeing creative and promotional efforts. Effective communication, strategic thinking, and a strong grasp of digital marketing tools and trends are critical for success in this dynamic role.",
+    "salary": 90000,
+    "position": "Full Time",
+    "requirements": [
+      "A bachelor's degree in marketing, business, or a related field is typically required.",
+      "Proven experience in marketing, including developing and implementing successful marketing strategies.",
+      "Strong leadership and management skills to lead a marketing team effectively."
+    ],
+    "responsibilities": [
+      "Create and execute comprehensive marketing strategies to achieve business objectives, including market research and competitor analysis.",
+      "Manage marketing budgets efficiently to maximize ROI and track expenditures accurately.",
+      "Oversee the planning, execution, and evaluation of marketing campaigns across various channels, both online and offline."
+    ],
+    "skills": [
+      "Digital Marketing",
+      "Strategic Thinking",
+      "Effective Communication"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:00:50.507Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:00:50.507Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 6,
+    "yoe": 3,
+    "__v": 1
   },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0",
-    "651cb6e45db3412679930814"
-  ],
-  "selected": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 109,
-  "yoe": 3,
-  "__v": 8
-},
-{
-  "_id": {
-    "$oid": "651b917c7b5645a900d64e49"
+  {
+    "_id": {
+      "$oid": "651b92577b5645a900d64e6a"
+    },
+    "title": "Data Scientist",
+    "location": "Markham, Ontario, Canada",
+    "description": "As a Data Scientist, your role revolves around collecting, analyzing, and interpreting large datasets to derive actionable insights and inform business decisions. You will use statistical analysis, machine learning algorithms, and data visualization techniques to solve complex problems and provide data-driven recommendations. Proficiency in programming languages such as Python or R, expertise in data manipulation, and a solid understanding of statistical concepts are key competencies for excelling in this field.",
+    "salary": 40000,
+    "position": "Contract",
+    "requirements": [
+      "Bachelor's or higher degree in a relevant field such as Computer Science, Statistics, or Data Science.",
+      "Strong knowledge of SQL and experience with database management systems.",
+      "Excellent communication skills to convey complex findings to non-technical stakeholders."
+    ],
+    "responsibilities": [
+      "Collect and preprocess large datasets to ensure data quality and integrity.",
+      "Develop and implement machine learning models for predictive analytics and data-driven decision-making.",
+      "Create informative data visualizations and reports to communicate insights effectively."
+    ],
+    "skills": [
+      "Python",
+      "R",
+      "Pandas",
+      "Matplotlib ",
+      "Seaborn"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:02:31.539Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:02:31.539Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 5,
+    "yoe": 3,
+    "__v": 2
   },
-  "title": "Registered Nurse",
-  "location": "Toronto, Ontario, Canada",
-  "description": "As a Registered Nurse, your primary focus will be on providing high-quality patient care and ensuring the well-being of individuals in healthcare settings. You will assess patients' conditions, administer medications, and coordinate with healthcare teams to develop and implement care plans. Compassion, attention to detail, and a deep knowledge of medical procedures and protocols are vital for delivering safe and effective nursing care.",
-  "salary": 70000,
-  "position": "Full Time",
-  "requirements": [
-    "A current and valid nursing license in the applicable jurisdiction is mandatory.",
-    "Strong medical and nursing knowledge, typically with a BSN or ADN degree, and a commitment to ongoing professional development are essential.",
-    "Excellent communication and interpersonal abilities for effective patient interaction and collaboration within the healthcare team are required."
-  ],
-  "responsibilities": [
-    "Perform comprehensive patient assessments, develop care plans, and administer treatments to ensure optimal patient well-being.",
-    " Safely administer medications, monitor their effects, and educate patients on medication regimens.",
-    "Collaborate with healthcare teams, including physicians and support staff, to provide coordinated and holistic patient care."
-  ],
-  "skills": [
-    "Clinical Competence",
-    "Communication",
-    "Critical Thinking"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T03:58:52.403Z"
+  {
+    "_id": {
+      "$oid": "651b930e7b5645a900d64eb4"
+    },
+    "title": "Data Analyst Intern",
+    "location": "Markham, Ontario, Canada",
+    "description": "As a Data Analyst Intern you will have the opportunity to work on real-world data analysis projects that impact our business. You will collaborate with our data team to gather, analyze, and interpret data, turning it into valuable insights that drive decision-making. This role provides an excellent learning opportunity for individuals looking to kickstart their career in data analytics.",
+    "salary": 40000,
+    "position": "Internship",
+    "requirements": [
+      "Currently enrolled in a bachelor's or master's degree program in a related field (e.g., Data Science, Statistics, Computer Science).",
+      "Strong analytical skills and a passion for working with data.",
+      "Proficiency in data analysis tools and programming languages (e.g., Python, R, SQL)."
+    ],
+    "responsibilities": [
+      "Develop and execute data analysis scripts and queries using tools like Python, R, or SQL.",
+      "Perform exploratory data analysis to uncover trends, patterns, and anomalies.",
+      "Assist in gathering data from various sources, including databases, spreadsheets, and external datasets."
+    ],
+    "skills": [
+      "Seaborn",
+      "R",
+      "Python",
+      "SQL"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:05:34.426Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:05:34.426Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 4,
+    "yoe": 3,
+    "__v": 1
   },
-  "deadline": {
-    "$date": "2024-01-01T04:58:52.403Z"
+  {
+    "_id": {
+      "$oid": "651b93a97b5645a900d64ebc"
+    },
+    "title": "Full Stack Developer Intern",
+    "location": "Pickering, Ontario, Canada",
+    "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
+    "salary": 30000,
+    "position": "Internship",
+    "requirements": [
+      "Currently enrolled in a bachelor's or master's degree program in Computer Science, Software Engineering, or a related field.",
+      "Basic understanding of web development fundamentals (HTML, CSS, JavaScript).",
+      "Familiarity with one or more programming languages (e.g., JavaScript, Python, Ruby, Java)."
+    ],
+    "responsibilities": [
+      "Collaborate with designers and developers to create responsive and user-friendly web interfaces.",
+      "Assist in developing server-side applications and APIs using frameworks like Node.js, Django, or Ruby on Rails.",
+      "Integrate front-end and back-end components to create seamless user experiences."
+    ],
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Node",
+      "Ruby on Rails"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:08:09.753Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:08:09.753Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 3,
+    "yoe": 3,
+    "__v": 1
   },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 13,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b91f27b5645a900d64e68"
+  {
+    "_id": {
+      "$oid": "651b94577b5645a900d64ecf"
+    },
+    "title": "Integration Tester",
+    "location": "Waterloo, Ontario, Canada",
+    "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
+    "salary": 30000,
+    "position": "Internship",
+    "requirements": [
+      "Excellent school performance",
+      "Great analytical and problem solving skills",
+      "Ability to work independently on diverse problems",
+      "Excellent oral and written communication skills",
+      "Attention to detail"
+    ],
+    "responsibilities": [
+      "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+      "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+      "Participating in test scenario/test case reviews",
+      "Deploying and configuring various systems, tools and applications for development and testing purposes",
+      "Troubleshooting deployment problems"
+    ],
+    "skills": [
+      "GCP and AWS",
+      "APIs and JSON/REST",
+      "Docker",
+      "HTML 5 and CSS",
+      "k8s",
+      "Spring Boot"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:11:03.698Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:11:03.698Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 3,
+    "yoe": 3,
+    "__v": 1
   },
-  "title": "Marketing Manager",
-  "location": "Toronto, Ontario, Canada",
-  "description": "As a Marketing Manager, you will lead marketing strategies and campaigns to promote products or services, drive brand awareness, and achieve business goals. Your responsibilities will include market research, developing marketing plans, managing budgets, and overseeing creative and promotional efforts. Effective communication, strategic thinking, and a strong grasp of digital marketing tools and trends are critical for success in this dynamic role.",
-  "salary": 90000,
-  "position": "Full Time",
-  "requirements": [
-    "A bachelor's degree in marketing, business, or a related field is typically required.",
-    "Proven experience in marketing, including developing and implementing successful marketing strategies.",
-    "Strong leadership and management skills to lead a marketing team effectively."
-  ],
-  "responsibilities": [
-    "Create and execute comprehensive marketing strategies to achieve business objectives, including market research and competitor analysis.",
-    "Manage marketing budgets efficiently to maximize ROI and track expenditures accurately.",
-    "Oversee the planning, execution, and evaluation of marketing campaigns across various channels, both online and offline."
-  ],
-  "skills": [
-    "Digital Marketing",
-    "Strategic Thinking",
-    "Effective Communication"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:00:50.507Z"
+  {
+    "_id": {
+      "$oid": "651b94897b5645a900d64ef5"
+    },
+    "title": "Integration Tester",
+    "location": "Waterloo, Ontario, Canada",
+    "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
+    "salary": 30000,
+    "position": "Internship",
+    "requirements": [
+      "Excellent school performance",
+      "Great analytical and problem solving skills",
+      "Ability to work independently on diverse problems",
+      "Excellent oral and written communication skills",
+      "Attention to detail"
+    ],
+    "responsibilities": [
+      "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+      "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+      "Participating in test scenario/test case reviews",
+      "Deploying and configuring various systems, tools and applications for development and testing purposes",
+      "Troubleshooting deployment problems"
+    ],
+    "skills": [
+      "GCP and AWS",
+      "APIs and JSON/REST",
+      "Docker",
+      "HTML 5 and CSS",
+      "k8s",
+      "Spring Boot"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:11:53.082Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:11:53.082Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 4,
+    "yoe": 3,
+    "__v": 1
   },
-  "deadline": {
-    "$date": "2024-01-01T05:00:50.507Z"
+  {
+    "_id": {
+      "$oid": "651b94ee7b5645a900d64f0f"
+    },
+    "title": "Frontend Software Developer",
+    "location": "Waterloo, Ontario, Canada",
+    "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+    "salary": 50000,
+    "position": "Internship",
+    "requirements": [
+      "Excellent school performance",
+      "Great analytical and problem solving skills",
+      "Ability to work independently on diverse problems",
+      "Excellent oral and written communication skills",
+      "Attention to detail"
+    ],
+    "responsibilities": [
+      "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+      "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+      "Participating in test scenario/test case reviews",
+      "Deploying and configuring various systems, tools and applications for development and testing purposes",
+      "Troubleshooting deployment problems"
+    ],
+    "skills": [
+      "GCP and AWS",
+      "APIs and JSON/REST",
+      "Docker",
+      "HTML 5 and CSS",
+      "k8s",
+      "Spring Boot"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:13:34.680Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:13:34.680Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 1,
+    "yoe": 3,
+    "__v": 1
   },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 6,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b92577b5645a900d64e6a"
+  {
+    "_id": {
+      "$oid": "651b94fa7b5645a900d64f17"
+    },
+    "title": "Backend Software Developer",
+    "location": "Waterloo, Ontario, Canada",
+    "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+    "salary": 50000,
+    "position": "Internship",
+    "requirements": [
+      "Excellent school performance",
+      "Great analytical and problem solving skills",
+      "Ability to work independently on diverse problems",
+      "Excellent oral and written communication skills",
+      "Attention to detail"
+    ],
+    "responsibilities": [
+      "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+      "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+      "Participating in test scenario/test case reviews",
+      "Deploying and configuring various systems, tools and applications for development and testing purposes",
+      "Troubleshooting deployment problems"
+    ],
+    "skills": [
+      "GCP and AWS",
+      "APIs and JSON/REST",
+      "Docker",
+      "HTML 5 and CSS",
+      "k8s",
+      "Spring Boot"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:13:46.984Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:13:46.984Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 1,
+    "yoe": 3,
+    "__v": 1
   },
-  "title": "Data Scientist",
-  "location": "Markham, Ontario, Canada",
-  "description": "As a Data Scientist, your role revolves around collecting, analyzing, and interpreting large datasets to derive actionable insights and inform business decisions. You will use statistical analysis, machine learning algorithms, and data visualization techniques to solve complex problems and provide data-driven recommendations. Proficiency in programming languages such as Python or R, expertise in data manipulation, and a solid understanding of statistical concepts are key competencies for excelling in this field.",
-  "salary": 40000,
-  "position": "Contract",
-  "requirements": [
-    "Bachelor's or higher degree in a relevant field such as Computer Science, Statistics, or Data Science.",
-    "Strong knowledge of SQL and experience with database management systems.",
-    "Excellent communication skills to convey complex findings to non-technical stakeholders."
-  ],
-  "responsibilities": [
-    "Collect and preprocess large datasets to ensure data quality and integrity.",
-    "Develop and implement machine learning models for predictive analytics and data-driven decision-making.",
-    "Create informative data visualizations and reports to communicate insights effectively."
-  ],
-  "skills": [
-    "Python",
-    "R",
-    "Pandas",
-    "Matplotlib ",
-    "Seaborn"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:02:31.539Z"
+  {
+    "_id": {
+      "$oid": "651b950c7b5645a900d64f1f"
+    },
+    "title": "Performance Test Developer",
+    "location": "Waterloo, Ontario, Canada",
+    "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+    "salary": 50000,
+    "position": "Internship",
+    "requirements": [
+      "Excellent school performance",
+      "Great analytical and problem solving skills",
+      "Ability to work independently on diverse problems",
+      "Excellent oral and written communication skills",
+      "Attention to detail"
+    ],
+    "responsibilities": [
+      "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+      "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+      "Participating in test scenario/test case reviews",
+      "Deploying and configuring various systems, tools and applications for development and testing purposes",
+      "Troubleshooting deployment problems"
+    ],
+    "skills": [
+      "GCP and AWS",
+      "APIs and JSON/REST",
+      "Docker",
+      "HTML 5 and CSS",
+      "k8s",
+      "Spring Boot"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:14:04.505Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:14:04.505Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 1,
+    "yoe": 3,
+    "__v": 1
   },
-  "deadline": {
-    "$date": "2024-01-01T05:02:31.539Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0",
-    "651cb6e45db3412679930814"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 5,
-  "yoe": 3,
-  "__v": 2
-},
-{
-  "_id": {
-    "$oid": "651b930e7b5645a900d64eb4"
-  },
-  "title": "Data Analyst Intern",
-  "location": "Markham, Ontario, Canada",
-  "description": "As a Data Analyst Intern you will have the opportunity to work on real-world data analysis projects that impact our business. You will collaborate with our data team to gather, analyze, and interpret data, turning it into valuable insights that drive decision-making. This role provides an excellent learning opportunity for individuals looking to kickstart their career in data analytics.",
-  "salary": 40000,
-  "position": "Internship",
-  "requirements": [
-    "Currently enrolled in a bachelor's or master's degree program in a related field (e.g., Data Science, Statistics, Computer Science).",
-    "Strong analytical skills and a passion for working with data.",
-    "Proficiency in data analysis tools and programming languages (e.g., Python, R, SQL)."
-  ],
-  "responsibilities": [
-    "Develop and execute data analysis scripts and queries using tools like Python, R, or SQL.",
-    "Perform exploratory data analysis to uncover trends, patterns, and anomalies.",
-    "Assist in gathering data from various sources, including databases, spreadsheets, and external datasets."
-  ],
-  "skills": [
-    "Seaborn",
-    "R",
-    "Python",
-    "SQL"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:05:34.426Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:05:34.426Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 4,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b93a97b5645a900d64ebc"
-  },
-  "title": "Full Stack Developer Intern",
-  "location": "Pickering, Ontario, Canada",
-  "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
-  "salary": 30000,
-  "position": "Internship",
-  "requirements": [
-    "Currently enrolled in a bachelor's or master's degree program in Computer Science, Software Engineering, or a related field.",
-    "Basic understanding of web development fundamentals (HTML, CSS, JavaScript).",
-    "Familiarity with one or more programming languages (e.g., JavaScript, Python, Ruby, Java)."
-  ],
-  "responsibilities": [
-    "Collaborate with designers and developers to create responsive and user-friendly web interfaces.",
-    "Assist in developing server-side applications and APIs using frameworks like Node.js, Django, or Ruby on Rails.",
-    "Integrate front-end and back-end components to create seamless user experiences."
-  ],
-  "skills": [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Node",
-    "Ruby on Rails"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:08:09.753Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:08:09.753Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 3,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b94577b5645a900d64ecf"
-  },
-  "title": "Integration Tester",
-  "location": "Waterloo, Ontario, Canada",
-  "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
-  "salary": 30000,
-  "position": "Internship",
-  "requirements": [
-    "Excellent school performance",
-    "Great analytical and problem solving skills",
-    "Ability to work independently on diverse problems",
-    "Excellent oral and written communication skills",
-    "Attention to detail"
-  ],
-  "responsibilities": [
-    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
-    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
-    "Participating in test scenario/test case reviews",
-    "Deploying and configuring various systems, tools and applications for development and testing purposes",
-    "Troubleshooting deployment problems"
-  ],
-  "skills": [
-    "GCP and AWS",
-    "APIs and JSON/REST",
-    "Docker",
-    "HTML 5 and CSS",
-    "k8s",
-    "Spring Boot"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:11:03.698Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:11:03.698Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 3,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b94897b5645a900d64ef5"
-  },
-  "title": "Integration Tester",
-  "location": "Waterloo, Ontario, Canada",
-  "description": "As a Full Stack Developer Intern, you will be immersed in the world of web and software development. You will work on a range of projects, from designing and building user interfaces to working with databases and server-side logic. This role is ideal for individuals who are passionate about software development and eager to expand their skills.",
-  "salary": 30000,
-  "position": "Internship",
-  "requirements": [
-    "Excellent school performance",
-    "Great analytical and problem solving skills",
-    "Ability to work independently on diverse problems",
-    "Excellent oral and written communication skills",
-    "Attention to detail"
-  ],
-  "responsibilities": [
-    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
-    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
-    "Participating in test scenario/test case reviews",
-    "Deploying and configuring various systems, tools and applications for development and testing purposes",
-    "Troubleshooting deployment problems"
-  ],
-  "skills": [
-    "GCP and AWS",
-    "APIs and JSON/REST",
-    "Docker",
-    "HTML 5 and CSS",
-    "k8s",
-    "Spring Boot"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:11:53.082Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:11:53.082Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 4,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b94ee7b5645a900d64f0f"
-  },
-  "title": "Frontend Software Developer",
-  "location": "Waterloo, Ontario, Canada",
-  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
-  "salary": 50000,
-  "position": "Internship",
-  "requirements": [
-    "Excellent school performance",
-    "Great analytical and problem solving skills",
-    "Ability to work independently on diverse problems",
-    "Excellent oral and written communication skills",
-    "Attention to detail"
-  ],
-  "responsibilities": [
-    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
-    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
-    "Participating in test scenario/test case reviews",
-    "Deploying and configuring various systems, tools and applications for development and testing purposes",
-    "Troubleshooting deployment problems"
-  ],
-  "skills": [
-    "GCP and AWS",
-    "APIs and JSON/REST",
-    "Docker",
-    "HTML 5 and CSS",
-    "k8s",
-    "Spring Boot"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:13:34.680Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:13:34.680Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 1,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b94fa7b5645a900d64f17"
-  },
-  "title": "Backend Software Developer",
-  "location": "Waterloo, Ontario, Canada",
-  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
-  "salary": 50000,
-  "position": "Internship",
-  "requirements": [
-    "Excellent school performance",
-    "Great analytical and problem solving skills",
-    "Ability to work independently on diverse problems",
-    "Excellent oral and written communication skills",
-    "Attention to detail"
-  ],
-  "responsibilities": [
-    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
-    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
-    "Participating in test scenario/test case reviews",
-    "Deploying and configuring various systems, tools and applications for development and testing purposes",
-    "Troubleshooting deployment problems"
-  ],
-  "skills": [
-    "GCP and AWS",
-    "APIs and JSON/REST",
-    "Docker",
-    "HTML 5 and CSS",
-    "k8s",
-    "Spring Boot"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:13:46.984Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:13:46.984Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 1,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b950c7b5645a900d64f1f"
-  },
-  "title": "Performance Test Developer",
-  "location": "Waterloo, Ontario, Canada",
-  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
-  "salary": 50000,
-  "position": "Internship",
-  "requirements": [
-    "Excellent school performance",
-    "Great analytical and problem solving skills",
-    "Ability to work independently on diverse problems",
-    "Excellent oral and written communication skills",
-    "Attention to detail"
-  ],
-  "responsibilities": [
-    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
-    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
-    "Participating in test scenario/test case reviews",
-    "Deploying and configuring various systems, tools and applications for development and testing purposes",
-    "Troubleshooting deployment problems"
-  ],
-  "skills": [
-    "GCP and AWS",
-    "APIs and JSON/REST",
-    "Docker",
-    "HTML 5 and CSS",
-    "k8s",
-    "Spring Boot"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:14:04.505Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:14:04.505Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 1,
-  "yoe": 3,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "651b951a7b5645a900d64f27"
-  },
-  "title": "Software Developer in Test",
-  "location": "Waterloo, Ontario, Canada",
-  "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
-  "salary": 50000,
-  "position": "Internship",
-  "requirements": [
-    "Excellent school performance",
-    "Great analytical and problem solving skills",
-    "Ability to work independently on diverse problems",
-    "Excellent oral and written communication skills",
-    "Attention to detail"
-  ],
-  "responsibilities": [
-    "Identifying and authoring required test cases and scenarios to validate software based on requirements",
-    "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
-    "Participating in test scenario/test case reviews",
-    "Deploying and configuring various systems, tools and applications for development and testing purposes",
-    "Troubleshooting deployment problems"
-  ],
-  "skills": [
-    "GCP and AWS",
-    "APIs and JSON/REST",
-    "Docker",
-    "HTML 5 and CSS",
-    "k8s",
-    "Spring Boot"
-  ],
-  "whatWereLookingFor": [],
-  "created": {
-    "$date": "2023-10-03T04:14:18.434Z"
-  },
-  "deadline": {
-    "$date": "2024-01-01T05:14:18.434Z"
-  },
-  "remote": false,
-  "benefits": [],
-  "applicants": [
-    "651b422d7b5645a900d64cb0"
-  ],
-  "selected": [],
-  "selectedForInterview": [],
-  "shortlisted": [],
-  "rejected": [],
-  "requiredDocuments": [
-    "resume"
-  ],
-  "jobQuestions": [],
-  "views": 3,
-  "yoe": 3,
-  "__v": 1
-}]
+  {
+    "_id": {
+      "$oid": "651b951a7b5645a900d64f27"
+    },
+    "title": "Software Developer in Test",
+    "location": "Waterloo, Ontario, Canada",
+    "description": "As a Frontend Software Developer, you'll join one of our Agile Scrum teams, working alongside our full-time developers to help code and test new functionality for our Banking Services products. The ideal candidate is someone who takes pride in their work, fosters relationships, takes initiative, enjoys problem solving, and is eager to learn.",
+    "salary": 50000,
+    "position": "Internship",
+    "requirements": [
+      "Excellent school performance",
+      "Great analytical and problem solving skills",
+      "Ability to work independently on diverse problems",
+      "Excellent oral and written communication skills",
+      "Attention to detail"
+    ],
+    "responsibilities": [
+      "Identifying and authoring required test cases and scenarios to validate software based on requirements",
+      "Executing manual tests and analyzing results for adhoc scenarios and bug fixes",
+      "Participating in test scenario/test case reviews",
+      "Deploying and configuring various systems, tools and applications for development and testing purposes",
+      "Troubleshooting deployment problems"
+    ],
+    "skills": [
+      "GCP and AWS",
+      "APIs and JSON/REST",
+      "Docker",
+      "HTML 5 and CSS",
+      "k8s",
+      "Spring Boot"
+    ],
+    "whatWereLookingFor": [],
+    "created": {
+      "$date": "2023-10-03T04:14:18.434Z"
+    },
+    "deadline": {
+      "$date": "2024-01-01T05:14:18.434Z"
+    },
+    "remote": false,
+    "benefits": [],
+    "applicants": [],
+    "selected": [],
+    "selectedForInterview": [],
+    "shortlisted": [],
+    "rejected": [],
+    "requiredDocuments": [
+      "resume"
+    ],
+    "jobQuestions": [],
+    "views": 3,
+    "yoe": 3,
+    "__v": 1
+  }
+]
